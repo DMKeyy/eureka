@@ -42,7 +42,7 @@ public class SignUpController implements Initializable {
                     alert.setContentText("Please fill all the fields");
                     alert.show();
                 }
-                
+                loginController.animateButtonClick(btn_signup);
             }
         });
 

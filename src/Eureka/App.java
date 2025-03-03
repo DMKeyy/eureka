@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
     @Override
@@ -14,9 +15,12 @@ public class App extends Application {
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
-            
+            stage.sizeToScene();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setResizable(false);
             stage.setTitle("Eureka");
             stage.show();
+            stage.centerOnScreen();
         } catch (Exception e) {
             
             e.printStackTrace();

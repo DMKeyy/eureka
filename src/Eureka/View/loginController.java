@@ -4,12 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Eureka.Controller.DbController;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 public class loginController implements Initializable {
     @FXML
@@ -29,6 +31,7 @@ public class loginController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DbController.loginUser(event, tf_username.getText(), tf_password.getText());
+                loginController.animateButtonClick(btn_login);
             }
         });
 
@@ -41,6 +44,15 @@ public class loginController implements Initializable {
         });
 
          
+    }
+
+    public static void animateButtonClick(Button button) {
+        ScaleTransition scale = new ScaleTransition(Duration.millis(100), button);
+        scale.setToX(0.95);
+        scale.setToY(0.95);
+        scale.setAutoReverse(true);
+        scale.setCycleCount(2);
+        scale.play();
     }
 
 }

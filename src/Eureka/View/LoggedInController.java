@@ -14,6 +14,8 @@ public class LoggedInController implements Initializable {
 
     @FXML
     private Button btn_logout;
+    @FXML
+    private Button quit;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -21,6 +23,13 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DbController.changeScene(event, "LogIn.fxml");
+            }
+        });
+
+        quit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.exit(0);
             }
         });
     }

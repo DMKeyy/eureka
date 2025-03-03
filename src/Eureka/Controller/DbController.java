@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,15 +15,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+
 public class DbController {
 
     public static void changeScene(ActionEvent event,String fxml){
         try {
             Parent root = FXMLLoader.load(DbController.class.getResource("/Eureka/View/fxml/"+fxml));
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root,700,390));
+            stage.setScene(new Scene(root));
+            Platform.runLater(() -> stage.centerOnScreen());
             stage.show();
-
+            
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,7 +105,8 @@ public class DbController {
             } else {
                 System.out.println("User not found in database ");
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setContentText("Username or password is incorrect");
+                alert.setContentText("Username or password is incorrect, if you dont have an account please sign up");
+                alert.titleProperty().set("An error occured");
                 alert.show();
             }
         } catch (SQLException e) {
