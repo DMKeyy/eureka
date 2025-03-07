@@ -1,5 +1,6 @@
 package Eureka.models;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Player extends User {
@@ -7,7 +8,6 @@ public class Player extends User {
     private int dailyChallengesCompleted; // nbr de defis quotidiens terminés
     private int totalGamesPlayed; // nbr total de parties jouées
     private List<Badge> badges; // liste des badges obtenus
-    private int bonusTime; // bonus gagné
     private int achievementsUnlocked; // nbr de succès débloqués
     private int streakCount; // nbr de reponses consecutives correctes
     private int longestCompletionTime; // temps le plus long pour terminer un défi
@@ -21,12 +21,11 @@ public class Player extends User {
     // private int totalWins; // nbr total de victoires
     
     
-    public Player(String username, String password) {
-        super(username, password);
+    public Player(String username, String password,LocalDate registrationDate) {
+        super(username, password, registrationDate);
         this.score = 0;
         this.dailyChallengesCompleted = 0;
         this.totalGamesPlayed = 0;
-        this.bonusTime = 0;
         this.achievementsUnlocked = 0;
         this.streakCount = 0;
         this.longestCompletionTime = Integer.MAX_VALUE;
@@ -73,14 +72,6 @@ public class Player extends User {
     public List<Badge> getBadges() { 
         return badges; 
 }
-
-    public int getBonusTime() { 
-        return bonusTime; 
-    }
-
-    public void addBonusTime(int seconds) { 
-        this.bonusTime += seconds; 
-    }
 
     public int getAchievementsUnlocked() { 
         return achievementsUnlocked; 

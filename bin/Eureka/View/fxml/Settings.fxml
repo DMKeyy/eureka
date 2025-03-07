@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="settingsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="875.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.SettingsController">
+   <children>
+      <ImageView fitHeight="460.0" fitWidth="360.0" layoutX="258.0" layoutY="20.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/settings.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

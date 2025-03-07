@@ -13,7 +13,7 @@
       "request": "launch",
       "mainClass": "Eureka.App",
       "projectName": "eureka_da045323",
-      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-23.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-23.0.2/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media"
     }
   ]
 }

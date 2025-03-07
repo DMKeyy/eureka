@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.View.LoggedInController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LoggedInController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="906.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,7 +23,7 @@
             <DropShadow radius="34.75" width="120.0" />
          </effect>
          <graphic>
-            <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true">
+            <ImageView fx:id="btn_play" fitHeight="120.0" fitWidth="350.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/playbtn.png" />
                </image>
@@ -33,7 +33,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="327.0" layoutY="250.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_settings" layoutX="327.0" layoutY="250.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +44,7 @@
                </cursor>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="328.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_about" layoutX="328.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -1,9 +1,8 @@
-package Eureka.View;
+package Eureka.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Eureka.Controller.DbController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

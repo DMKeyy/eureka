@@ -40,7 +40,7 @@ public class DbController {
         ResultSet rs = null;
         
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eureka","root","Anis@2025");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eureka","root","");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             psCheckUserExist.setString(1,username);
             rs = psCheckUserExist.executeQuery();
@@ -86,7 +86,7 @@ public class DbController {
         ResultSet rs = null;
         
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eureka","root","Anis@2025");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eureka","root","");
             psCheckUserExist = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
             psCheckUserExist.setString(1,username);
             rs = psCheckUserExist.executeQuery();
