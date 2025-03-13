@@ -3,43 +3,63 @@ package Eureka.models;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Player extends User {
+public class Player{
+
+    private String username;
+    private String password;
+    private LocalDate registrationDate;
     private int score; // score 
     private int dailyChallengesCompleted; // nbr de defis quotidiens terminés
+    private int BestScore;
     private int totalGamesPlayed; // nbr total de parties jouées
     private List<Badge> badges; // liste des badges obtenus
-    private int achievementsUnlocked; // nbr de succès débloqués
     private int streakCount; // nbr de reponses consecutives correctes
     private int longestCompletionTime; // temps le plus long pour terminer un défi
     private int correctAnswersTheme1; // compteur de réponses correctes pour le thème 1
     private int correctAnswersTheme2; 
     private int correctAnswersTheme3; 
     private int correctAnswersTheme4;
-    private int totalCorrectAnswers; // nbr total de reponses correctes
-    //private int level; 
-    //private int xpPoints;
-    // private int totalWins; // nbr total de victoires
-    
+
+ 
     
     public Player(String username, String password,LocalDate registrationDate) {
-        super(username, password, registrationDate);
+        this.username = username;
+        this.password = password;
+        this.registrationDate = LocalDate.now(); 
         this.score = 0;
         this.dailyChallengesCompleted = 0;
         this.totalGamesPlayed = 0;
-        this.achievementsUnlocked = 0;
         this.streakCount = 0;
         this.longestCompletionTime = Integer.MAX_VALUE;
         this.correctAnswersTheme1 = 0;
         this.correctAnswersTheme2 = 0;
         this.correctAnswersTheme3 = 0;
         this.correctAnswersTheme4 = 0;
-        this.totalCorrectAnswers = 0;
-        //this.level = 1;
-        //this.xpPoints = 0;
-        //this.totalWins = 0;
 
     }
     
+    public String getUsername() {
+        return username;   
+    }
+
+    public String getPassword() { 
+        return password; 
+    }
+
+
+
+    public LocalDate getRegistrationDate() { 
+      return registrationDate; 
+    }
+    
+    public int getBestScore() { 
+        return BestScore; 
+    }
+
+    public void setBestScore(int BestScore) { 
+        this.BestScore = BestScore; 
+    }
+
     public int getScore() { 
         return score; 
     }
@@ -72,14 +92,6 @@ public class Player extends User {
     public List<Badge> getBadges() { 
         return badges; 
 }
-
-    public int getAchievementsUnlocked() { 
-        return achievementsUnlocked; 
-    }
-
-    public void unlockAchievement() { 
-        this.achievementsUnlocked++; 
-    }
 
     public int getStreakCount() { 
         return streakCount; 
@@ -134,39 +146,5 @@ public class Player extends User {
     public void incrementCorrectAnswersTheme4() { 
         this.correctAnswersTheme4++; 
     }
-    public int getTotalCorrectAnswers() { 
-        return totalCorrectAnswers; 
-    }
 
-    private void incrementTotalCorrectAnswers() { 
-        this.totalCorrectAnswers++; 
-    }
 }
-
-// public int getLevel() { 
-     //   return level; 
-   // }
-
-    //public void levelUp() { 
-       // this.level++; 
-    //}
-
-    //public int getXpPoints() { 
-      //  return xpPoints; 
-    //}
-
-   // public void addXpPoints(int points) {
-     //   this.xpPoints += points;
-       // if (this.xpPoints >= 200) {  
-         //   levelUp();
-           // this.xpPoints = 0;
-        //}
-    //}
-
-     //public int getTotalWins() { 
-      //  return totalWins; 
-    //}
-
-   // public void incrementWins() { 
-     //   this.totalWins++; 
-    //}

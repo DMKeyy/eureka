@@ -3,18 +3,23 @@ package Eureka.models;
 import java.util.List;
 
 public class Question {
-    String questionText; // texte de la qst
-    String answer; // reponse correcte
-    String theme; // theme de la qst
-    List<String> multipleChoices; // options pour les qcm
-    String explanation; // explication detaillée après avoir donner la réponse
+    private int question_id;
+    private String questionText;
+    private String answer;
+    private String theme;
+    private List<String> multipleChoices;
+    private String explanation;
+    private int difficultyLevel; 
     
-    public Question(String questionText, String answer, String theme, List<String> multipleChoices, String explanation) {
+    public Question(int question_id,String questionText, String answer, String theme, List<String> multipleChoices, String explanation, int difficultyLevel) {
+        this.question_id = question_id;
         this.questionText = questionText;
         this.answer = answer;
         this.theme = theme;
         this.multipleChoices = multipleChoices;
         this.explanation = explanation;
+        this.question_id = question_id;
+        this.difficultyLevel = difficultyLevel;
     }
     
     public boolean checkAnswer(String userAnswer) {
@@ -40,4 +45,41 @@ public class Question {
     public String getExplanation() { 
         return explanation; 
     }
+
+    public int getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public void setMultipleChoices(List<String> multipleChoices) {
+        this.multipleChoices = multipleChoices;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public int getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(int difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
 }

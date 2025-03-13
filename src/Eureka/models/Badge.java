@@ -1,23 +1,18 @@
 package Eureka.models;
 
 public class Badge {
+    int badge_id;
     String name; // nom du badge
     String description; // description du badge
-    int requiredAchievements; // nbr de succès qu'il faut pour débloquer
-    String theme1; 
-    String theme2; 
-    String theme3;
-    String theme4; 
+    int requiredAchievements;
+    String theme;
 
 
-    public Badge(String name, String description, int requiredAchievements, String theme1, String theme2, String theme3, String theme4) {
+    public Badge(String name, String description, int requiredAchievements, String theme) {
         this.name = name;
         this.description = description;
         this.requiredAchievements = requiredAchievements;
-        this.theme1 = theme1;
-        this.theme2 = theme2;
-        this.theme3 = theme3;
-        this.theme4 = theme4;
+        this.theme = theme;
     }
     
     public String getName() { 
@@ -32,20 +27,33 @@ public class Badge {
         return requiredAchievements; 
     }
 
-    public String getTheme1() { 
-        return theme1; 
+    public String getTheme() { 
+        return theme; 
     }
 
-    public String getTheme2() {
-        return theme2; 
+    public int getBadge_id() {
+        return badge_id;
     }
 
-    public String getTheme3() { 
-        return theme3; 
+    public void setBadge_id(int badge_id) {
+        this.badge_id = badge_id;
     }
 
-    public String getTheme4() { 
-        return theme4; 
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRequiredAchievements(int requiredAchievements) {
+        this.requiredAchievements = requiredAchievements;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    
 }
