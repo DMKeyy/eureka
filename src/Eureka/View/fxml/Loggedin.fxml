@@ -15,7 +15,7 @@
          </image>
       </ImageView>
       <Button fx:id="btn_logout" layoutX="39.0" layoutY="435.0" mnemonicParsing="false" styleClass="menu-btn" text="logout" />
-      <Button fx:id="playbtn" layoutX="252.0" layoutY="122.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="346.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_play" layoutX="262.0" layoutY="122.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="346.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -23,7 +23,7 @@
             <DropShadow radius="34.75" width="120.0" />
          </effect>
          <graphic>
-            <ImageView fx:id="btn_play" fitHeight="120.0" fitWidth="350.0" pickOnBounds="true">
+            <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/playbtn.png" />
                </image>
@@ -33,7 +33,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_settings" layoutX="327.0" layoutY="250.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_settings" layoutX="330.0" layoutY="250.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +44,7 @@
                </cursor>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_about" layoutX="328.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_about" layoutX="330.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

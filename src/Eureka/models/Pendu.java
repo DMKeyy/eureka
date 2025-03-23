@@ -1,25 +1,20 @@
 package Eureka.models;
 
 public class Pendu {
-    int maxAttempts = 8; // nbr max de tentatives
-    int attemptsLeft; // nbr de tentatives restantes
+    private static int maxAttempts = 8; // nbr max de tentatives
+    int attemptsLeft;
     
 
-    public Pendu(int timeLimit) {
+    public Pendu() {
         this.attemptsLeft = maxAttempts;
-    }
-    
-    public boolean guessLetter(char letter, String word) {
-        if (word.contains(Character.toString(letter))) {
-            return true;
-        } else {
-            attemptsLeft--;
-            return false;
-        }
     }
     
     public int getAttemptsLeft() { 
         return attemptsLeft; 
+    }
+
+    public void setAttemptsLeft(int attemptsLeft) { 
+        this.attemptsLeft = attemptsLeft; 
     }
 
     public boolean isGameOver() { 

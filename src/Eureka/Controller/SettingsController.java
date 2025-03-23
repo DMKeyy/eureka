@@ -1,4 +1,4 @@
-package Eureka.Controller;
+package Eureka.Controller ;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;

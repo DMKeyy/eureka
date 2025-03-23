@@ -22,6 +22,9 @@ public class Question {
         this.difficultyLevel = difficultyLevel;
     }
     
+    public Question() {
+    }
+
     public boolean checkAnswer(String userAnswer) {
         return this.answer.equalsIgnoreCase(userAnswer);
     }
