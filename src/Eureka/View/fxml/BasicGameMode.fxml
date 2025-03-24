@@ -3,13 +3,65 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.BasicGameModeController">
    <children>
-      <Label fx:id="questionLabel" layoutX="177.0" layoutY="94.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
-      <TextField fx:id="tf_answer" layoutX="360.0" layoutY="264.0" />
-      <Button fx:id="btn_submit" layoutX="542.0" layoutY="264.0" mnemonicParsing="false" text="Button" />
-      <Label fx:id="scoreText" layoutX="360.0" layoutY="26.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+      <Label fx:id="questionLabel" layoutX="275.0" layoutY="83.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
+      <TextField fx:id="tf_answer" layoutX="425.0" layoutY="266.0" />
+      <Button fx:id="btn_submit" layoutX="583.0" layoutY="266.0" mnemonicParsing="false" text="Button" />
+      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+      <ImageView fitHeight="129.0" fitWidth="54.0" layoutX="87.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rope.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="500.0" fitWidth="310.0" layoutX="-15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pendunoir.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bodyImage" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/torse.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="headImage" fitHeight="108.0" fitWidth="82.0" layoutX="69.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Head.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftArmImage" fitHeight="183.0" fitWidth="219.0" layoutX="-21.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/maingauche.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightArmImage" fitHeight="183.0" fitWidth="220.0" layoutX="148.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/maindroite.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightfeetImage" fitHeight="150.0" fitWidth="200.0" layoutX="98.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pieddroit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftfeetImage" fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/piedgauche.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightLegImage" fitHeight="160.0" fitWidth="88.0" layoutX="103.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/jambedroite.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftLegImage" fitHeight="168.0" fitWidth="88.0" layoutX="43.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/jambegauche.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

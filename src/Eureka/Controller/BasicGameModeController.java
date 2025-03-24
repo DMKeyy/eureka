@@ -1,20 +1,22 @@
 package Eureka.Controller;
 
+import java.util.List;
+
 import Eureka.models.GameData;
-import Eureka.models.Pendu;
 import Eureka.models.Player;
 import Eureka.models.Question;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class BasicGameModeController {
     String theme;
     int difficulty;
     int score;
     int correctAnswers;
-    Pendu pendu ;
+    PenduDrawer pendu;
     Question question;
 
     @FXML
@@ -25,6 +27,8 @@ public class BasicGameModeController {
     private Label scoreText;
     @FXML
     private Button btn_submit;
+    @FXML 
+    private ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage ,leftfeetImage, rightfeetImage;
     
     public BasicGameModeController() {
         this.score = 0;
@@ -34,10 +38,12 @@ public class BasicGameModeController {
 
     @FXML
     public void initialize() {
+
         this.theme = GameData.getTheme();
         this.difficulty = GameData.getDifficulty();
-        pendu = new Pendu();
-        System.out.println("Theme: " + theme + " Difficulty: " + difficulty);
+        pendu = new PenduDrawer(List.of(headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage), 8);
+
+
         LoadNextQuestion();
         btn_submit.setOnAction(event -> handleSubmit());
     }
@@ -88,7 +94,7 @@ public class BasicGameModeController {
             scoreText.setText("Score: " + score);
         } else {
             pendu.setAttemptsLeft(pendu.getAttemptsLeft() - 1);
-            PenduController.DrawPendu(pendu.getAttemptsLeft());
+            pendu.drawNextPart();
 
             if (pendu.isGameOver()) {
                 UpdateCurrentPlayer(theme);

@@ -167,10 +167,10 @@ public class DbController {
                     if (rs.getBoolean("Is_correct")) {
                         correctAnswer = choice;
                     }
-                } while (rs.next()); // Get all choices for this question
+                } while (rs.next());
                 
-                question.setMultipleChoices(choices); // Store all choices
-                question.setAnswer(correctAnswer); // Store the correct answer
+                question.setMultipleChoices(choices);
+                question.setAnswer(correctAnswer);
             } else {
                 resetUsedQuestions();
                 return getQuestionQCM(theme, difficulty);
@@ -183,12 +183,12 @@ public class DbController {
 }
 
 
-    // Reset Used Questions
+
     public static void resetUsedQuestions() {
         usedQuestionIds.clear();
     }
 
-    // Helper Methods
+
     private static String getUsedIdsPlaceholder() {
     return usedQuestionIds.isEmpty() ? "NULL" : String.join(",", Collections.nCopies(usedQuestionIds.size(), "?"));
     }
@@ -217,6 +217,7 @@ public class DbController {
         Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersArt, correctAnswersIslam, correctAnswersJava);
         Player.setCurrentPlayer(player);
     }
+        
 
     public static void showAlert(AlertType alertType, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
