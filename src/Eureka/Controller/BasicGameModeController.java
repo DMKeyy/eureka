@@ -73,6 +73,9 @@ public class BasicGameModeController {
             case "Java":
                 player.setCorrectAnswersJava(player.getCorrectAnswersJava()+correctAnswers);
                 break;
+            case "Islam":
+                player.setCorrectAnswersIslam(player.getCorrectAnswersIslam()+correctAnswers);
+                break;
             default:
                 break;
         }

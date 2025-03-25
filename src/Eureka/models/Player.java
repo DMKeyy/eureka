@@ -24,6 +24,7 @@ public class Player {
     private int correctAnswersSport;
     private int correctAnswersArt;
     private int correctAnswersJava;
+    private int correctAnswersIslam;
 
     public Player(String username, String password, LocalDate registrationDate) {
         this.username = username;
@@ -40,9 +41,12 @@ public class Player {
         this.correctAnswersHistory = 0;
         this.correctAnswersGeography = 0;
         this.correctAnswersSport = 0;
+        this.correctAnswersArt = 0;
+        this.correctAnswersJava = 0;
+        this.correctAnswersIslam = 0;
     }
 
-    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava) {
+    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam) {
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -58,6 +62,7 @@ public class Player {
         this.correctAnswersSport = correctAnswersSport;
         this.correctAnswersArt = correctAnswersArt;
         this.correctAnswersJava = correctAnswersJava;
+        this.correctAnswersIslam = correctAnswersIslam;
     }
 
     public static Player getCurrentPlayer() {
@@ -160,6 +165,10 @@ public class Player {
         return correctAnswersJava; 
     }
 
+    public int getCorrectAnswersIslam() { 
+        return correctAnswersIslam; 
+    }
+
     public void setScore(int score) {
         this.score = score;
     }
@@ -186,5 +195,9 @@ public class Player {
 
     public void setCorrectAnswersJava(int correctAnswersJava) {
         this.correctAnswersJava = correctAnswersJava;
+    }
+
+    public void setCorrectAnswersIslam(int correctAnswersIslam) {
+        this.correctAnswersIslam = correctAnswersIslam;
     }
 }
