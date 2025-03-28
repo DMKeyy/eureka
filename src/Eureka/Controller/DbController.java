@@ -227,4 +227,44 @@ public class DbController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public static void updatePlayer() {
+        Player player = Player.getCurrentPlayer();
+    
+        String query = "UPDATE player SET " +
+                       "best_score = ?, " +
+                       "streak_count = ?, " +
+                       "correct_answers_science = ?, " +
+                       "correct_answers_history = ?, " +
+                       "correct_answers_geography = ?, " +
+                       "correct_answers_art = ?, " +
+                       "correct_answers_islam = ?, " +
+                       "correct_answers_java = ?, " +
+                       "correct_answers_sport = ?, " +
+                       "total_game_played = ? " +
+                       "WHERE username = ?";
+    
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+    
+            pstmt.setInt(1, player.getBestScore());
+            pstmt.setInt(2, player.getStreakCount());
+            pstmt.setInt(3, player.getCorrectAnswersScience());
+            pstmt.setInt(4, player.getCorrectAnswersHistory());
+            pstmt.setInt(5, player.getCorrectAnswersGeography());
+            pstmt.setInt(6, player.getCorrectAnswersArt());
+            pstmt.setInt(7, player.getCorrectAnswersIslam());
+            pstmt.setInt(8, player.getCorrectAnswersJava());
+            pstmt.setInt(9, player.getCorrectAnswersSport());
+            pstmt.setInt(10, player.getTotalGamesPlayed());
+            pstmt.setString(11, player.getUsername());
+    
+            pstmt.executeUpdate();
+            System.out.println("✅ Player stats updated successfully!");
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("❌ Failed to update player stats.");
+        }
+    }
 }

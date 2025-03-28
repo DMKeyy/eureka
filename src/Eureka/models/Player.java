@@ -200,4 +200,12 @@ public class Player {
     public void setCorrectAnswersIslam(int correctAnswersIslam) {
         this.correctAnswersIslam = correctAnswersIslam;
     }
+
+    public void setTotalGamesPlayed(int totalGamesPlayed) {
+        this.totalGamesPlayed = totalGamesPlayed;
+    }
+    
+    public void setStreakCount(int streakCount) {
+        this.streakCount = streakCount;
+    }
 }

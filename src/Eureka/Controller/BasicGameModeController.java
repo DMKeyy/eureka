@@ -22,6 +22,8 @@ public class BasicGameModeController {
     int correctAnswers;
     PenduDrawer pendu;
     Question question;
+    int streakCount = 0;
+    int longestStreak = 0;
 
     @FXML
     private AnchorPane root;
@@ -61,6 +63,11 @@ public class BasicGameModeController {
         if (score > player.getBestScore()) {
             player.setBestScore(score);
         }
+
+        if (longestStreak > player.getStreakCount()) { // Store longest streak
+            player.setStreakCount(longestStreak);
+        }
+
         switch (Theme) {
             case "Science":
                 player.setCorrectAnswersScience(player.getCorrectAnswersScience()+correctAnswers);
@@ -82,10 +89,12 @@ public class BasicGameModeController {
                 break;
             case "Islam":
                 player.setCorrectAnswersIslam(player.getCorrectAnswersIslam()+correctAnswers);
-                break;
+                break;  
             default:
                 break;
         }
+
+        player.setTotalGamesPlayed(player.getTotalGamesPlayed() + 1);
 
     }
 
@@ -102,10 +111,16 @@ public class BasicGameModeController {
         if (question.checkAnswer(tf_answer.getText())) {
             score++;
             correctAnswers++;
+            streakCount++;
+            if (streakCount > longestStreak) {
+                longestStreak = streakCount;
+            }
+
             scoreText.setText("Score: " + score);
         } else {
             pendu.setAttemptsLeft(pendu.getAttemptsLeft() - 1);
             pendu.drawNextPart();
+            streakCount = 0;
 
             if (pendu.isGameOver()) {
                 endgame();
@@ -119,6 +134,7 @@ public class BasicGameModeController {
 
     public void endgame() {
         UpdateCurrentPlayer(theme);
+        DbController.updatePlayer();
         DbController.resetUsedQuestions();
 
         try {
