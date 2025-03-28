@@ -213,8 +213,9 @@ public class DbController {
         int correctAnswersArt = rs.getInt("Correct_answers_art");
         int correctAnswersIslam = rs.getInt("Correct_answers_islam");
         int correctAnswersJava = rs.getInt("Correct_answers_java");
+        int correctAnswersSport = rs.getInt("Correct_answers_sport");
 
-        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersArt, correctAnswersIslam, correctAnswersJava);
+        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
         Player.setCurrentPlayer(player);
     }
         

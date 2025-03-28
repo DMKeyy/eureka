@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
@@ -17,15 +18,16 @@ public class loginController implements Initializable {
     private Button btn_login;
 
     @FXML 
-    private Button btn_signup;
+    public Button btn_signup;
 
     @FXML
     private TextField tf_username;
 
     @FXML 
-    private TextField tf_password;
+    private PasswordField tf_password;
 
     public void initialize(URL location, ResourceBundle resources) {
+
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

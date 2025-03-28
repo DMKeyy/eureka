@@ -1,15 +1,19 @@
 package Eureka.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import Eureka.models.GameData;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class BasicGameModeController {
     String theme;
@@ -18,6 +22,9 @@ public class BasicGameModeController {
     int correctAnswers;
     PenduDrawer pendu;
     Question question;
+
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Label questionLabel;
@@ -45,7 +52,7 @@ public class BasicGameModeController {
 
 
         LoadNextQuestion();
-        btn_submit.setOnAction(event -> handleSubmit());
+        btn_submit.setOnAction(event -> handleSubmit(event));
     }
 
 
@@ -88,8 +95,9 @@ public class BasicGameModeController {
         scoreText.setText("Score: " + score);
     }
 
-    public void handleSubmit() {
+    public void handleSubmit(ActionEvent e) {
         if (question == null) return;
+        if (tf_answer.getText().isEmpty()) return;
 
         if (question.checkAnswer(tf_answer.getText())) {
             score++;
@@ -100,14 +108,37 @@ public class BasicGameModeController {
             pendu.drawNextPart();
 
             if (pendu.isGameOver()) {
-                UpdateCurrentPlayer(theme);
-                DbController.resetUsedQuestions();
-                return; 
+                endgame();
+                return;
             }
         }
 
         tf_answer.clear();
         LoadNextQuestion();
+    }
+
+    public void endgame() {
+        UpdateCurrentPlayer(theme);
+        DbController.resetUsedQuestions();
+
+        try {
+            SoundEffects.clickSound.play();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Eureka/View/fxml/GameOver.fxml"));
+            AnchorPane gameover = loader.load();
+
+            GameOverController gameOverController = loader.getController();
+            gameOverController.setScore(score);
+  
+            gameover.setLayoutX((root.getWidth() - gameover.getPrefWidth()) / 2);
+            gameover.setLayoutY((root.getHeight() - gameover.getPrefHeight()) / 2);
+            root.getChildren().add(gameover);
+            gameover.requestFocus();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
