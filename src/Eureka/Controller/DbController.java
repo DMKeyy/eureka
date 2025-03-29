@@ -43,6 +43,21 @@ public class DbController {
         }
     }
 
+    public static boolean isUsernameValid(String username) {
+
+        String query = "SELECT username FROM player WHERE username = ?";
+        
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); // Returns true if username exists
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
     public static void signUpUser(ActionEvent event, String username, String password) {
@@ -93,6 +108,25 @@ public class DbController {
             e.printStackTrace();
         }
     }
+
+
+    public static boolean updatePassword(String username, String newPassword) {
+
+    
+        String query = "UPDATE player SET password = ? WHERE username = ?";
+    
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, username);
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     // Fetch Question
     public static Question getQuestion(String theme, int difficulty) {

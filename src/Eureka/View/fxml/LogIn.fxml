@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.loginController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.loginController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="900.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -48,7 +48,7 @@
          </font>
       </Label>
       <TextField fx:id="tf_username" layoutX="340.0" layoutY="191.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Username" />
-      <PasswordField fx:id="tf_password" layoutX="340.0" layoutY="254.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
+      <PasswordField fx:id="pf_password" layoutX="340.0" layoutY="254.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
       <CheckBox fx:id="showPasswordCheckBox" accessibleRole="IMAGE_VIEW" layoutX="541.0" layoutY="253.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -66,7 +66,8 @@
             <Font size="10.0" />
          </font>
       </Button>
-<Button fx:id="btn_signup" layoutX="490.0" layoutY="336.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign up" textFill="#cdaa7d" />
+<Button fx:id="btn_signup" layoutX="490.0" layoutY="336.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="btn_tosignup" text="Sign up" textFill="#07044a" />
+      <TextField fx:id="tf_password" layoutX="340.0" layoutY="254.0" managed="false" prefHeight="40.0" prefWidth="206.0" visible="false" />
    </children>
    <stylesheets>
       <URL value="@../styles/SignUp.css" />
