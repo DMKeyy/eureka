@@ -2,7 +2,9 @@ package Eureka.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,9 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class SignUpController implements Initializable {
+
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Button btn_signup;
@@ -36,6 +42,17 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+         FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), root);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.play();
+
+        TranslateTransition floatText = new TranslateTransition(Duration.seconds(2), btn_signup);
+        floatText.setByY(-10);
+        floatText.setCycleCount(TranslateTransition.INDEFINITE);
+        floatText.setAutoReverse(true);
+        floatText.play();
        
         if (tf_password_text != null) {
             
