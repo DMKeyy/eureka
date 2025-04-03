@@ -22,11 +22,6 @@ public class ThemeChooserController {
 
     String theme;
     String difficulty;
-    private boolean isSurvivalMode = false;
-
-    public void setSurvivalMode(boolean survivalMode) {
-    this.isSurvivalMode = survivalMode;  
-    }
 
 
     public void initialize(){
@@ -71,12 +66,25 @@ public class ThemeChooserController {
                     break;
             }
             GameData.setDifficulty(dif);
-            
-            if (isSurvivalMode) {
-                DbController.changeScene(e, "SurvivalGameMode.fxml");
-            } else {
-                DbController.changeScene(e, "BasicGameMode.fxml");
-            }
+            String mode = GameData.getMode();
+           if (mode == null) mode = "basic"; // valeur par défaut
+
+           switch (mode) {
+          case "basic":
+        DbController.changeScene(e, "BasicGameMode.fxml");
+        break;
+          case "survival":
+        DbController.changeScene(e, "SurvivalGameMode.fxml");
+        break;
+        case "local":
+        
+        DbController.changeScene(e, "LocalMultiplayer.fxml");
+        break;
+        default:
+        DbController.changeScene(e, "BasicGameMode.fxml"); // fallback au cas où
+        break;
+         }
+
             
         });
 
