@@ -14,6 +14,7 @@ public class Player {
     private int score; // score 
     private int dailyChallengesCompleted; // nbr de defis quotidiens terminés
     private int BestScore;
+    private int BestSurvivalScore;
     private int totalGamesPlayed; // nbr total de parties jouées
     private List<Badge> badges; // liste des badges obtenus
     private int streakCount; // nbr de reponses consecutives correctes
@@ -33,6 +34,7 @@ public class Player {
         this.score = 0;
         this.badges = new ArrayList<>();
         this.BestScore = 0;
+        this.BestSurvivalScore = 0;
         this.dailyChallengesCompleted = 0;
         this.totalGamesPlayed = 0;
         this.streakCount = 0;
@@ -44,15 +46,17 @@ public class Player {
         this.correctAnswersArt = 0;
         this.correctAnswersJava = 0;
         this.correctAnswersIslam = 0;
+
     }
 
-    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam) {
+    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam) {
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
         this.score = score;
         this.dailyChallengesCompleted = dailyChallengesCompleted;
         BestScore = bestScore;
+        this.BestSurvivalScore = BestSurvivalScore;
         this.totalGamesPlayed = totalGamesPlayed;
         this.streakCount = streakCount;
         this.longestCompletionTime = longestCompletionTime;
@@ -95,6 +99,13 @@ public class Player {
 
     public int getScore() { 
         return score; 
+    }
+
+    public int getBestSurvivalScore() { 
+        return BestSurvivalScore; 
+    }
+    public void setBestSurvivalScore(int BestSurvivalScore) { 
+        this.BestSurvivalScore = BestSurvivalScore; 
     }
 
     public void addScore(int points) { 

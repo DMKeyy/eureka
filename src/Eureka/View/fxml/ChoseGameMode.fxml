@@ -5,7 +5,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ChoseGameModeController">
    <children>
       <ImageView fitHeight="513.0" fitWidth="876.0" pickOnBounds="true" preserveRatio="true">
@@ -23,5 +22,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="btn_modesurvival" layoutX="575.0" layoutY="216.0" mnemonicParsing="false" text="Mode Survi" />
+      <Button fx:id="btn_multilocal" layoutX="219.0" layoutY="238.0" mnemonicParsing="false" text="multi local" />
    </children>
 </AnchorPane>

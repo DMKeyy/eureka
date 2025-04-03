@@ -65,10 +65,27 @@ public class ThemeChooserController {
                     break;
             }
             GameData.setDifficulty(dif);
-            
-            DbController.changeScene(e, "BasicGameMode.fxml");
-        });
 
+            
+            String mode = GameData.getMode();
+            if (mode == null) mode = "basic";
+
+            switch (mode) {
+                case "Basic":
+                DbController.changeScene(e, "BasicGameMode.fxml");
+                break;
+                case "Survival":
+                DbController.changeScene(e, "SurvivalGameMode.fxml");
+                break;
+                case "Local":
+                DbController.changeScene(e, "LocalMultiplayer.fxml");
+                break;
+                default:
+                DbController.changeScene(e, "BasicGameMode.fxml");
+                break;
+        }
+            
+        });
 
     }
 

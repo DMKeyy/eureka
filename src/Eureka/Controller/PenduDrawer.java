@@ -39,4 +39,12 @@ public class PenduDrawer {
     public boolean isGameOver() {
         return attemptsLeft <= 0;
     }
+
+    public void drawFull() {
+        for (ImageView part : bodyParts) {
+            part.setVisible(true);
+        }
+        this.attemptsLeft = 0;
+    }
+
 }

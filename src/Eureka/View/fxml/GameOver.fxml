@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color: transparent;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.GameOverController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color: transparent;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.GameOverController">
    <children>
       <ImageView fitHeight="510.0" fitWidth="676.0" layoutX="81.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,5 +47,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="lbl_message" layoutX="404.0" layoutY="265.0" />
    </children>
 </AnchorPane>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Eureka.models.GameData;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +25,10 @@ public class ChoseGameModeController implements Initializable {
 
     @FXML 
     private Button btn_back;
+    @FXML
+    private Button btn_modesurvival;
+    @FXML
+    private Button btn_multilocal;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,18 +41,19 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                try {
-                    SoundEffects.clickSound.play();
+                SoundEffects.clickSound.play();
+                GameData.setMode("Basic");
+                AfficherThemeChooser();
+            }
+        });
 
-                    AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
-                    settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
-                    settings.setLayoutY((root.getHeight() - settings.getPrefHeight()) / 2);
-                    root.getChildren().add(settings);
-                    settings.requestFocus();
+        btn_modesurvival.setOnAction(new EventHandler<ActionEvent>() {
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("Survival");
+                AfficherThemeChooser();
             }
         });
 
@@ -60,9 +66,32 @@ public class ChoseGameModeController implements Initializable {
             }
         });
 
+        btn_multilocal.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("Local");
+                AfficherThemeChooser();
+            }
+        });
+
 
     }
 
+
+    public void AfficherThemeChooser() {
+        try {
+            AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
+            settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
+            settings.setLayoutY((root.getHeight() - settings.getPrefHeight()) / 2);
+            root.getChildren().add(settings);
+            settings.requestFocus();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

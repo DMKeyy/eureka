@@ -237,6 +237,7 @@ public class DbController {
     private static void loadPlayerData(ResultSet rs) throws SQLException {
         LocalDate registrationTime = rs.getDate("Registration_time").toLocalDate();
         int bestScore = rs.getInt("Best_score");
+        int BestSurvivalScore = rs.getInt("Best_survival_score");
         int dailyChallengesCompleted = rs.getInt("Daily_challenge_completed");
         int totalGamesPlayed = rs.getInt("Total_game_played");
         int streakCount = rs.getInt("Streak_count");
@@ -249,7 +250,7 @@ public class DbController {
         int correctAnswersJava = rs.getInt("Correct_answers_java");
         int correctAnswersSport = rs.getInt("Correct_answers_sport");
 
-        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
+        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
         Player.setCurrentPlayer(player);
     }
         
@@ -265,33 +266,35 @@ public class DbController {
     public static void updatePlayer() {
         Player player = Player.getCurrentPlayer();
     
-        String query = "UPDATE player SET " +
-                       "best_score = ?, " +
-                       "streak_count = ?, " +
-                       "correct_answers_science = ?, " +
-                       "correct_answers_history = ?, " +
-                       "correct_answers_geography = ?, " +
-                       "correct_answers_art = ?, " +
-                       "correct_answers_islam = ?, " +
-                       "correct_answers_java = ?, " +
-                       "correct_answers_sport = ?, " +
-                       "total_game_played = ? " +
-                       "WHERE username = ?";
+        String query =  "UPDATE player SET " +
+                        "best_score = ?, " +
+                        "best_survival_score = ?, " +
+                        "streak_count = ?, " +
+                        "correct_answers_science = ?, " +
+                        "correct_answers_history = ?, " +
+                        "correct_answers_geography = ?, " +
+                        "correct_answers_art = ?, " +
+                        "correct_answers_islam = ?, " +
+                        "correct_answers_java = ?, " +
+                        "correct_answers_sport = ?, " +
+                        "total_game_played = ? " +
+                        "WHERE username = ?";
     
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(query)) {
     
             pstmt.setInt(1, player.getBestScore());
-            pstmt.setInt(2, player.getStreakCount());
-            pstmt.setInt(3, player.getCorrectAnswersScience());
-            pstmt.setInt(4, player.getCorrectAnswersHistory());
-            pstmt.setInt(5, player.getCorrectAnswersGeography());
-            pstmt.setInt(6, player.getCorrectAnswersArt());
-            pstmt.setInt(7, player.getCorrectAnswersIslam());
-            pstmt.setInt(8, player.getCorrectAnswersJava());
-            pstmt.setInt(9, player.getCorrectAnswersSport());
-            pstmt.setInt(10, player.getTotalGamesPlayed());
-            pstmt.setString(11, player.getUsername());
+            pstmt.setInt(2, player.getBestSurvivalScore());
+            pstmt.setInt(3, player.getStreakCount());
+            pstmt.setInt(4, player.getCorrectAnswersScience());
+            pstmt.setInt(5, player.getCorrectAnswersHistory());
+            pstmt.setInt(6, player.getCorrectAnswersGeography());
+            pstmt.setInt(7, player.getCorrectAnswersArt());
+            pstmt.setInt(8, player.getCorrectAnswersIslam());
+            pstmt.setInt(9, player.getCorrectAnswersJava());
+            pstmt.setInt(10, player.getCorrectAnswersSport());
+            pstmt.setInt(11, player.getTotalGamesPlayed());
+            pstmt.setString(12, player.getUsername());
     
             pstmt.executeUpdate();
             System.out.println("✅ Player stats updated successfully!");
