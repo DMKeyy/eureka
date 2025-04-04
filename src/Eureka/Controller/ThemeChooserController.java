@@ -68,22 +68,25 @@ public class ThemeChooserController {
 
             
             String mode = GameData.getMode();
-            if (mode == null) mode = "basic";
+            if (mode == null) mode = "Basic";
 
-            switch (mode) {
-                case "Basic":
-                DbController.changeScene(e, "BasicGameMode.fxml");
-                break;
-                case "Survival":
-                DbController.changeScene(e, "SurvivalGameMode.fxml");
-                break;
-                case "Local":
-                DbController.changeScene(e, "LocalMultiplayer.fxml");
-                break;
-                default:
-                DbController.changeScene(e, "BasicGameMode.fxml");
-                break;
-        }
+                switch (mode) {
+                    case "Basic":
+                    DbController.changeScene(e, "BasicGameMode.fxml");
+                    break;
+                    case "Survival":
+                    DbController.changeScene(e, "SurvivalGameMode.fxml");
+                    break;
+                    case "Local":
+                    DbController.changeScene(e, "LocalMultiplayer.fxml");
+                    break;
+                    case "Timer":
+                    DbController.changeScene(e, "TimeTrialGameMode.fxml");
+                    break;
+                    default:
+                    DbController.changeScene(e, "BasicGameMode.fxml");
+                    break;
+            }
             
         });
 

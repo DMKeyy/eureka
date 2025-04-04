@@ -35,6 +35,7 @@ public class DbController {
         try {
             Parent root = FXMLLoader.load(DbController.class.getResource("/Eureka/View/fxml/" + fxml));
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            System.out.println("Stage: " + stage);
             stage.setScene(new Scene(root));
             Platform.runLater(stage::centerOnScreen);
             stage.show();
@@ -238,6 +239,7 @@ public class DbController {
         LocalDate registrationTime = rs.getDate("Registration_time").toLocalDate();
         int bestScore = rs.getInt("Best_score");
         int BestSurvivalScore = rs.getInt("Best_survival_score");
+        int bestTimeTrialScore = rs.getInt("Best_time_trial_score");
         int dailyChallengesCompleted = rs.getInt("Daily_challenge_completed");
         int totalGamesPlayed = rs.getInt("Total_game_played");
         int streakCount = rs.getInt("Streak_count");
@@ -250,7 +252,7 @@ public class DbController {
         int correctAnswersJava = rs.getInt("Correct_answers_java");
         int correctAnswersSport = rs.getInt("Correct_answers_sport");
 
-        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
+        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
         Player.setCurrentPlayer(player);
     }
         
@@ -269,6 +271,7 @@ public class DbController {
         String query =  "UPDATE player SET " +
                         "best_score = ?, " +
                         "best_survival_score = ?, " +
+                        "best_time_trial_score = ?, " +
                         "streak_count = ?, " +
                         "correct_answers_science = ?, " +
                         "correct_answers_history = ?, " +

@@ -24,5 +24,6 @@
       </Button>
       <Button fx:id="btn_modesurvival" layoutX="575.0" layoutY="216.0" mnemonicParsing="false" text="Mode Survi" />
       <Button fx:id="btn_multilocal" layoutX="219.0" layoutY="238.0" mnemonicParsing="false" text="multi local" />
+      <Button fx:id="btn_modetimer" layoutX="219.0" layoutY="335.0" mnemonicParsing="false" text="Mode Chronometre" />
    </children>
 </AnchorPane>

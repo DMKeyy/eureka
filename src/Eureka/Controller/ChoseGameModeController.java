@@ -29,6 +29,8 @@ public class ChoseGameModeController implements Initializable {
     private Button btn_modesurvival;
     @FXML
     private Button btn_multilocal;
+    @FXML
+    private Button btn_modetimer;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,6 +74,16 @@ public class ChoseGameModeController implements Initializable {
             public void handle(ActionEvent arg0) {
                 SoundEffects.clickSound.play();
                 GameData.setMode("Local");
+                AfficherThemeChooser();
+            }
+        });
+
+        btn_modetimer.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("Timer");
                 AfficherThemeChooser();
             }
         });
