@@ -2,6 +2,8 @@ package Eureka.Controller;
 
 import Eureka.models.GameData;
 import Eureka.models.Question;
+import Eureka.models.WrongAnswerStorage;
+
 import java.io.IOException;
 import java.util.List;
 import javafx.event.ActionEvent;
@@ -93,6 +95,7 @@ public class LocalMultiplayerController {
             scoreText1.setText("Joueur 1 : " + scoreJ1);
         } else {
             // Mauvaise réponse => nouvelle erreur
+            WrongAnswerStorage.addWrongAnswer(currentQuestion);
             pendu1.setAttemptsLeft(pendu1.getAttemptsLeft() - 1);
             pendu1.drawNextPart();
 
@@ -120,6 +123,7 @@ public class LocalMultiplayerController {
             scoreJ2++;
             scoreText2.setText("Joueur 2 : " + scoreJ2);
         } else {
+            WrongAnswerStorage.addWrongAnswer(currentQuestion);
             // Mauvaise réponse => nouvelle erreur
             pendu2.setAttemptsLeft(pendu2.getAttemptsLeft() - 1);
             pendu2.drawNextPart();

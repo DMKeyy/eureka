@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import Eureka.models.GameData;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import Eureka.models.WrongAnswerStorage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,8 +82,8 @@ public class TimeTrialGameModeController  {
 
     public void UpdateCurrentPlayer(String Theme) {
         Player player = Player.getCurrentPlayer();
-        if (score > player.getBestScore()) {
-            player.setBestScore(score);
+        if (score > player.getBestTimeTrialScore()) {
+            player.setBestTimeTrialScore(score);
         }
 
         if (longestStreak > player.getStreakCount()) { // Store longest streak
@@ -131,8 +132,13 @@ public class TimeTrialGameModeController  {
 
         if (question.checkAnswer(tf_answer.getText())) {
             score++;
+            correctAnswers++;
+            streakCount++;
+            longestStreak = Math.max(streakCount, longestStreak);
             timeRemaining += BONUS_TIME;
         } else {
+            WrongAnswerStorage.addWrongAnswer(question);
+            streakCount=0;
             timeRemaining -= PENALTY_TIME;
             if (timeRemaining < 0) {
                 timeRemaining = 0;
@@ -155,10 +161,7 @@ public class TimeTrialGameModeController  {
     }
 
     public void endgame() {
-        Player player = Player.getCurrentPlayer();
-        if (score > player.getBestTimeTrialScore()) {
-            player.setBestTimeTrialScore(score);
-        }
+        UpdateCurrentPlayer(theme);
         DbController.updatePlayer();
         DbController.resetUsedQuestions();
 

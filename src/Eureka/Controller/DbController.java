@@ -288,16 +288,17 @@ public class DbController {
     
             pstmt.setInt(1, player.getBestScore());
             pstmt.setInt(2, player.getBestSurvivalScore());
-            pstmt.setInt(3, player.getStreakCount());
-            pstmt.setInt(4, player.getCorrectAnswersScience());
-            pstmt.setInt(5, player.getCorrectAnswersHistory());
-            pstmt.setInt(6, player.getCorrectAnswersGeography());
-            pstmt.setInt(7, player.getCorrectAnswersArt());
-            pstmt.setInt(8, player.getCorrectAnswersIslam());
-            pstmt.setInt(9, player.getCorrectAnswersJava());
-            pstmt.setInt(10, player.getCorrectAnswersSport());
-            pstmt.setInt(11, player.getTotalGamesPlayed());
-            pstmt.setString(12, player.getUsername());
+            pstmt.setInt(3, player.getBestTimeTrialScore());
+            pstmt.setInt(4, player.getStreakCount());
+            pstmt.setInt(5, player.getCorrectAnswersScience());
+            pstmt.setInt(6, player.getCorrectAnswersHistory());
+            pstmt.setInt(7, player.getCorrectAnswersGeography());
+            pstmt.setInt(8, player.getCorrectAnswersArt());
+            pstmt.setInt(9, player.getCorrectAnswersIslam());
+            pstmt.setInt(10, player.getCorrectAnswersJava());
+            pstmt.setInt(11, player.getCorrectAnswersSport());
+            pstmt.setInt(12, player.getTotalGamesPlayed());
+            pstmt.setString(13, player.getUsername());
     
             pstmt.executeUpdate();
             System.out.println("✅ Player stats updated successfully!");

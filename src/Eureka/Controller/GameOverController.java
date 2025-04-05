@@ -13,7 +13,7 @@ public class GameOverController {
     @FXML
     private AnchorPane root;
     @FXML
-    private Button btn_again, btn_leave;
+    private Button btn_again, btn_leave, btn_revision;
     @FXML 
     private Label lbl_score;
     @FXML
@@ -37,11 +37,17 @@ public class GameOverController {
             ex.printStackTrace();
         }
         });
+
         btn_leave.setOnAction(e -> {
             SoundEffects.clickSound.play();
             DbController.changeScene(e, "ChoseGameMode.fxml");
         });
 
+        btn_revision.setOnAction(e -> {
+            SoundEffects.clickSound.play(); 
+            DbController.changeScene(e, "ModeRevision.fxml");
+        });
+        
     }
 
     public void setScore(int score) {

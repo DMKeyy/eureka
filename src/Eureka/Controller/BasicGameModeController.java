@@ -6,6 +6,7 @@ import java.util.List;
 import Eureka.models.GameData;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import Eureka.models.WrongAnswerStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,6 +119,7 @@ public class BasicGameModeController {
 
             scoreText.setText("Score: " + score);
         } else {
+            WrongAnswerStorage.addWrongAnswer(question);
             pendu.setAttemptsLeft(pendu.getAttemptsLeft() - 1);
             pendu.drawNextPart();
             streakCount = 0;

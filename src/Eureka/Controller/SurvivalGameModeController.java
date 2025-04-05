@@ -3,6 +3,7 @@ package Eureka.Controller;
 import Eureka.models.GameData;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import Eureka.models.WrongAnswerStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,6 +86,7 @@ public class SurvivalGameModeController {
             tf_answer.clear();
             loadNextQuestion();
         } else {
+            WrongAnswerStorage.addWrongAnswer(question);
             pendu.drawFull();
             endgame();
         }
