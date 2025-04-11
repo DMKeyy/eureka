@@ -60,5 +60,6 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="btn_profile" layoutX="737.0" layoutY="27.0" mnemonicParsing="false" text="Profile" />
    </children>
 </AnchorPane>

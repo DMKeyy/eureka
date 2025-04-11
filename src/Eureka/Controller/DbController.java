@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
+import Eureka.models.Badge;
+import Eureka.models.Badge.BadgeRarity;
 import Eureka.models.Player;
 import Eureka.models.Question;
 import javafx.application.Platform;
@@ -120,6 +123,21 @@ public class DbController {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, newPassword);
             stmt.setString(2, username);
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateUsername(String oldUsername, String newUsername) {
+        String query = "UPDATE player SET username = ? WHERE username = ?";
+    
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, newUsername);
+            stmt.setString(2, oldUsername);
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0;
         } catch (Exception e) {
@@ -251,8 +269,9 @@ public class DbController {
         int correctAnswersIslam = rs.getInt("Correct_answers_islam");
         int correctAnswersJava = rs.getInt("Correct_answers_java");
         int correctAnswersSport = rs.getInt("Correct_answers_sport");
+        int badgeCount = rs.getInt("BadgeCount");
 
-        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam);
+        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam, badgeCount);
         Player.setCurrentPlayer(player);
     }
         
@@ -308,4 +327,121 @@ public class DbController {
             System.out.println("❌ Failed to update player stats.");
         }
     }
+
+    public static List<Badge> getAllBadges() {
+        List<Badge> badges = new ArrayList<>();
+        String query = "SELECT * FROM badges";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                // Récupérer les données de la base de données
+                int id = rs.getInt("ID_badge");
+                String name = rs.getString("Name");
+                String description = rs.getString("Description");
+                int required = rs.getInt("Required_correct_answers");
+                String theme = rs.getString("Theme");
+                String rarityString = rs.getString("Rarity"); 
+                BadgeRarity rarity = BadgeRarity.valueOf(rarityString.toUpperCase(Locale.ROOT));
+                // Créer un objet Badge
+                Badge badge = new Badge(name, description, required, theme, rarity);
+                badge.setBadge_id(id);
+
+                badges.add(badge);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return badges;
+    }
+
+
+
+    public static boolean playerHasBadge(Player player, Badge badge) {
+        String query = "SELECT * FROM player_badges WHERE Username = ? AND ID_badge = ?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, player.getUsername());
+            stmt.setInt(2, badge.getBadge_id());
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next(); 
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public static void assignBadgeToPlayer(Player player, int badgeId) {
+        String query = "INSERT IGNORE INTO player_badges (Username, ID_badge) VALUES (?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, player.getUsername());
+            stmt.setInt(2, badgeId);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static List<Badge> getPlayerBadges(String username) {
+        List<Badge> badges = new ArrayList<>();
+        String query = "SELECT b.* FROM badges b " +
+                    "JOIN player_badges pb ON b.ID_badge = pb.ID_badge " +
+                    "WHERE pb.Username = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Badge badge = new Badge(
+                        rs.getString("Name"),
+                        rs.getString("Description"),
+                        rs.getInt("Required_correct_answers"),
+                        rs.getString("Theme"),
+                        Badge.BadgeRarity.valueOf(rs.getString("Rarity").toUpperCase())
+                );
+                badge.setBadge_id(rs.getInt("ID_badge"));
+                badges.add(badge);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return badges;
+    }
+
+
+    public static void updateBadgeCount(String username, int count) {
+        String query = "UPDATE player SET BadgeCount = ? WHERE Username = ?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, count);
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+ 
 }
+

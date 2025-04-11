@@ -14,17 +14,17 @@
             <Image url="@../images/emptybtn2.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="332.0" layoutY="131.0" prefHeight="81.0" prefWidth="173.0" text="GAME OVER" textAlignment="RIGHT" wrapText="true">
+      <Label alignment="CENTER" layoutX="332.0" layoutY="134.0" prefHeight="48.0" prefWidth="174.0" text="GAME OVER" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="211.0" prefHeight="38.0" prefWidth="85.0" text="Score :">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="182.0" prefHeight="38.0" prefWidth="85.0" text="Score :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbl_score" alignment="CENTER" contentDisplay="CENTER" layoutX="418.0" layoutY="212.0" prefHeight="35.0" prefWidth="174.0" text="Label">
+      <Label fx:id="lbl_score" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="183.0" prefHeight="35.0" prefWidth="174.0" text="Label">
          <font>
             <Font size="24.0" />
          </font>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="lbl_message" layoutX="404.0" layoutY="265.0" />
+      <Label fx:id="lbl_message" layoutX="426.0" layoutY="239.0" />
       <Button fx:id="btn_revision" layoutX="649.0" layoutY="230.0" mnemonicParsing="false" text="revision" />
    </children>
 </AnchorPane>

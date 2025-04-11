@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="usernamePane" prefHeight="221.0" prefWidth="455.0"
+            style="-fx-background-color: rgba(0,0,0,0.6); -fx-background-radius: 10; -fx-border-color: #e6b800; -fx-border-radius: 10; -fx-border-width: 2;"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Eureka.Controller.UsernameController">
+
+   <children>
+      <!-- Image de fond stylisée -->
+      <ImageView fitHeight="234.0" fitWidth="472.0" layoutX="-17.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Educatif-Game-main/src/Eureka/Eureka/View/images/emptybtn2.png" />
+         </image>
+      </ImageView>
+
+      <!-- Label titre -->
+      <Label layoutX="135.0" layoutY="46.0" style="-fx-font-weight: bold;" text="Nouveau nom d'utilisateur :">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+
+      <!-- Champ texte -->
+      <TextField fx:id="usernameField" layoutX="51.0" layoutY="81.0" prefWidth="340.0" />
+
+      <!-- Boutons -->
+      <Button fx:id="btn_confirm" layoutX="245.0" layoutY="133.0"
+              style="-fx-background-color: #ffcc33; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;"
+              text="✔ Valider" />
+
+      <Button fx:id="btn_cancel" layoutX="102.0" layoutY="133.0"
+              style="-fx-background-color: #cccccc; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;"
+              text="✖ Annuler" />
+   </children>
+</AnchorPane>

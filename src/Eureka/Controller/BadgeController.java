@@ -1,101 +1,63 @@
 package Eureka.Controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import Eureka.models.Badge;
 import Eureka.models.Player;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button; 
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
-public class GameOverController {
+import java.util.List;
+
+public class BadgeController {
 
     @FXML
-    private AnchorPane root;
+    private Button btn_back;
+    
     @FXML
-    private Button btn_again, btn_leave, btn_revision;
-    @FXML 
-    private Label lbl_score;
-    @FXML
-    private Label lbl_message;
+    private ListView<String> badgeListView;
 
+    @FXML
     public void initialize() {
-        
-        SoundEffects.addSound(btn_again);
-        SoundEffects.addSound(btn_leave);
-        SoundEffects.addSound(btn_revision);
+        Player player = Player.getCurrentPlayer();
+        List<Badge> badges = DbController.getPlayerBadges(player.getUsername());
 
-        List<Badge>Badgeswon = checkAndAssignBadges(Player.getCurrentPlayer());
-        if (!Badgeswon.isEmpty()) {
-            StringBuilder message = new StringBuilder("Bravo ! Vous avez gagné les badges suivants :\n");
-            for (Badge badge : Badgeswon) {
-                message.append(badge.getName()).append("\n");
-            }
-            lbl_message.setText(message.toString());
-        }
-
-        btn_again.setOnAction(e -> {
+        btn_back.setOnAction(e -> {
             SoundEffects.clickSound.play();
-            try {
-            AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
-            settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
-            settings.setLayoutY((root.getHeight() - settings.getPrefHeight()) / 2);
-            root.getChildren().add(settings);
-            settings.requestFocus();
-
-            } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+            DbController.changeScene(e, "Profile.fxml");
         });
 
-        btn_leave.setOnAction(e -> {
-            SoundEffects.clickSound.play();
-            DbController.changeScene(e, "ChoseGameMode.fxml");
-        });
+        for (Badge badge : badges) {
+            String info = String.format("🏅 %s\n• %s\n• Thème : %s  |  Rareté : %s\n",
+                    badge.getName(),
+                    badge.getDescription(),
+                    badge.getTheme(),
+                    badge.getRarity().toString());
 
-        btn_revision.setOnAction(e -> {
-            SoundEffects.clickSound.play(); 
-            DbController.changeScene(e, "ModeRevision.fxml");
-        });
-
-        
-    }
-
-    public void setScore(int score) {
-        lbl_score.setText(String.valueOf(score));
-    }
-
-    public void setGameOverMessage(String message) {
-        if (lbl_message != null) {
-            lbl_message.setText(message);
+            badgeListView.getItems().add(info);
         }
     }
 
-    public static List<Badge> checkAndAssignBadges(Player player) {
+   
+
+    public static void checkAndAssignBadges(Player player) {
         List<Badge> allBadges = DbController.getAllBadges();
-        List<Badge> earned = new ArrayList<>(); 
-
+        boolean newBadgeAssigned = false;
+    
         for (Badge badge : allBadges) {
             boolean alreadyHas = DbController.playerHasBadge(player, badge);
-
+    
             if (!alreadyHas && meetsCriteria(player, badge)) {
                 DbController.assignBadgeToPlayer(player, badge.getBadge_id());
                 System.out.println("🎖 Badge attribué : " + badge.getName());
-                earned.add(badge); 
+                newBadgeAssigned = true;
             }
         }
-
-        if (!earned.isEmpty()) {
+    
+        if (newBadgeAssigned) {
             int updatedCount = DbController.getPlayerBadges(player.getUsername()).size();
             player.setBadgeCount(updatedCount);
             DbController.updateBadgeCount(player.getUsername(), updatedCount);
         }
-
-        return earned;
     }
     
 
@@ -143,4 +105,6 @@ public class GameOverController {
         default -> false;
     };
     }
+    
+
 }

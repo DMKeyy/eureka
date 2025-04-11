@@ -22,7 +22,7 @@ public class LoggedInController implements Initializable {
     private AnchorPane root;
 
     @FXML
-    private Button btn_logout, btn_settings, quit, btn_about, btn_play;
+    private Button btn_logout, btn_settings, quit, btn_about, btn_play, btn_profile;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -119,5 +119,15 @@ public class LoggedInController implements Initializable {
                 pause.play();
             }
         });
+
+        btn_profile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                SoundEffects.clickSound.play();
+                PauseTransition pause = new PauseTransition(Duration.millis(200));
+                pause.setOnFinished(e -> DbController.changeScene(event, "Profile.fxml"));
+                pause.play();
+            }
+        }); 
     }
 }

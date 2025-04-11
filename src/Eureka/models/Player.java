@@ -27,6 +27,7 @@ public class Player {
     private int correctAnswersArt;
     private int correctAnswersJava;
     private int correctAnswersIslam;
+    private int badgeCount;
 
     public Player(String username, String password, LocalDate registrationDate) {
         this.username = username;
@@ -51,7 +52,7 @@ public class Player {
 
     }
 
-    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam) {
+    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -70,6 +71,7 @@ public class Player {
         this.correctAnswersArt = correctAnswersArt;
         this.correctAnswersJava = correctAnswersJava;
         this.correctAnswersIslam = correctAnswersIslam;
+        this.badgeCount = badgeCount;
     }
 
     public static Player getCurrentPlayer() {
@@ -182,17 +184,38 @@ public class Player {
     public int getCorrectAnswersIslam() { 
         return correctAnswersIslam; 
     }
+    
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public void setDailyChallengesCompleted(int dailyChallengesCompleted) {
+        this.dailyChallengesCompleted = dailyChallengesCompleted;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
+    }
 
     public void setScore(int score) {
         this.score = score;
     }
 
     public void setBestTimeTrialScore(int bestScore) {
-        BestScore = bestScore;
+        BestTimeTrialScore = bestScore;
     }
 
     public int getBestTimeTrialScore() {
-        return BestScore;
+        return BestTimeTrialScore;  
     }
 
     public void setCorrectAnswersScience(int correctAnswersScience) {
@@ -229,5 +252,12 @@ public class Player {
     
     public void setStreakCount(int streakCount) {
         this.streakCount = streakCount;
+    }
+
+    public int getBadgeCount() {
+        return badgeCount;
+    }
+    public void setBadgeCount(int badgeCount) {
+        this.badgeCount = badgeCount;
     }
 }

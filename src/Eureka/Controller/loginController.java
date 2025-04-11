@@ -51,7 +51,7 @@ public class loginController implements Initializable {
 
         tf_password.textProperty().bindBidirectional(pf_password.textProperty());
 
-        showPasswordCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+        showPasswordCheckBox.selectedProperty().addListener((_, _, newVal) -> {
             if (newVal) {
                 // Afficher TextField
                 pf_password.setVisible(false);

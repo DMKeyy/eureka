@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="680.0" style="-fx-background-color: #f9f9f9; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ProfileController">
+   <children>
+      <Label fx:id="lbl_title" layoutX="20.0" layoutY="15.0" style="-fx-font-weight: bold;" text="PROFILE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_username_title" layoutX="20.0" layoutY="80.0" text="Username:" />
+      <Label fx:id="lbl_username_value" layoutX="120.0" layoutY="80.0" />
+      <Label fx:id="lbl_password_title" layoutX="20.0" layoutY="120.0" text="Password:" />
+      <Label fx:id="lbl_password_value" layoutX="89.0" layoutY="120.0" />
+      <Label fx:id="lbl_date_title" layoutX="20.0" layoutY="160.0" text="Registration Date:" />
+      <Label fx:id="lbl_date_value" layoutX="160.0" layoutY="160.0" />
+      <Hyperlink fx:id="BestScore" layoutX="20.0" layoutY="200.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Best Score:" textFill="#1b1919" />
+      <Label fx:id="lbl_bestscore_value" layoutX="98.0" layoutY="200.0" prefHeight="17.0" prefWidth="0.0" />
+      <Label fx:id="lbl_totalGames_title" layoutX="20.0" layoutY="240.0" text="Total Games:" />
+      <Label fx:id="lbl_totalGames_value" layoutX="120.0" layoutY="240.0" />
+      <Hyperlink fx:id="Badges" layoutX="20.0" layoutY="280.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Badges:" textFill="#171616" />
+      <Label fx:id="lbl_badgeCount" layoutX="80.0" layoutY="280.0" prefHeight="23.0" prefWidth="56.0" />
+      <Button fx:id="btn_back" layoutX="554.0" layoutY="323.0" prefHeight="39.0" prefWidth="56.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Back" />
+      <Button fx:id="btn_change_username" cacheShape="false" layoutX="203.0" layoutY="67.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="42.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <StackPane prefHeight="17.0" prefWidth="27.0">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Educatif-Game-main/src/Eureka/Eureka/View/images/Btn_Stylo_Greek.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_change_password" cacheShape="false" layoutX="203.0" layoutY="108.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="42.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <StackPane prefHeight="17.0" prefWidth="27.0">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Educatif-Game-main/src/Eureka/Eureka/View/images/Btn_Stylo_Greek.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </graphic>
+      </Button>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/SignUp.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
+</AnchorPane>
