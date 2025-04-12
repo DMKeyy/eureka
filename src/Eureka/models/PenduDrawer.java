@@ -1,4 +1,4 @@
-package Eureka.Controller;
+package Eureka.models;
 
 import javafx.scene.image.ImageView;
 import java.util.List;

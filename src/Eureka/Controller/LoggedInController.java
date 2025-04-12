@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Eureka.models.SoundEffects;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
@@ -18,7 +19,7 @@ import javafx.util.Duration;
 
 public class LoggedInController implements Initializable {
 
-    @FXML
+    @FXML 
     private AnchorPane root;
 
     @FXML
@@ -36,7 +37,6 @@ public class LoggedInController implements Initializable {
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SoundEffects.clickSound.play();
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
                 pause.setOnFinished(e -> DbController.changeScene(event, "LogIn.fxml"));
                 pause.play();
@@ -46,7 +46,6 @@ public class LoggedInController implements Initializable {
         quit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SoundEffects.clickSound.play();
                 PauseTransition pause = new PauseTransition(Duration.millis(300));
                 pause.setOnFinished(e -> System.exit(0));
                 pause.play();
@@ -57,7 +56,6 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    SoundEffects.clickSound.play();
 
                     AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/Settings.fxml"));
                     settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
@@ -86,7 +84,6 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    SoundEffects.clickSound.play();
 
                     AnchorPane about = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/about.fxml"));
                     about.setLayoutX((root.getWidth() - about.getPrefWidth()) / 2);
@@ -105,7 +102,6 @@ public class LoggedInController implements Initializable {
             public void handle(KeyEvent e) {
                 if (e.getCode().toString().equals("ESCAPE")) {
                     root.getChildren().removeIf(node -> node instanceof AnchorPane);
-                    SoundEffects.clickSound.play();
                 }
             }
         });
@@ -113,7 +109,6 @@ public class LoggedInController implements Initializable {
         btn_play.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SoundEffects.clickSound.play();
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
                 pause.setOnFinished(e -> DbController.changeScene(event, "ChoseGameMode.fxml"));
                 pause.play();
@@ -123,7 +118,6 @@ public class LoggedInController implements Initializable {
         btn_profile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SoundEffects.clickSound.play();
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
                 pause.setOnFinished(e -> DbController.changeScene(event, "Profile.fxml"));
                 pause.play();

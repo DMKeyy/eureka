@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -49,6 +50,10 @@ public class ProfileController {
 
     @FXML
     public void initialize() {
+        SoundEffects.addSound(btn_back);
+        SoundEffects.addSound(btn_change_password);
+        SoundEffects.addSound(btn_change_username);
+
         Player player = Player.getCurrentPlayer();
         if (player != null) {
             lbl_username_value.setText(player.getUsername());
@@ -62,7 +67,6 @@ public class ProfileController {
 
         // Bouton "Back"
         btn_back.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             DbController.changeScene(e, "ChoseGameMode.fxml");
         });
 
@@ -77,12 +81,10 @@ public class ProfileController {
         });
         
         btn_change_password.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             showOverlay("/Eureka/View/fxml/Password.fxml");
         });
         
         btn_change_username.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             showOverlay("/Eureka/View/fxml/Username.fxml");
         });
         

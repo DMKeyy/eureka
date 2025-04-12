@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Eureka.models.GameData;
+import Eureka.models.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,6 +38,10 @@ public class ChoseGameModeController implements Initializable {
 
         SoundEffects.addSound(btn_modebasic);
         SoundEffects.addSound(btn_back);
+        SoundEffects.addSound(btn_modesurvival);
+        SoundEffects.addSound(btn_multilocal);
+        SoundEffects.addSound(btn_modetimer);
+        
     
 
         btn_modebasic.setOnAction(new EventHandler<ActionEvent>() {
@@ -53,7 +58,6 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                SoundEffects.clickSound.play();
                 GameData.setMode("Survival");
                 AfficherThemeChooser();
             }
@@ -63,7 +67,6 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                SoundEffects.clickSound.play();
                 DbController.changeScene(arg0, "Loggedin.fxml");
             }
         });
@@ -72,7 +75,6 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                SoundEffects.clickSound.play();
                 GameData.setMode("Local");
                 AfficherThemeChooser();
             }
@@ -82,7 +84,6 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                SoundEffects.clickSound.play();
                 GameData.setMode("Timer");
                 AfficherThemeChooser();
             }

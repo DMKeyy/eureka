@@ -1,6 +1,7 @@
 package Eureka.Controller;
 
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,6 +19,11 @@ public class PasswordController {
 
     @FXML
     public void initialize() {
+
+        SoundEffects.addSound(btn_confirm);
+        SoundEffects.addSound(btn_cancel);
+
+        
         btn_confirm.setOnAction(e -> {
             Player player = Player.getCurrentPlayer();
             if (player == null) return;

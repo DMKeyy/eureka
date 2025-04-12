@@ -3,6 +3,7 @@ package Eureka.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Eureka.models.SoundEffects;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -37,6 +38,11 @@ public class loginController implements Initializable {
     
     
     public void initialize(URL location, ResourceBundle resources) {
+
+        SoundEffects.addSound(btn_login);
+        SoundEffects.addSound(btn_signup);
+        SoundEffects.addSound(btn_toforgotpassword);
+        
 
         FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), root);
         fadeIn.setFromValue(0);

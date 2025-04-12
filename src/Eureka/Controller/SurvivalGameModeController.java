@@ -1,8 +1,10 @@
 package Eureka.Controller;
 
 import Eureka.models.GameData;
+import Eureka.models.PenduDrawer;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,8 +36,7 @@ public class SurvivalGameModeController {
     private Button btn_submit;
 
     @FXML
-    private ImageView headImage, bodyImage, leftArmImage, rightArmImage,
-            leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
+    private ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
 
     private PenduDrawer pendu;
     private Question question;

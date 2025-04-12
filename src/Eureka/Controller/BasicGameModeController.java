@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import Eureka.models.GameData;
+import Eureka.models.PenduDrawer;
 import Eureka.models.Player;
 import Eureka.models.Question;
+import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

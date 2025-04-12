@@ -1,6 +1,7 @@
 package Eureka.Controller;
 
 import Eureka.models.GameData;
+import Eureka.models.PenduDrawer;
 import Eureka.models.Question;
 import Eureka.models.WrongAnswerStorage;
 

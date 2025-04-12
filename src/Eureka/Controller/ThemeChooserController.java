@@ -1,6 +1,7 @@
 package Eureka.Controller;
 
 import Eureka.models.GameData;
+import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,12 +29,10 @@ public class ThemeChooserController {
         SoundEffects.addSound(btn_start);
 
         btn_back.setOnAction(e -> {
-            SoundEffects.clickSound.play();
            DbController.changeScene(e, "ChoseGameMode.fxml");
         });
 
         btn_start.setOnAction(e -> {
-            SoundEffects.clickSound.play();
 
             if (Themegroupe.getSelectedToggle() == null) {
                 DbController.showAlert(AlertType.ERROR,"Please select a theme before proceeding!");

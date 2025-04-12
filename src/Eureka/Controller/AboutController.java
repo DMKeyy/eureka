@@ -1,5 +1,6 @@
 package Eureka.Controller;
 
+import Eureka.models.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -14,7 +15,7 @@ public class AboutController {
 
     @FXML
     public void Backtomain(ActionEvent event) {
-        SoundEffects.clickSound.play();
+        SoundEffects.addSound(btn_back);
         DbController.changeScene(event, "LoggedIn.fxml");
     }
 

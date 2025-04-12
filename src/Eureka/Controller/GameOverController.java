@@ -6,6 +6,7 @@ import java.util.List;
 
 import Eureka.models.Badge;
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button; 
@@ -39,7 +40,6 @@ public class GameOverController {
         }
 
         btn_again.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             try {
             AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
             settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
@@ -53,12 +53,10 @@ public class GameOverController {
         });
 
         btn_leave.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             DbController.changeScene(e, "ChoseGameMode.fxml");
         });
 
         btn_revision.setOnAction(e -> {
-            SoundEffects.clickSound.play(); 
             DbController.changeScene(e, "ModeRevision.fxml");
         });
 

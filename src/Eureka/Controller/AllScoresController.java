@@ -1,6 +1,7 @@
 package Eureka.Controller;
 
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ public class AllScoresController {
 
     @FXML
     public void initialize() {
+        SoundEffects.addSound(btn_back);
         Player player = Player.getCurrentPlayer();
 
         // Configurer la table
@@ -54,7 +56,6 @@ public class AllScoresController {
 
         // Bouton retour
         btn_back.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             DbController.changeScene(e, "Profile.fxml");
         });
     }

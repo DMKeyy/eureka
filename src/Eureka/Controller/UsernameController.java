@@ -1,6 +1,7 @@
 package Eureka.Controller;
 
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,6 +23,10 @@ public class UsernameController {
 
     @FXML
     public void initialize() {
+
+        SoundEffects.addSound(btn_confirm);
+        SoundEffects.addSound(btn_cancel);
+        
         Player player = Player.getCurrentPlayer();
         if (player != null) {
             usernameField.setText(player.getUsername());

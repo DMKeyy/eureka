@@ -2,6 +2,7 @@ package Eureka.Controller;
 
 import Eureka.models.Badge;
 import Eureka.models.Player;
+import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -18,11 +19,11 @@ public class BadgeController {
 
     @FXML
     public void initialize() {
+        SoundEffects.addSound(btn_back);
         Player player = Player.getCurrentPlayer();
         List<Badge> badges = DbController.getPlayerBadges(player.getUsername());
 
         btn_back.setOnAction(e -> {
-            SoundEffects.clickSound.play();
             DbController.changeScene(e, "Profile.fxml");
         });
 

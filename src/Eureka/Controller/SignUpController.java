@@ -3,6 +3,7 @@ package Eureka.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Eureka.models.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,6 +28,9 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        SoundEffects.addSound(btn_login);
+        SoundEffects.addSound(btn_signup);
+        
 
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
