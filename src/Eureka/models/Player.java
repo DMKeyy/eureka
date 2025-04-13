@@ -16,6 +16,8 @@ public class Player {
     private int BestScore;
     private int BestSurvivalScore;
     private int BestTimeTrialScore;
+    private int BestProgressiveTimeTrialScore;
+    private int BestMissingLetterScore;
     private int totalGamesPlayed; // nbr total de parties jouées
     private List<Badge> badges; // liste des badges obtenus
     private int streakCount; // nbr de reponses consecutives correctes
@@ -38,6 +40,8 @@ public class Player {
         this.BestScore = 0;
         this.BestSurvivalScore = 0;
         this.BestTimeTrialScore = 0;
+        this.BestProgressiveTimeTrialScore = 0;
+        this.BestMissingLetterScore = 0;
         this.dailyChallengesCompleted = 0;
         this.totalGamesPlayed = 0;
         this.streakCount = 0;
@@ -52,7 +56,10 @@ public class Player {
 
     }
 
-    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
+    
+    
+    
+    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,  int bestProgressiveTimeTrialScore, int MissingLetterScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -61,6 +68,8 @@ public class Player {
         BestScore = bestScore;
         this.BestSurvivalScore = BestSurvivalScore;
         this.BestTimeTrialScore = bestTimeTrialScore;
+        this.BestProgressiveTimeTrialScore = bestProgressiveTimeTrialScore;
+        this.BestMissingLetterScore = MissingLetterScore;
         this.totalGamesPlayed = totalGamesPlayed;
         this.streakCount = streakCount;
         this.longestCompletionTime = longestCompletionTime;
@@ -72,6 +81,7 @@ public class Player {
         this.correctAnswersJava = correctAnswersJava;
         this.correctAnswersIslam = correctAnswersIslam;
         this.badgeCount = badgeCount;
+
     }
 
     public static Player getCurrentPlayer() {
@@ -217,6 +227,23 @@ public class Player {
     public int getBestTimeTrialScore() {
         return BestTimeTrialScore;  
     }
+
+    public void setBestProgressiveTimeTrialScore(int bestProgressiveTimeTrialScore) {
+        BestProgressiveTimeTrialScore = bestProgressiveTimeTrialScore;
+    }
+
+    public int getBestProgressiveTimeTrialScore() {
+        return BestProgressiveTimeTrialScore;  
+    }
+
+    public  void setBestMissingLetterScore(int bestScore) {
+        BestMissingLetterScore = bestScore;
+    }
+
+    public int getBestMissingLetterScore() {
+        return BestMissingLetterScore;  
+    }
+
 
     public void setCorrectAnswersScience(int correctAnswersScience) {
         this.correctAnswersScience = correctAnswersScience;

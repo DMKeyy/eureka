@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ProgressiveTimeTrialController">
+   <children>
+      <Label fx:id="questionLabel" layoutX="275.0" layoutY="83.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
+      <TextField fx:id="tf_answer" layoutX="425.0" layoutY="266.0" />
+      <Button fx:id="btn_submit" layoutX="583.0" layoutY="266.0" mnemonicParsing="false" text="Button" />
+      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+      <Label fx:id="timerText" layoutX="65.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+   </children>
+</AnchorPane>

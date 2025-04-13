@@ -38,12 +38,19 @@ public class SettingsController {
         setupSoundButton();
         setupLeaderboardButton();
         setupHelpButton();
+        setupProfileButton();
     }
 
  
     private void setupBackButton() {
         btn_back.setOnAction(event -> {
             DbController.changeScene(event, "LoggedIn.fxml");
+        });
+    }
+
+    private void setupProfileButton() {
+        btn_profile.setOnAction(event -> {
+            DbController.changeScene(event, "Profile.fxml");
         });
     }
 
@@ -56,49 +63,14 @@ public class SettingsController {
 
     private void setupLeaderboardButton() {
         btn_leaderboard.setOnAction(event -> {
-            try {
-                if (leaderboardOverlay == null) {
-                    leaderboardOverlay = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/Leaderboard.fxml"));
-                }
-                showOverlay(leaderboardOverlay);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            DbController.changeScene(event, "Leaderboard.fxml");
         });
     }
 
     private void setupHelpButton() {
         btn_help.setOnAction(event -> {
-            try {
-                if (helpOverlay == null) {
-                    helpOverlay = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/Help.fxml"));
-                }
-                showOverlay(helpOverlay);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            DbController.changeScene(event, "Helpmenu.fxml");
         });
     }
 
-    private void showOverlay(Parent overlay) {
-        // Create a new StackPane to hold the overlay
-        StackPane overlayContainer = new StackPane(overlay);
-        overlayContainer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
-        
-        // Add close on click outside overlay
-        overlayContainer.setOnMouseClicked(event -> {
-            if (event.getTarget() == overlayContainer) {
-                settingsPane.getChildren().remove(overlayContainer);
-            }
-        });
-
-        // Add the overlay to the settings pane
-        settingsPane.getChildren().add(overlayContainer);
-        
-        // Set the overlay to fill the entire pane
-        AnchorPane.setTopAnchor(overlayContainer, 0.0);
-        AnchorPane.setBottomAnchor(overlayContainer, 0.0);
-        AnchorPane.setLeftAnchor(overlayContainer, 0.0);
-        AnchorPane.setRightAnchor(overlayContainer, 0.0);
-    }
 }

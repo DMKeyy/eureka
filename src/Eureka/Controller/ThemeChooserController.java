@@ -82,6 +82,12 @@ public class ThemeChooserController {
                     case "Timer":
                     DbController.changeScene(e, "TimeTrialGameMode.fxml");
                     break;
+                    case "ProgressiveTimeTrial":
+                    DbController.changeScene(e, "ProgressiveTimeTrialGameMode.fxml");
+                    break;
+                    case "MissingLetter":
+                    DbController.changeScene(e, "MissingLetterGameMode.fxml");
+                    break;
                     default:
                     DbController.changeScene(e, "BasicGameMode.fxml");
                     break;

@@ -32,6 +32,10 @@ public class ChoseGameModeController implements Initializable {
     private Button btn_multilocal;
     @FXML
     private Button btn_modetimer;
+    @FXML
+    private Button btn_modeprogressivetimetrial;
+    @FXML
+    private Button btn_modemissingletter;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,6 +89,26 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("Timer");
+                AfficherThemeChooser();
+            }
+        });
+
+        btn_modeprogressivetimetrial.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("ProgressiveTimeTrial");
+                AfficherThemeChooser();
+            }
+        });
+
+        btn_modemissingletter.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("MissingLetter");
                 AfficherThemeChooser();
             }
         });
