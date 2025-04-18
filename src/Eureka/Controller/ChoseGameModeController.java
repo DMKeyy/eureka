@@ -36,7 +36,8 @@ public class ChoseGameModeController implements Initializable {
     private Button btn_modeprogressivetimetrial;
     @FXML
     private Button btn_modemissingletter;
-    
+    @FXML
+    private Button btn_modemcq;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -45,7 +46,9 @@ public class ChoseGameModeController implements Initializable {
         SoundEffects.addSound(btn_modesurvival);
         SoundEffects.addSound(btn_multilocal);
         SoundEffects.addSound(btn_modetimer);
-        
+        SoundEffects.addSound(btn_modeprogressivetimetrial);
+        SoundEffects.addSound(btn_modemissingletter);
+        SoundEffects.addSound(btn_modemcq);
     
 
         btn_modebasic.setOnAction(new EventHandler<ActionEvent>() {
@@ -109,6 +112,16 @@ public class ChoseGameModeController implements Initializable {
             public void handle(ActionEvent arg0) {
                 SoundEffects.clickSound.play();
                 GameData.setMode("MissingLetter");
+                AfficherThemeChooser();
+            }
+        });
+
+        btn_modemcq.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SoundEffects.clickSound.play();
+                GameData.setMode("Mcq");
                 AfficherThemeChooser();
             }
         });

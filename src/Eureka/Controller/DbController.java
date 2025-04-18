@@ -186,54 +186,65 @@ public class DbController {
 
 
     public static Question getQuestionQCM(String theme, int difficulty) {
-    Question question = null;
-    String query = "SELECT q.ID_question, q.Question_text, m.Choice_text, m.Is_correct " +
-                   "FROM questions q " +
-                   "JOIN multiple_choices m ON q.ID_question = m.ID_question " +
-                   "WHERE q.Theme = ? AND q.Difficulty_level = ? ";
+        Question question = null;
     
-    if (!usedQuestionIds.isEmpty()) {
-        query += "AND q.ID_question NOT IN (" + getUsedIdsPlaceholder() + ") ";
-    }
-    query += "ORDER BY RAND()";
-
-    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-         PreparedStatement stmt = conn.prepareStatement(query)) {
-
-        stmt.setString(1, theme);
-        stmt.setInt(2, difficulty);
-        setUsedIds(stmt, 3);
-
-        try (ResultSet rs = stmt.executeQuery()) {
-            if (rs.next()) {
-                question = new Question();
-                question.setQuestion_id(rs.getInt("ID_question"));
-                question.setQuestionText(rs.getString("Question_text"));
-                usedQuestionIds.add(question.getQuestion_id());
-
-                List<String> choices = new ArrayList<>();
-                String correctAnswer = null;
-
-                do {
-                    String choice = rs.getString("Choice_text");
-                    choices.add(choice);
-                    if (rs.getBoolean("Is_correct")) {
-                        correctAnswer = choice;
-                    }
-                } while (rs.next());
-                
-                question.setMultipleChoices(choices);
-                question.setAnswer(correctAnswer);
-            } else {
-                resetUsedQuestions();
-                return getQuestionQCM(theme, difficulty);
-            }
+        String getRandomQuestionQuery = "SELECT ID_question, Question_text FROM questions " +
+                                        "WHERE Theme = ? AND Difficulty_level = ? ";
+    
+        if (!usedQuestionIds.isEmpty()) {
+            getRandomQuestionQuery += "AND ID_question NOT IN (" + getUsedIdsPlaceholder() + ") ";
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+    
+        getRandomQuestionQuery += "ORDER BY RAND() LIMIT 1";
+    
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(getRandomQuestionQuery)) {
+    
+            stmt.setString(1, theme);
+            stmt.setInt(2, difficulty);
+            setUsedIds(stmt, 3);
+    
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    question = new Question();
+                    int questionId = rs.getInt("ID_question");
+                    question.setQuestion_id(questionId);
+                    question.setQuestionText(rs.getString("Question_text"));
+                    usedQuestionIds.add(questionId);
+    
+                    List<String> choices = new ArrayList<>();
+                    String correctAnswer = null;
+    
+                    // Now fetch the choices only for this question
+                    String choicesQuery = "SELECT Choice_text, Is_correct FROM multiple_choices WHERE ID_question = ?";
+                    try (PreparedStatement choicesStmt = conn.prepareStatement(choicesQuery)) {
+                        choicesStmt.setInt(1, questionId);
+    
+                        try (ResultSet choicesRs = choicesStmt.executeQuery()) {
+                            while (choicesRs.next()) {
+                                String choice = choicesRs.getString("Choice_text");
+                                choices.add(choice);
+                                if (choicesRs.getBoolean("Is_correct")) {
+                                    correctAnswer = choice;
+                                }
+                            }
+                        }
+                    }
+    
+                    question.setMultipleChoices(choices);
+                    question.setAnswer(correctAnswer);
+                } else {
+                    resetUsedQuestions();
+                    return getQuestionQCM(theme, difficulty);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return question;
     }
-    return question;
-}
+    
 
 
 
@@ -260,6 +271,7 @@ public class DbController {
         int bestTimeTrialScore = rs.getInt("Best_time_trial_score");
         int bestProgressiveTimeTrialScore = rs.getInt("Best_Progressive_time_trial_score");
         int bestMissingLetterScore = rs.getInt("Best_Missing_Letter_score");
+        int bestMcqScore = rs.getInt("Best_Mcq_score");
         int dailyChallengesCompleted = rs.getInt("Daily_challenge_completed");
         int totalGamesPlayed = rs.getInt("Total_game_played");
         int streakCount = rs.getInt("Streak_count");
@@ -273,7 +285,7 @@ public class DbController {
         int correctAnswersSport = rs.getInt("Correct_answers_sport");
         int badgeCount = rs.getInt("BadgeCount");
 
-        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore, bestProgressiveTimeTrialScore,bestMissingLetterScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam, badgeCount);
+        Player player = new Player(rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore, bestProgressiveTimeTrialScore,bestMissingLetterScore,bestMcqScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam, badgeCount);
         Player.setCurrentPlayer(player);
     }
         
@@ -295,6 +307,7 @@ public class DbController {
                         "best_time_trial_score = ?, " +
                         "Best_Progressive_time_trial_score = ?, " +
                         "Best_Missing_Letter_score = ?, " +
+                        "Best_Mcq_score = ?, " +
                         "streak_count = ?, " +
                         "correct_answers_science = ?, " +
                         "correct_answers_history = ?, " +
@@ -314,16 +327,17 @@ public class DbController {
                 pstmt.setInt(3, player.getBestTimeTrialScore());
                 pstmt.setInt(4, player.getBestProgressiveTimeTrialScore());
                 pstmt.setInt(5, player.getBestMissingLetterScore());
-                pstmt.setInt(6, player.getStreakCount());
-                pstmt.setInt(7, player.getCorrectAnswersScience());
-                pstmt.setInt(8, player.getCorrectAnswersHistory());
-                pstmt.setInt(9, player.getCorrectAnswersGeography());
-                pstmt.setInt(10, player.getCorrectAnswersArt());
-                pstmt.setInt(11, player.getCorrectAnswersIslam());
-                pstmt.setInt(12, player.getCorrectAnswersJava());
-                pstmt.setInt(13, player.getCorrectAnswersSport());
-                pstmt.setInt(14, player.getTotalGamesPlayed());
-                pstmt.setString(15, player.getUsername());
+                pstmt.setInt(6, player.getBestMcqScore());
+                pstmt.setInt(7, player.getStreakCount());
+                pstmt.setInt(8, player.getCorrectAnswersScience());
+                pstmt.setInt(9, player.getCorrectAnswersHistory());
+                pstmt.setInt(10, player.getCorrectAnswersGeography());
+                pstmt.setInt(11, player.getCorrectAnswersArt());
+                pstmt.setInt(12, player.getCorrectAnswersIslam());
+                pstmt.setInt(13, player.getCorrectAnswersJava());
+                pstmt.setInt(14, player.getCorrectAnswersSport());
+                pstmt.setInt(15, player.getTotalGamesPlayed());
+                pstmt.setString(16, player.getUsername());
     
             pstmt.executeUpdate();
             System.out.println("✅ Player stats updated successfully!");

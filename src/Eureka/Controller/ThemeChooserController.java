@@ -88,6 +88,9 @@ public class ThemeChooserController {
                     case "MissingLetter":
                     DbController.changeScene(e, "MissingLetterGameMode.fxml");
                     break;
+                    case "Mcq":
+                    DbController.changeScene(e, "McqGameMode.fxml");
+                    break;
                     default:
                     DbController.changeScene(e, "BasicGameMode.fxml");
                     break;
