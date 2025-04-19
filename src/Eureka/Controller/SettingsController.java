@@ -2,12 +2,8 @@ package Eureka.Controller;
 
 import Eureka.models.SoundEffects;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import java.io.IOException;
 
 public class SettingsController {
    
@@ -16,8 +12,6 @@ public class SettingsController {
     @FXML
     private Button btn_back, btn_sound, btn_leaderboard, btn_profile, btn_help;
 
-    private Parent leaderboardOverlay;
-    private Parent helpOverlay;
 
     @FXML
     public void initialize() {

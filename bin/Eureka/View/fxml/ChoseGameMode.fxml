@@ -27,5 +27,6 @@
       <Button fx:id="btn_modetimer" layoutX="219.0" layoutY="335.0" mnemonicParsing="false" text="Mode Chronometre" />
       <Button fx:id="btn_modeprogressivetimetrial" layoutX="531.0" layoutY="335.0" mnemonicParsing="false" text="Mode Progressive Time Trial" />
       <Button fx:id="btn_modemissingletter" layoutX="219.0" layoutY="134.0" mnemonicParsing="false" text="Mode Missing Letter" />
+      <Button fx:id="btn_modemcq" layoutX="576.0" layoutY="134.0" mnemonicParsing="false" text="Mode mcq" />
    </children>
 </AnchorPane>
