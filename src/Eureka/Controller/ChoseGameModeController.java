@@ -76,7 +76,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                DbController.changeScene(arg0, "Loggedin.fxml");
+                SceneManager.changeScene(arg0, "Loggedin.fxml");
             }
         });
 

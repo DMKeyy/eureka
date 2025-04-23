@@ -2,8 +2,11 @@ package Eureka.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.sql.SQLException;
 
-import Eureka.models.SoundEffects;
+import Eureka.models.*;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -15,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -78,23 +82,28 @@ public class loginController implements Initializable {
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DbController.loginUser(event, tf_username.getText(), pf_password.getText());
+                try {
+                    Player player = PlayerRepository.loginUser(tf_username.getText(), pf_password.getText());
+                    Player.setCurrentPlayer(player);
+                    SceneManager.changeScene(event, "LoggedIn.fxml");
+                } catch (SQLException e) {
+                    SceneManager.showAlert(AlertType.ERROR, e.getMessage());
+                }
                 loginController.animateButtonClick(btn_login);
             }
         });
 
-
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               DbController.changeScene(event, "SignUp.fxml");
+               SceneManager.changeScene(event, "SignUp.fxml");
             }
         });
 
         btn_toforgotpassword.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DbController.changeScene(event, "ForgotPassword.fxml");
+                SceneManager.changeScene(event, "ForgotPassword.fxml");
             }
         });
 

@@ -6,10 +6,12 @@ import java.util.List;
 
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.Player;
-import Eureka.models.Question;
 import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
+import Eureka.models.QuestionRep.Question;
+import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,7 +113,7 @@ public class McqController {
 
     
     public void LoadNextQuestion() {
-        question = DbController.getQuestionQCM(theme, difficulty);
+        question = QuestionRepository.getQuestionMCQ(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
         List<String> choices = question.getMultipleChoices();
         Collections.shuffle(choices);
@@ -152,8 +154,8 @@ public class McqController {
 
     public void endgame() {
         UpdateCurrentPlayer(theme);
-        DbController.updatePlayer();
-        DbController.resetUsedQuestions();
+        PlayerRepository.updatePlayer(Player.getCurrentPlayer());
+        QuestionRepository.resetUsedQuestions();
 
         try {
             SoundEffects.clickSound.play();

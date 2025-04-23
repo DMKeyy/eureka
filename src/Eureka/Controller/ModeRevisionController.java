@@ -3,9 +3,9 @@ package Eureka.Controller;
 import java.beans.EventHandler;
 import java.util.List;
 
-import Eureka.models.Question;
 import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
+import Eureka.models.QuestionRep.Question;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -23,7 +23,7 @@ public class ModeRevisionController {
         SoundEffects.addSound(btn_back);
 
         btn_back.setOnAction(e -> {
-            DbController.changeScene(e, "ChoseGameMode.fxml");
+            SceneManager.changeScene(e, "ChoseGameMode.fxml");
         });
         wrongAnswersList.getItems().clear();
 

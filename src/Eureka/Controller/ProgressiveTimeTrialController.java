@@ -6,10 +6,12 @@ import java.util.TimerTask;
 
 
 import Eureka.models.GameData;
-import Eureka.models.Player;
-import Eureka.models.Question;
 import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
+import Eureka.models.QuestionRep.Question;
+import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,10 +74,7 @@ public class ProgressiveTimeTrialController  {
                     updateTimerUI();
                 } else {
                     timer.cancel();
-                    if(STARTING_TIME>5){ STARTING_TIME = STARTING_TIME -5;}
-                    timeRemaining = STARTING_TIME;
-                    startTimer();
-                    LoadNextQuestion();
+                    endgame();
                 }
             });
             }
@@ -124,14 +123,13 @@ public class ProgressiveTimeTrialController  {
     }
 
     public void LoadNextQuestion() {
-        question = DbController.getQuestion(theme, difficulty);
+        question = QuestionRepository.getQuestion(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
         scoreText.setText("Score: " + score);
     }
 
     public void handleSubmit(ActionEvent e) {
-        if (question == null) return;
-        if (tf_answer.getText().isEmpty()) return;
+        if (question == null || tf_answer.getText().isEmpty()) return;
 
         if (question.checkAnswer(tf_answer.getText())) {
             score++;
@@ -142,12 +140,15 @@ public class ProgressiveTimeTrialController  {
         } else {
             WrongAnswerStorage.addWrongAnswer(question);
             streakCount=0;
+            timeRemaining -= 5;
+            if (timeRemaining <= 0) {
+                timeRemaining = 0;
+                updateTimerUI();
+                timer.cancel();
+                endgame();
+                return;
         }
-            
-        timer.cancel();
-        if(STARTING_TIME>5){ STARTING_TIME = STARTING_TIME -5;}
-        timeRemaining = STARTING_TIME;
-        startTimer();
+    }
         updateUI();
         tf_answer.clear();
         LoadNextQuestion();
@@ -165,8 +166,8 @@ public class ProgressiveTimeTrialController  {
 
     public void endgame() {
         UpdateCurrentPlayer(theme);
-        DbController.updatePlayer();
-        DbController.resetUsedQuestions();
+        PlayerRepository.updatePlayer(Player.getCurrentPlayer());
+        QuestionRepository.resetUsedQuestions();
 
         try {
             SoundEffects.clickSound.play();

@@ -2,8 +2,9 @@ package Eureka.Controller;
 
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.Question;
 import Eureka.models.WrongAnswerStorage;
+import Eureka.models.QuestionRep.Question;
+import Eureka.models.QuestionRep.QuestionRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -72,7 +73,7 @@ public class LocalMultiplayerController {
     }
 
     private void loadNextQuestion() {
-        currentQuestion = DbController.getQuestion(theme, difficulty);
+        currentQuestion = QuestionRepository.getQuestion(theme, difficulty);
         if (currentQuestion != null) {
             questionLabel.setText(currentQuestion.getQuestionText());
         } else {

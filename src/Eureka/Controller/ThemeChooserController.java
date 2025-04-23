@@ -29,18 +29,18 @@ public class ThemeChooserController {
         SoundEffects.addSound(btn_start);
 
         btn_back.setOnAction(e -> {
-           DbController.changeScene(e, "ChoseGameMode.fxml");
+           SceneManager.changeScene(e, "ChoseGameMode.fxml");
         });
 
         btn_start.setOnAction(e -> {
 
             if (Themegroupe.getSelectedToggle() == null) {
-                DbController.showAlert(AlertType.ERROR,"Please select a theme before proceeding!");
+                SceneManager.showAlert(AlertType.ERROR,"Please select a theme before proceeding!");
                 return;
             }
     
             if (Difficultygroupe.getSelectedToggle() == null) {
-                DbController.showAlert(AlertType.ERROR,"Please select a difficulty before proceeding!");
+                SceneManager.showAlert(AlertType.ERROR,"Please select a difficulty before proceeding!");
                 return;
             }
     
@@ -71,28 +71,28 @@ public class ThemeChooserController {
 
                 switch (mode) {
                     case "Basic":
-                    DbController.changeScene(e, "BasicGameMode.fxml");
+                    SceneManager.changeScene(e, "BasicGameMode.fxml");
                     break;
                     case "Survival":
-                    DbController.changeScene(e, "SurvivalGameMode.fxml");
+                    SceneManager.changeScene(e, "SurvivalGameMode.fxml");
                     break;
                     case "Local":
-                    DbController.changeScene(e, "LocalMultiplayer.fxml");
+                    SceneManager.changeScene(e, "LocalGameMode.fxml");
                     break;
                     case "Timer":
-                    DbController.changeScene(e, "TimeTrialGameMode.fxml");
+                    SceneManager.changeScene(e, "TimerGameMode.fxml");
                     break;
                     case "ProgressiveTimeTrial":
-                    DbController.changeScene(e, "ProgressiveTimeTrialGameMode.fxml");
+                    SceneManager.changeScene(e, "ProgressiveTimeTrialGameMode.fxml");
                     break;
                     case "MissingLetter":
-                    DbController.changeScene(e, "MissingLetterGameMode.fxml");
+                    SceneManager.changeScene(e, "MissingLetterGameMode.fxml");
                     break;
                     case "Mcq":
-                    DbController.changeScene(e, "McqGameMode.fxml");
+                    SceneManager.changeScene(e, "McqGameMode.fxml");
                     break;
                     default:
-                    DbController.changeScene(e, "BasicGameMode.fxml");
+                    SceneManager.showAlert(AlertType.ERROR,"Invalid game mode selected.");
                     break;
             }
             

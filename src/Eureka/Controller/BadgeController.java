@@ -1,8 +1,9 @@
 package Eureka.Controller;
 
-import Eureka.models.Badge;
-import Eureka.models.Player;
 import Eureka.models.SoundEffects;
+import Eureka.models.BadgeRep.Badge;
+import Eureka.models.BadgeRep.BadgeRepository;
+import Eureka.models.PlayerRep.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -21,10 +22,10 @@ public class BadgeController {
     public void initialize() {
         SoundEffects.addSound(btn_back);
         Player player = Player.getCurrentPlayer();
-        List<Badge> badges = DbController.getPlayerBadges(player.getUsername());
+        List<Badge> badges = BadgeRepository.getPlayerBadges(player.getUsername());
 
         btn_back.setOnAction(e -> {
-            DbController.changeScene(e, "Profile.fxml");
+            SceneManager.changeScene(e, "Profile.fxml");
         });
 
         for (Badge badge : badges) {
@@ -38,29 +39,26 @@ public class BadgeController {
         }
     }
 
-   
-
     public static void checkAndAssignBadges(Player player) {
-        List<Badge> allBadges = DbController.getAllBadges();
+        List<Badge> allBadges = BadgeRepository.getAllBadges();
         boolean newBadgeAssigned = false;
     
         for (Badge badge : allBadges) {
-            boolean alreadyHas = DbController.playerHasBadge(player, badge);
+            boolean alreadyHas = BadgeRepository.playerHasBadge(player, badge);
     
             if (!alreadyHas && meetsCriteria(player, badge)) {
-                DbController.assignBadgeToPlayer(player, badge.getBadge_id());
+                BadgeRepository.assignBadgeToPlayer(player, badge.getBadge_id());
                 System.out.println("🎖 Badge attribué : " + badge.getName());
                 newBadgeAssigned = true;
             }
         }
     
         if (newBadgeAssigned) {
-            int updatedCount = DbController.getPlayerBadges(player.getUsername()).size();
+            int updatedCount = BadgeRepository.getPlayerBadges(player.getUsername()).size();
             player.setBadgeCount(updatedCount);
-            DbController.updateBadgeCount(player.getUsername(), updatedCount);
+            BadgeRepository.updateBadgeCount(player.getUsername(), updatedCount);
         }
     }
-    
 
     //Vérifie si le joueur remplit les conditions d'obtention du badge donné
     private static boolean meetsCriteria(Player player, Badge badge) {

@@ -6,10 +6,12 @@ import java.util.TimerTask;
 
 
 import Eureka.models.GameData;
-import Eureka.models.Player;
-import Eureka.models.Question;
 import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
+import Eureka.models.QuestionRep.Question;
+import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -122,7 +124,7 @@ public class TimeTrialGameModeController  {
     }
 
     public void LoadNextQuestion() {
-        question = DbController.getQuestion(theme, difficulty);
+        question = QuestionRepository.getQuestion(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
         scoreText.setText("Score: " + score);
     }
@@ -163,8 +165,8 @@ public class TimeTrialGameModeController  {
 
     public void endgame() {
         UpdateCurrentPlayer(theme);
-        DbController.updatePlayer();
-        DbController.resetUsedQuestions();
+        PlayerRepository.updatePlayer(Player.getCurrentPlayer());
+        QuestionRepository.resetUsedQuestions();
 
         try {
             SoundEffects.clickSound.play();

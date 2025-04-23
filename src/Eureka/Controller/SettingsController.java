@@ -38,13 +38,13 @@ public class SettingsController {
  
     private void setupBackButton() {
         btn_back.setOnAction(event -> {
-            DbController.changeScene(event, "LoggedIn.fxml");
+            SceneManager.changeScene(event, "LoggedIn.fxml");
         });
     }
 
     private void setupProfileButton() {
         btn_profile.setOnAction(event -> {
-            DbController.changeScene(event, "Profile.fxml");
+            SceneManager.changeScene(event, "Profile.fxml");
         });
     }
 
@@ -57,13 +57,13 @@ public class SettingsController {
 
     private void setupLeaderboardButton() {
         btn_leaderboard.setOnAction(event -> {
-            DbController.changeScene(event, "Leaderboard.fxml");
+            SceneManager.changeScene(event, "Leaderboard.fxml");
         });
     }
 
     private void setupHelpButton() {
         btn_help.setOnAction(event -> {
-            DbController.changeScene(event, "Helpmenu.fxml");
+            SceneManager.changeScene(event, "Helpmenu.fxml");
         });
     }
 

@@ -4,8 +4,9 @@ import java.io.IOException;
 
 import java.util.Optional;
 
-import Eureka.models.Player;
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -67,7 +68,7 @@ public class ProfileController {
 
         // Bouton "Back"
         btn_back.setOnAction(e -> {
-            DbController.changeScene(e, "ChoseGameMode.fxml");
+            SceneManager.changeScene(e, "ChoseGameMode.fxml");
         });
 
         BestScore.setOnAction(e -> {
@@ -145,7 +146,7 @@ public class ProfileController {
         String newUsername = result.get().trim();
         if (!newUsername.isEmpty()) {
             // 1) Mettre à jour en BDD
-            boolean success = DbController.updateUsername(player.getUsername(), newUsername);
+            boolean success = PlayerRepository.updateUsername(player.getUsername(), newUsername);
             if (success) {
                 // 2) Mettre à jour l'objet Player
                 player.setUsername(newUsername); 

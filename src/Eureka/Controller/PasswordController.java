@@ -1,7 +1,8 @@
 package Eureka.Controller;
 
-import Eureka.models.Player;
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -31,7 +32,7 @@ public class PasswordController {
             String newPassword = passwordField.getText().trim();
 
             if (!newPassword.isEmpty()) {
-                boolean success = DbController.updatePassword(player.getUsername(), newPassword);
+                boolean success = PlayerRepository.updatePassword(player.getUsername(), newPassword);
 
                 if (success) {
                     player.setPassword(newPassword); 
@@ -43,10 +44,10 @@ public class PasswordController {
                 
                     closeOverlay();
                 } else {
-                    DbController.showAlert(Alert.AlertType.ERROR, "Error: Could not update password in database.");
+                    SceneManager.showAlert(Alert.AlertType.ERROR, "Error: Could not update password in database.");
                 }
             } else {
-                DbController.showAlert(Alert.AlertType.WARNING, "⚠ The password cannot be empty!");
+                SceneManager.showAlert(Alert.AlertType.WARNING, "⚠ The password cannot be empty!");
             }
         });
 

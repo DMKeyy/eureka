@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Eureka.models.Badge;
-import Eureka.models.Player;
 import Eureka.models.SoundEffects;
+import Eureka.models.BadgeRep.Badge;
+import Eureka.models.BadgeRep.BadgeRepository;
+import Eureka.models.PlayerRep.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button; 
@@ -53,11 +54,11 @@ public class GameOverController {
         });
 
         btn_leave.setOnAction(e -> {
-            DbController.changeScene(e, "ChoseGameMode.fxml");
+            SceneManager.changeScene(e, "ChoseGameMode.fxml");
         });
 
         btn_revision.setOnAction(e -> {
-            DbController.changeScene(e, "ModeRevision.fxml");
+            SceneManager.changeScene(e, "ModeRevision.fxml");
         });
 
         
@@ -74,23 +75,23 @@ public class GameOverController {
     }
 
     public static List<Badge> checkAndAssignBadges(Player player) {
-        List<Badge> allBadges = DbController.getAllBadges();
+        List<Badge> allBadges = BadgeRepository.getAllBadges();
         List<Badge> earned = new ArrayList<>(); 
 
         for (Badge badge : allBadges) {
-            boolean alreadyHas = DbController.playerHasBadge(player, badge);
+            boolean alreadyHas = BadgeRepository.playerHasBadge(player, badge);
 
             if (!alreadyHas && meetsCriteria(player, badge)) {
-                DbController.assignBadgeToPlayer(player, badge.getBadge_id());
+                BadgeRepository.assignBadgeToPlayer(player, badge.getBadge_id());
                 System.out.println("🎖 Badge attribué : " + badge.getName());
                 earned.add(badge); 
             }
         }
 
         if (!earned.isEmpty()) {
-            int updatedCount = DbController.getPlayerBadges(player.getUsername()).size();
+            int updatedCount = BadgeRepository.getPlayerBadges(player.getUsername()).size();
             player.setBadgeCount(updatedCount);
-            DbController.updateBadgeCount(player.getUsername(), updatedCount);
+            BadgeRepository.updateBadgeCount(player.getUsername(), updatedCount);
         }
 
         return earned;

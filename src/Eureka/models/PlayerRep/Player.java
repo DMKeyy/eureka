@@ -1,9 +1,11 @@
-package Eureka.models;
+package Eureka.models.PlayerRep;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import Eureka.models.BadgeRep.Badge;
 
 public class Player {
     private static Player currentPlayer;

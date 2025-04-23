@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -82,7 +83,7 @@ public class ResetPasswordController implements Initializable {
                     return;
                 }
 
-                if (!DbController.isUsernameValid(username)) {
+                if (!PlayerRepository.isUsernameValid(username)) {
                     shake(btn_resetpassword);
                     shake(tf_username);
                     shake(pf_password);
@@ -95,7 +96,7 @@ public class ResetPasswordController implements Initializable {
                     return;
                 }
 
-                if (DbController.updatePassword(username, password)) {
+                if (PlayerRepository.updatePassword(username, password)) {
                     txt_result.setText("Password reset successfully!");
                     btn_tologin.setVisible(true);
                     btn_resetpassword.setVisible(false);
@@ -112,7 +113,7 @@ public class ResetPasswordController implements Initializable {
         btn_tologin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DbController.changeScene(event, "LogIn.fxml");
+                SceneManager.changeScene(event, "LogIn.fxml");
             }
         });
     }

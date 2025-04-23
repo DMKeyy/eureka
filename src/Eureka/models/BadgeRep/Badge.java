@@ -1,4 +1,4 @@
-package Eureka.models;
+package Eureka.models.BadgeRep;
 
 public class Badge {
     int badge_id;

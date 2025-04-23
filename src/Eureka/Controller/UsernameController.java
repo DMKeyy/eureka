@@ -1,7 +1,8 @@
 package Eureka.Controller;
 
-import Eureka.models.Player;
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.Player;
+import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class UsernameController {
             public void handle(ActionEvent e) {
             String newUsername = usernameField.getText().trim();
             if (!newUsername.isEmpty()) {
-                boolean success = DbController.updateUsername(player.getUsername(), newUsername);
+                boolean success = PlayerRepository.updateUsername(player.getUsername(), newUsername);
                 if (success) {
                 player.setUsername(newUsername);
 
@@ -47,10 +48,10 @@ public class UsernameController {
 
                 closeOverlay();
                 } else {
-                DbController.showAlert(Alert.AlertType.ERROR, "❌ Couldn't update username.");
+                SceneManager.showAlert(Alert.AlertType.ERROR, "❌ Couldn't update username.");
                 }
             } else {
-                DbController.showAlert(Alert.AlertType.WARNING, "⚠ Username cannot be empty.");
+                SceneManager.showAlert(Alert.AlertType.WARNING, "⚠ Username cannot be empty.");
             }
             }
         });

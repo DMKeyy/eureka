@@ -1,4 +1,4 @@
-package Eureka.models;
+package Eureka.models.QuestionRep;
 
 import java.util.List;
 

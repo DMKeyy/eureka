@@ -16,7 +16,7 @@ public class AboutController {
     @FXML
     public void Backtomain(ActionEvent event) {
         SoundEffects.addSound(btn_back);
-        DbController.changeScene(event, "LoggedIn.fxml");
+        SceneManager.changeScene(event, "LoggedIn.fxml");
     }
 
    
