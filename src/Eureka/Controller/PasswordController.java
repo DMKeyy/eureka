@@ -25,7 +25,7 @@ public class PasswordController {
         SoundEffects.addSound(btn_cancel);
 
         
-        btn_confirm.setOnAction(e -> {
+        btn_confirm.setOnAction(_ -> {
             Player player = Player.getCurrentPlayer();
             if (player == null) return;
 
@@ -51,7 +51,7 @@ public class PasswordController {
             }
         });
 
-        btn_cancel.setOnAction(e -> closeOverlay());
+        btn_cancel.setOnAction(_ -> closeOverlay());
     }
 
 

@@ -40,7 +40,7 @@ public class GameOverController {
             lbl_message.setText(message.toString());
         }
 
-        btn_again.setOnAction(e -> {
+        btn_again.setOnAction(_ -> {
             try {
             AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
             settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);

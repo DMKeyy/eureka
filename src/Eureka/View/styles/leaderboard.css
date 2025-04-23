@@ -1,0 +1,152 @@
+/* Main TabPane styling */
+.tab-pane {
+    -fx-background-color: #34495E;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #2C3E50;
+}
+
+/* Tab styling */
+.tab {
+    -fx-background-color: #34495E;
+    -fx-padding: 10px 20px;
+}
+
+.tab:selected {
+    -fx-background-color: #3498DB;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* TableView styling */
+.leaderboard-table {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+}
+
+.leaderboard-table .column-header {
+    -fx-background-color: #2980B9;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.leaderboard-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+}
+
+.leaderboard-table .table-row-cell {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+}
+
+.leaderboard-table .table-row-cell:odd {
+    -fx-background-color: #2C3E50;
+}
+
+.leaderboard-table .table-row-cell:selected {
+    -fx-background-color: #3498DB;
+}
+
+/* Table cell styling */
+.table-cell {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-padding: 8px;
+}
+
+/* Back button styling */
+.back-button {
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.back-button:hover {
+    -fx-background-color: #C0392B;
+    -fx-cursor: hand;
+}
+
+/* Inner TabPane styling */
+.inner-tab-pane {
+    -fx-background-color: #34495E;
+}
+
+.mode-tab {
+    -fx-background-color: #2980B9;
+}
+
+.mode-tab:selected {
+    -fx-background-color: #3498DB;
+}
+
+/* Scroll bar styling */
+.scroll-bar {
+    -fx-background-color: #2C3E50;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3498DB;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #34495E;
+}
+
+/* First place highlighting */
+.table-row-cell:first {
+    -fx-background-color: #F1C40F;
+}
+
+.table-row-cell:first .table-cell {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+/* Centered TabPane styling */
+.centered-tab-pane {
+    -fx-tab-min-width: 120px;
+    -fx-tab-max-width: 120px;
+    -fx-tab-min-height: 40px;
+}
+
+.centered-tab-pane .tab-header-area {
+    -fx-padding: 0;
+}
+
+.centered-tab-pane .tab-header-area .headers-region {
+    -fx-alignment: CENTER;
+}
+
+.centered-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #2C3E50;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #34495E;
+}
+
+.centered-tab-pane .tab {
+    -fx-background-color: #34495E;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 10px 20px;
+}
+
+.centered-tab-pane .tab:selected {
+    -fx-background-color: #3498DB;
+}
+
+.centered-tab-pane .tab .tab-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}

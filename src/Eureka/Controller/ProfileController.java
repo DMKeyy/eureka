@@ -71,21 +71,21 @@ public class ProfileController {
             SceneManager.changeScene(e, "ChoseGameMode.fxml");
         });
 
-        BestScore.setOnAction(e -> {
+        BestScore.setOnAction(_ -> {
             SoundEffects.clickSound.play();
             showOverlay("/Eureka/View/fxml/AllScores.fxml");
         });
         
-        Badges.setOnAction(e -> {
+        Badges.setOnAction(_ -> {
             SoundEffects.clickSound.play();
             showOverlay("/Eureka/View/fxml/Badges.fxml");
         });
         
-        btn_change_password.setOnAction(e -> {
+        btn_change_password.setOnAction(_ -> {
             showOverlay("/Eureka/View/fxml/Password.fxml");
         });
         
-        btn_change_username.setOnAction(e -> {
+        btn_change_username.setOnAction(_ -> {
             showOverlay("/Eureka/View/fxml/Username.fxml");
         });
         

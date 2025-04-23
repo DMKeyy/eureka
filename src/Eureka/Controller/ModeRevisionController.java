@@ -1,6 +1,5 @@
 package Eureka.Controller;
 
-import java.beans.EventHandler;
 import java.util.List;
 
 import Eureka.models.SoundEffects;

@@ -49,7 +49,7 @@ public class SettingsController {
     }
 
     private void setupSoundButton() {
-        btn_sound.setOnAction(event -> {
+        btn_sound.setOnAction(_ -> {
             SoundEffects.toggleMute();
             btn_sound.setText(SoundEffects.isMuted() ? "Unmute" : "Mute");
         });

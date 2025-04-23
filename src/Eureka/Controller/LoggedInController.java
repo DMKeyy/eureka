@@ -38,7 +38,7 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
-                pause.setOnFinished(e -> SceneManager.changeScene(event, "LogIn.fxml"));
+                pause.setOnFinished(_ -> SceneManager.changeScene(event, "LogIn.fxml"));
                 pause.play();
             }
         });
@@ -47,7 +47,7 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 PauseTransition pause = new PauseTransition(Duration.millis(300));
-                pause.setOnFinished(e -> System.exit(0));
+                pause.setOnFinished(_ -> System.exit(0));
                 pause.play();
             }
         });
@@ -110,7 +110,7 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
-                pause.setOnFinished(e -> SceneManager.changeScene(event, "ChoseGameMode.fxml"));
+                pause.setOnFinished(_ -> SceneManager.changeScene(event, "ChoseGameMode.fxml"));
                 pause.play();
             }
         });
@@ -119,7 +119,7 @@ public class LoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 PauseTransition pause = new PauseTransition(Duration.millis(200));
-                pause.setOnFinished(e -> SceneManager.changeScene(event, "Profile.fxml"));
+                pause.setOnFinished(_ -> SceneManager.changeScene(event, "Profile.fxml"));
                 pause.play();
             }
         }); 
