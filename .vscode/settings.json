@@ -1,15 +1,12 @@
 {
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.base.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.controls.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.fxml.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.graphics.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.media.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.swing.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx.web.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\\javafx-swt.jar"
-    ]
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "C:/Users/USER/Downloads/openjfx-23.0.2_windows-x64_bin-sdk/javafx-sdk-23.0.2/lib/*.jar",
+    "C:/Users/USER/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar",
+    "c:\\Users\\USER\\Downloads\\mysql-connector-j-9.2.0\\mysql-connector-j-9.2.0\\mysql-connector-j-9.2.0.jar"
+  ],
+  "java.project.sourcePaths": [
+    "Educatif-Game-main/src/Eureka"
+  ],
+  "java.project.outputPath": "bin"
 }

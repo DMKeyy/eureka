@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="badgePane" prefHeight="332.0" prefWidth="662.0" style="-fx-background-color: transparent; -fx-padding: 20px;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.BadgeController">
+   <children>
+      <ImageView fitHeight="300.0" fitWidth="648.0" layoutX="1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Educatif-Game-main/src/Eureka/Eureka/View/images/emptybtn2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="262.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-text-fill: #4d3b1f;" text="🏅 Mes Badges">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ListView id="goldList" fx:id="badgeListView" layoutX="123.0" layoutY="89.0" prefHeight="175.0" prefWidth="430.0" />
+      <Button fx:id="btn_back" layoutX="90.0" layoutY="270.0" mnemonicParsing="false" style="-fx-background-color: #ffcc33; -fx-text-fill: #3b2f1c; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8;" text="⏪ Retour" />
+   </children>
+</AnchorPane>
+
+

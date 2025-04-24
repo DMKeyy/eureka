@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.ListView?>
+ <?import javafx.scene.image.Image?>
+ <?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
+ 
+ 
+ <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ModeRevisionController">
+    <children>
+       <Button fx:id="btn_back" layoutX="777.0" layoutY="14.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="49.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+          <graphic>
+             <ImageView fitHeight="68.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                   <Image url="@../images/backbtn.png" />
+                </image>
+             </ImageView>
+          </graphic>
+       </Button>
+       <ListView fx:id="wrongAnswersList" layoutX="175.0" layoutY="-1.0" prefHeight="500.0" prefWidth="471.0" />
+    </children>
+ </AnchorPane>

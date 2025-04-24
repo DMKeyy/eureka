@@ -1,0 +1,109 @@
+.menu-btn {
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.menu-btn:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian,#ffaa00aa, 20, 0.3, 0, 0);
+    -fx-opacity: 0.9;
+}
+
+.menu-btn:pressed {
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-effect: dropshadow(gaussian, #ffaa00aa, 20, 0.3, 0, 0);
+    -fx-opacity: 0.9;
+}
+
+
+.radio-button .radio {
+    -fx-background-color: white;
+    -fx-border-color: #2f1007;
+    -fx-border-radius: 50%;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #2f1007;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color:#2f1007 ;
+}
+
+.radio-button {
+    -fx-effect: dropshadow(gaussian, transparent, 10, 0, 0, 0);
+}
+
+.radio-button:hover {
+    -fx-effect: dropshadow(gaussian,#ffaa00aa, 10, 0, 0, 0);
+}
+#goldTable {
+    -fx-background-color: #fff8f0;
+    -fx-border-color: #e6b800;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(230, 184, 0, 0.2), 8, 0.1, 0, 2);
+}
+
+/* En-têtes dorés */
+#goldTable .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #ffcc33, #e6b800);
+}
+
+#goldTable .column-header .label {
+    -fx-text-fill: #3b2f1c;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+/* Cellules */
+#goldTable .table-cell {
+    -fx-border-color: #e6b800;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: #fffdf6;
+    -fx-text-fill: #4d3b1f;
+    -fx-font-size: 13px;
+    -fx-padding: 6;
+}
+
+/* Survol & sélection */
+#goldTable .table-row-cell:filled:hover {
+    -fx-background-color: #fff8e1;
+}
+#goldTable .table-row-cell:filled:selected,
+#goldTable .table-row-cell:focused:selected {
+    -fx-background-color: #fff2cc;
+}
+
+#badgePane {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Transparent doux */
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(230, 184, 0, 0.2), 15, 0.1, 0, 2);
+}
+
+#goldList {
+    -fx-background-color: #fffdf6;
+    -fx-border-color: #e6b800;
+    -fx-border-radius: 6;
+    -fx-control-inner-background: #fffef9;
+    -fx-font-family: 'Merriweather', Georgia, serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4d3b1f;
+}
+
+#goldList .list-cell:hover {
+    -fx-background-color: #fff8e1;
+}
+
+#goldList .list-cell:filled:selected {
+    -fx-background-color: #ffe680;
+    -fx-text-fill: #3b2f1c;
+    -fx-font-weight: bold;
+}
+
