@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LeaderboardController">
+   <children>
+      <TabPane layoutX="0" layoutY="0" prefHeight="600.0" prefWidth="800.0" styleClass="centered-tab-pane" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Scores">
+            <content>
+              <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                  <Tab text="Basic Mode">
+                    <content>
+                      <TableView fx:id="basicModeTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="basicUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="basicScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Survival Mode">
+                    <content>
+                      <TableView fx:id="survivalModeTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="survivalUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="survivalScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Time Trial">
+                    <content>
+                      <TableView fx:id="timeTrialTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="timeTrialUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="timeTrialScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Progressive Time Trial">
+                    <content>
+                      <TableView fx:id="progressiveTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="progressiveUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="progressiveScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Missing Letter">
+                    <content>
+                      <TableView fx:id="missingLetterTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="missingLetterUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="missingLetterScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="MCQ">
+                    <content>
+                      <TableView fx:id="mcqTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="mcqUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="mcqScoreColumn" prefWidth="300.0" text="Score" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                </tabs>
+              </TabPane>
+            </content>
+          </Tab>
+          <Tab text="Correct Answers by Theme">
+            <content>
+              <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                  <Tab text="Science">
+                    <content>
+                      <TableView fx:id="scienceTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="scienceUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="scienceAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="History">
+                    <content>
+                      <TableView fx:id="historyTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="historyUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="historyAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Geography">
+                    <content>
+                      <TableView fx:id="geographyTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="geographyUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="geographyAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Sport">
+                    <content>
+                      <TableView fx:id="sportTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="sportUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="sportAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Art">
+                    <content>
+                      <TableView fx:id="artTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="artUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="artAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Java">
+                    <content>
+                      <TableView fx:id="javaTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="javaUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="javaAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                  <Tab text="Islam">
+                    <content>
+                      <TableView fx:id="islamTable" prefHeight="400.0" prefWidth="600.0">
+                        <columns>
+                          <TableColumn fx:id="islamUsernameColumn" prefWidth="300.0" text="Username" />
+                          <TableColumn fx:id="islamAnswersColumn" prefWidth="300.0" text="Correct Answers" />
+                        </columns>
+                      </TableView>
+                    </content>
+                  </Tab>
+                </tabs>
+              </TabPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="btn_back" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Back" />
+   </children>
+</AnchorPane>

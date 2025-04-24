@@ -1,0 +1,87 @@
+/* === STYLE GLOBAL POUR LES BOUTONS SIGN UP / LOGIN === */
+
+#signUpButton,
+#loginButton {
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.3s ease;
+}
+
+#signUpButton:hover,
+#loginButton:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian, #ffaa00aa, 15, 0.7, 0, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Champs du formulaire : TextField et PasswordField dans #formContainer */
+/* ------------------------------------------------------------------ */
+TextField ,PasswordField {
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(0, 0, 0, 0.2); /* Fond sombre transparent */
+    -fx-border-radius: 10;
+    -fx-border-color: #00000044;
+    -fx-border-width: 1.5;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff; /* Texte blanc */
+    -fx-effect: dropshadow(gaussian, #000000aa, 8, 0.7, 2, 2);
+    -fx-padding: 6 10;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Effet hover sur les champs */
+TextField:hover,
+PasswordField:hover {
+    -fx-border-color: #00000099;
+    -fx-effect: dropshadow(gaussian, #000000bb, 10, 0.6, 0, 0);
+}
+
+/* Effet focus (lorsque le champ est cliqué/saisi) */
+TextField:focused,
+PasswordField:focused {
+    -fx-border-color: #ffba00; /* Couleur plus vive au focus */
+    -fx-background-color: rgba(0, 0, 0, 0.35);
+    -fx-effect: dropshadow(gaussian, #ffb700cc, 10, 0.5, 0, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Style du titre (Text "Sign Up" ou "Login") : #titleText */
+/* ------------------------------------------------------------------ */
+#titleText {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(#ffe57f, #e1aa00, #a55c00);
+    -fx-stroke: #4b2e00;
+    -fx-stroke-width: 1;
+    -fx-effect: dropshadow(gaussian, #3f2200aa, 10, 0.8, 2, 2);
+}
+
+
+#showPasswordCheckBox .box {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#showPasswordCheckBox .mark {
+    -fx-stroke: transparent;
+    -fx-background-color: transparent;
+}
+
+
+#showPasswordCheckBox:hover .box {
+    -fx-effect: dropshadow(gaussian, #ffffff66, 8, 0.5, 0, 0);
+
+}
+
+.btn_toforgotpassword, .btn_tologin, .btn_tosignup {
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+.btn_toforgotpassword:hover, .btn_tologin:hover, .btn_tosignup:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, #ffaa00aa, 15, 0.7, 0, 0);
+}

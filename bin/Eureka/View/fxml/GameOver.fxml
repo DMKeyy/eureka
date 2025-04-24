@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color: transparent;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.GameOverController">
    <children>
       <ImageView fitHeight="510.0" fitWidth="676.0" layoutX="81.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
@@ -20,22 +19,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="193.0" prefHeight="38.0" prefWidth="85.0" text="Score :">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="182.0" prefHeight="38.0" prefWidth="85.0" text="Score :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbl_score" alignment="CENTER" contentDisplay="CENTER" layoutX="418.0" layoutY="195.0" prefHeight="35.0" prefWidth="174.0" text="Label">
+      <Label fx:id="lbl_score" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="183.0" prefHeight="35.0" prefWidth="174.0" text="Label">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbl_message" alignment="CENTER" layoutX="249.0" layoutY="235.0" prefHeight="40.0" prefWidth="400.0" text="" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="btn_again" layoutX="343.0" layoutY="326.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_again" layoutX="304.0" layoutY="303.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="83.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +38,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_leave" layoutX="449.0" layoutY="326.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_leave" layoutX="452.0" layoutY="303.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="83.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,8 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="lbl_message" layoutX="426.0" layoutY="239.0" />
       <Button fx:id="btn_revision" layoutX="649.0" layoutY="230.0" mnemonicParsing="false" text="revision" />
-      <Label fx:id="lbl_badge" layoutX="259.0" layoutY="268.0" prefHeight="53.0" prefWidth="347.0" />
    </children>
 </AnchorPane>
-

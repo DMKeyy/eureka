@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="AllScores" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="467.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.AllScoresController">
+   <children>
+      <ImageView fitHeight="463.0" fitWidth="467.0" layoutX="29.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Educatif-Game-main/src/Eureka/Eureka/View/images/settings.png" />
+         </image>
+      </ImageView>
+      <TableView id="goldTable" fx:id="tableScores" layoutX="89.0" layoutY="101.0" prefHeight="202.0" prefWidth="289.0" stylesheets="@../styles/menu.css">
+         <columns>
+            <TableColumn id="goldTable" fx:id="colMode" prefWidth="142.0" text="Mode" />
+            <TableColumn id="goldTable" fx:id="colScore" prefWidth="145.0" text="Score" />
+         </columns>
+      </TableView>
+      <Button fx:id="btn_back" layoutX="373.0" layoutY="46.0" prefHeight="75.0" prefWidth="87.0" style="-fx-background-color: transparent;" styleClass="menu-btn" text="Back" />
+   </children>
+</AnchorPane>
