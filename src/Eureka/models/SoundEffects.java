@@ -22,7 +22,7 @@ public class SoundEffects {
             }
         });
 
-        button.setOnMousePressed(event -> {
+        button.setOnMousePressed(_ -> {
             System.out.println("Button pressed: " + button.getText() + " | isMuted: " + isMuted);
             if (!isMuted && clickSound != null) {
                 clickSound.stop();

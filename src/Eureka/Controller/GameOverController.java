@@ -1,6 +1,5 @@
 package Eureka.Controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import Eureka.models.BadgeRep.Badge;
 import Eureka.models.BadgeRep.BadgeRepository;
 import Eureka.models.PlayerRep.Player;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -41,16 +39,7 @@ public class GameOverController {
         }
 
         btn_again.setOnAction(_ -> {
-            try {
-            AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
-            settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
-            settings.setLayoutY((root.getHeight() - settings.getPrefHeight()) / 2);
-            root.getChildren().add(settings);
-            settings.requestFocus();
-
-            } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+            SceneManager.showPopup(root, "ThemeChooser.fxml");
         });
 
         btn_leave.setOnAction(e -> {

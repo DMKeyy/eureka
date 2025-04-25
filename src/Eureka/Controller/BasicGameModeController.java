@@ -142,25 +142,7 @@ public class BasicGameModeController {
         UpdateCurrentPlayer(theme);
         PlayerRepository.updatePlayer(Player.getCurrentPlayer());
         QuestionRepository.resetUsedQuestions();
-
-        try {
-            SoundEffects.clickSound.play();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Eureka/View/fxml/GameOver.fxml"));
-            AnchorPane gameover = loader.load();
-
-            GameOverController gameOverController = loader.getController();
-            gameOverController.setScore(score);
-  
-            gameover.setLayoutX((root.getWidth() - gameover.getPrefWidth()) / 2);
-            gameover.setLayoutY((root.getHeight() - gameover.getPrefHeight()) / 2);
-            root.getChildren().add(gameover);
-            gameover.requestFocus();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        SceneManager.showPopup(root, "GameOver.fxml");
     }
 
 

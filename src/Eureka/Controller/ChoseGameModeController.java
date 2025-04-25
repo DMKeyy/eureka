@@ -59,7 +59,7 @@ public class ChoseGameModeController implements Initializable {
             public void handle(ActionEvent arg0) {
                 SoundEffects.clickSound.play();
                 GameData.setMode("Basic");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -68,7 +68,7 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("Survival");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -85,7 +85,7 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("Local");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -94,7 +94,7 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("Timer");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -103,7 +103,7 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("ProgressiveTimeTrial");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -112,7 +112,7 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("MissingLetter");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
@@ -121,26 +121,10 @@ public class ChoseGameModeController implements Initializable {
             @Override
             public void handle(ActionEvent arg0) {
                 GameData.setMode("Mcq");
-                AfficherThemeChooser();
+                SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
 
 
     }
-
-
-    public void AfficherThemeChooser() {
-        try {
-            AnchorPane settings = FXMLLoader.load(getClass().getResource("/Eureka/View/fxml/ThemeChooser.fxml"));
-            settings.setLayoutX((root.getWidth() - settings.getPrefWidth()) / 2);
-            settings.setLayoutY((root.getHeight() - settings.getPrefHeight()) / 2);
-            root.getChildren().add(settings);
-            settings.requestFocus();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }
