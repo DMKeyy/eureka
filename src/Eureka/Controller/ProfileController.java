@@ -2,17 +2,14 @@ package Eureka.Controller;
 
 import java.io.IOException;
 
-import java.util.Optional;
 
 import Eureka.models.SoundEffects;
 import Eureka.models.PlayerRep.Player;
-import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -132,33 +129,7 @@ public class ProfileController {
     
     
 
-    private void handleChangeUsername() {
-    Player player = Player.getCurrentPlayer();
-
-    // Boîte de dialogue : on propose l'actuel en suggestion
-    TextInputDialog dialog = new TextInputDialog(player.getUsername());
-    dialog.setTitle("Change Username");
-    dialog.setHeaderText("Modify your username");
-    dialog.setContentText("Please enter a new username:");
-
-    Optional<String> result = dialog.showAndWait();
-    if (result.isPresent()) {
-        String newUsername = result.get().trim();
-        if (!newUsername.isEmpty()) {
-            // 1) Mettre à jour en BDD
-            boolean success = PlayerRepository.updateUsername(player.getUsername(), newUsername);
-            if (success) {
-                // 2) Mettre à jour l'objet Player
-                player.setUsername(newUsername); 
-                // 3) Mettre à jour l'interface
-                lbl_username_value.setText(newUsername);
-            } else {
-            
-                System.out.println("❌ Could not update username in DB");
-            }
-        }
-    }
- }
+   
  public void updatePasswordLabel() {
     lbl_password_value.setText(Player.getCurrentPlayer().getPassword());
 }

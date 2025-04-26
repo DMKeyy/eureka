@@ -3,6 +3,7 @@ package Eureka.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Eureka.models.GameData;
 import Eureka.models.SoundEffects;
 import Eureka.models.BadgeRep.Badge;
 import Eureka.models.BadgeRep.BadgeRepository;
@@ -37,6 +38,8 @@ public class GameOverController {
             }
             lbl_message.setText(message.toString());
         }
+        lbl_score.setText(""+GameData.getScore());
+        GameData.setScore(0);
 
         btn_again.setOnAction(_ -> {
             SceneManager.showPopup(root, "ThemeChooser.fxml");

@@ -1,112 +1,54 @@
 package Eureka.Controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.SoundEffects;
-import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
-import Eureka.models.PlayerRep.PlayerRepository;
-import Eureka.models.QuestionRep.Question;
 import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 
-public class MissingLetterController {
-    String theme;
-    int difficulty;
-    int score;
-    int correctAnswers;
-    PenduDrawer pendu;
-    Question question;
-    int streakCount = 0;
-    int longestStreak = 0;
+
+public class MissingLetterController extends GameMode {
 
     @FXML
-    private AnchorPane root;
-
-    @FXML
-    private Label questionLabel;
-    @FXML 
     private TextField tf_answer;
-    @FXML
-    private Label scoreText;
-    @FXML
-    private Button btn_submit;
+
     @FXML
     private Label answerLabel;
-    @FXML 
-    private ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage ,leftfeetImage, rightfeetImage;
-   
-    
     public MissingLetterController() {
         this.score = 0;
         this.correctAnswers = 0;
     }
 
-
     @FXML
     public void initialize() {
-
         this.theme = GameData.getTheme();
         this.difficulty = GameData.getDifficulty();
         pendu = new PenduDrawer(List.of(headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage), 8);
 
-
         LoadNextQuestion();
+        setupEventHandlers();
+    }
+
+    @Override
+    protected void setupEventHandlers() {
         btn_submit.setOnAction(event -> handleSubmit(event));
     }
 
-
-    public void UpdateCurrentPlayer(String Theme) {
-        Player player = Player.getCurrentPlayer();
+    @Override
+    protected void updatePlayerBestScore(Player player) {
         if (score > player.getBestMissingLetterScore()) {
             player.setBestMissingLetterScore(score);
         }
-
-        if (longestStreak > player.getStreakCount()) { // Store longest streak
-            player.setStreakCount(longestStreak);
-        }
-
-        switch (Theme) {
-            case "Science":
-                player.setCorrectAnswersScience(player.getCorrectAnswersScience()+correctAnswers);
-                break;
-            case "History":
-                player.setCorrectAnswersHistory(player.getCorrectAnswersHistory()+correctAnswers);
-                break;
-            case "Geography":
-                player.setCorrectAnswersGeography(player.getCorrectAnswersGeography()+correctAnswers);
-                break;
-            case "Sport":
-                player.setCorrectAnswersSport(player.getCorrectAnswersSport()+correctAnswers);
-                break;
-            case "Art":
-                player.setCorrectAnswersArt(player.getCorrectAnswersArt()+correctAnswers);
-                break;
-            case "Java":
-                player.setCorrectAnswersJava(player.getCorrectAnswersJava()+correctAnswers);
-                break;
-            case "Islam":
-                player.setCorrectAnswersIslam(player.getCorrectAnswersIslam()+correctAnswers);
-                break;  
-            default:
-                break;
-        }
-
-        player.setTotalGamesPlayed(player.getTotalGamesPlayed() + 1);
-
     }
-    public String tohide() {
-    char[] chars = question.getAnswer().toCharArray();
+
+    
+    private String hideLetters(String answer) {
+        char[] chars = answer.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             if (i % 2 == 0) {
                 chars[i] = '_';
@@ -115,49 +57,24 @@ public class MissingLetterController {
         return new String(chars);
     }
 
-    public void LoadNextQuestion() {
+    @Override
+    protected void LoadNextQuestion() {
         question = QuestionRepository.getQuestion(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
-        answerLabel.setText(tohide());
-        scoreText.setText("Score: " + score);
-
+        answerLabel.setText(hideLetters(question.getAnswer()));
+        updateScore();
     }
 
     public void handleSubmit(ActionEvent e) {
-        if (question == null) return;
-        if (tf_answer.getText().isEmpty()) return;
+        if (question == null || tf_answer.getText().isEmpty()) return;
 
         if (question.checkAnswer(tf_answer.getText())) {
-            score++;
-            correctAnswers++;
-            streakCount++;
-            if (streakCount > longestStreak) {
-                longestStreak = streakCount;
-            }
-
-            scoreText.setText("Score: " + score);
+            handleCorrectAnswer();
         } else {
-            WrongAnswerStorage.addWrongAnswer(question);
-            pendu.setAttemptsLeft(pendu.getAttemptsLeft() - 1);
-            pendu.drawNextPart();
-            streakCount = 0;
-
-            if (pendu.isGameOver()) {
-                endgame();
-                return;
-            }
+            handleWrongAnswer();
         }
 
         tf_answer.clear();
         LoadNextQuestion();
     }
-
-    public void endgame() {
-        UpdateCurrentPlayer(theme);
-        PlayerRepository.updatePlayer(Player.getCurrentPlayer());
-        QuestionRepository.resetUsedQuestions();
-        SceneManager.showPopup(root, "GameOver.fxml");
-    }
-
-
 }

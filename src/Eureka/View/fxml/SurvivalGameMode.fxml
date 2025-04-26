@@ -21,7 +21,7 @@
       <Button fx:id="btn_submit" layoutX="583.0" layoutY="266.0"
               mnemonicParsing="false" text="Valider" />
 
-      <Label fx:id="scoreLabel" layoutX="433.0" layoutY="28.0"
+      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0"
              prefHeight="42.0" prefWidth="150.0" text="Score : 0" />
 
       <ImageView fitHeight="129.0" fitWidth="54.0" layoutX="87.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">

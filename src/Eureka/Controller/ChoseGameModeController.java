@@ -1,6 +1,6 @@
 package Eureka.Controller;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,7 +9,6 @@ import Eureka.models.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -57,7 +56,6 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                SoundEffects.clickSound.play();
                 GameData.setMode("Basic");
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }

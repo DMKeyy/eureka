@@ -1,12 +1,10 @@
 package Eureka.Controller;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 import Eureka.models.GameData;
-import Eureka.models.SoundEffects;
 import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.PlayerRep.PlayerRepository;
@@ -15,7 +13,6 @@ import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -32,6 +29,7 @@ public class ProgressiveTimeTrialController  {
     Question question;
     int streakCount = 0;
     int longestStreak = 0;
+    int baseTimePerQuestion; 
     int timeRemaining;
     Timer timer;
 
@@ -54,7 +52,8 @@ public class ProgressiveTimeTrialController  {
 
         this.theme = GameData.getTheme();
         this.difficulty = GameData.getDifficulty();
-        this.timeRemaining = STARTING_TIME;
+        this.baseTimePerQuestion = STARTING_TIME; 
+        this.timeRemaining = baseTimePerQuestion;
 
         startTimer();
 
@@ -63,6 +62,7 @@ public class ProgressiveTimeTrialController  {
     }
     
     private void startTimer() {
+        stopTimer();
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -73,12 +73,17 @@ public class ProgressiveTimeTrialController  {
                     timeRemaining--;
                     updateTimerUI();
                 } else {
-                    timer.cancel();
+                    stopTimer();                    
                     endgame();
                 }
             });
             }
         }, 1000, 1000);
+    }
+    private void stopTimer() {
+        if (timer != null) {
+            timer.cancel();
+        }
     }
 
 
@@ -125,33 +130,40 @@ public class ProgressiveTimeTrialController  {
     public void LoadNextQuestion() {
         question = QuestionRepository.getQuestion(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
-        scoreText.setText("Score: " + score);
     }
 
     public void handleSubmit(ActionEvent e) {
         if (question == null || tf_answer.getText().isEmpty()) return;
 
+        stopTimer();
+
         if (question.checkAnswer(tf_answer.getText())) {
             score++;
             correctAnswers++;
             streakCount++;
+            scoreText.setText("Score: " + score);
             longestStreak = Math.max(streakCount, longestStreak);
+            timeRemaining = baseTimePerQuestion;
             
         } else {
             WrongAnswerStorage.addWrongAnswer(question);
             streakCount=0;
-            timeRemaining -= 5;
-            if (timeRemaining <= 0) {
-                timeRemaining = 0;
+            baseTimePerQuestion -= 5;
+            if (baseTimePerQuestion <= 0) {
+                baseTimePerQuestion = 0;
                 updateTimerUI();
-                timer.cancel();
                 endgame();
                 return;
         }
+        timeRemaining = baseTimePerQuestion; 
+        
     }
         updateUI();
         tf_answer.clear();
         LoadNextQuestion();
+
+        timeRemaining = baseTimePerQuestion; 
+        startTimer();
     }
 
     private void updateUI() {

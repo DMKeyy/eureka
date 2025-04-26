@@ -77,10 +77,10 @@ public class ThemeChooserController {
                     SceneManager.changeScene(e, "SurvivalGameMode.fxml");
                     break;
                     case "Local":
-                    SceneManager.changeScene(e, "LocalGameMode.fxml");
+                    SceneManager.changeScene(e, "LocalMultiplayer.fxml");
                     break;
                     case "Timer":
-                    SceneManager.changeScene(e, "TimerGameMode.fxml");
+                    SceneManager.changeScene(e, "TimeTrialGameMode.fxml");
                     break;
                     case "ProgressiveTimeTrial":
                     SceneManager.changeScene(e, "ProgressiveTimeTrialGameMode.fxml");
