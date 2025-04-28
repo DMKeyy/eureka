@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LeaderboardController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LeaderboardController">
    <children>
       <TabPane layoutX="0" layoutY="0" prefHeight="600.0" prefWidth="800.0" styleClass="centered-tab-pane" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -159,6 +159,6 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="btn_back" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Back" />
+      <Button fx:id="btn_back" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Back" onAction="#handleBackButton"/>
    </children>
 </AnchorPane>
