@@ -66,6 +66,7 @@ public class BadgeRepository {
             stmt.setInt(1, player.getPlayerId());
             stmt.setInt(2, badgeId);
             stmt.executeUpdate();
+            System.out.println("Badge assigned to player: " + player.getUsername() + " - Badge ID: " + badgeId);
         } catch (SQLException e) {
             e.printStackTrace();
         }

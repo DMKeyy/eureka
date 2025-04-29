@@ -63,13 +63,13 @@ public class PlayerRepository {
         }
     }
 
-    public static boolean updatePassword(Player player, String newPassword) {
-        String query = "UPDATE player SET password = ? WHERE player_id = ?";
+    public static boolean updatePassword(String username, String newPassword) {
+        String query = "UPDATE player SET password = ? WHERE username = ?";
     
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, newPassword);
-            stmt.setInt(2, player.getPlayerId());
+            stmt.setString(2, username);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

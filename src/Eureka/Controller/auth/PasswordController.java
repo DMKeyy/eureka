@@ -27,14 +27,14 @@ public class PasswordController {
         SoundEffects.addSound(btn_cancel);
 
         
-        btn_confirm.setOnAction(_ -> {
+        btn_confirm.setOnAction(e -> {
             Player player = Player.getCurrentPlayer();
             if (player == null) return;
 
             String newPassword = passwordField.getText().trim();
 
             if (!newPassword.isEmpty()) {
-                boolean success = PlayerRepository.updatePassword(player, newPassword);
+                boolean success = PlayerRepository.updatePassword(player.getUsername(), newPassword);
 
                 if (success) {
                     player.setPassword(newPassword); 
@@ -44,7 +44,7 @@ public class PasswordController {
                     }
 
                 
-                    closeOverlay();
+                    SceneManager.changeScene(e, "Profile.fxml");
                 } else {
                     SceneManager.showAlert(Alert.AlertType.ERROR, "Error: Could not update password in database.");
                 }
@@ -53,13 +53,9 @@ public class PasswordController {
             }
         });
 
-        btn_cancel.setOnAction(_ -> closeOverlay());
+        btn_cancel.setOnAction(e -> SceneManager.changeScene(e, "Profile.fxml"));
     }
 
-
-    private void closeOverlay() {
-        ((AnchorPane) passwordPane.getParent()).getChildren().remove(passwordPane);
-    }
 
 
     public void setProfileController(ProfileController controller) {

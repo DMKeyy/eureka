@@ -48,7 +48,7 @@ public class UsernameController {
                     profileController.updateUsernameLabel();
                 }
 
-                closeOverlay();
+                SceneManager.changeScene(e, "Profile.fxml");
                 } else {
                 SceneManager.showAlert(Alert.AlertType.ERROR, "❌ Couldn't update username.");
                 }
@@ -61,12 +61,8 @@ public class UsernameController {
         btn_cancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-            closeOverlay();
+                SceneManager.changeScene(e, "Profile.fxml");
             }
         });
-    }
-
-    private void closeOverlay() {
-        ((AnchorPane) usernamePane.getParent()).getChildren().remove(usernamePane);
     }
 }

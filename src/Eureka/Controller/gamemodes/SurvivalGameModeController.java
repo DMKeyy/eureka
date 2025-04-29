@@ -3,6 +3,7 @@ package Eureka.Controller.gamemodes;
 import Eureka.Controller.core.GameMode;
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
+import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.QuestionRepository;
 
@@ -78,6 +79,7 @@ public class SurvivalGameModeController extends GameMode {
             tf_answer.clear();
             LoadNextQuestion();
         } else {
+            WrongAnswerStorage.addWrongAnswer(question);
             pendu.drawFull();
             endgame();
         }
