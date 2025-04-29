@@ -10,6 +10,7 @@ import Eureka.models.BadgeRep.Badge;
 public class Player {
     private static Player currentPlayer;
     
+    private int player_id;
     private String username;
     private String password;
     private LocalDate registrationDate;
@@ -64,7 +65,8 @@ public class Player {
     
     
     
-    public Player(String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,  int bestProgressiveTimeTrialScore, int MissingLetterScore, int BestMcqScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
+    public Player(int player_id, String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,  int bestProgressiveTimeTrialScore, int MissingLetterScore, int BestMcqScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
+        this.player_id = player_id;
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -87,6 +89,14 @@ public class Player {
         this.correctAnswersIslam = correctAnswersIslam;
         this.badgeCount = badgeCount;
 
+    }
+
+    public int getPlayerId() {
+        return player_id;
+    }
+
+    public void setPlayerId(int player_id) {
+        this.player_id = player_id;
     }
 
     public static Player getCurrentPlayer() {

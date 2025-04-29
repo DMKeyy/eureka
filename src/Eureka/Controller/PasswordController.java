@@ -32,7 +32,7 @@ public class PasswordController {
             String newPassword = passwordField.getText().trim();
 
             if (!newPassword.isEmpty()) {
-                boolean success = PlayerRepository.updatePassword(player.getUsername(), newPassword);
+                boolean success = PlayerRepository.updatePassword(player, newPassword);
 
                 if (success) {
                     player.setPassword(newPassword); 

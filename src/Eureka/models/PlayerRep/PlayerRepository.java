@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import Eureka.models.DatabaseService;
+import Eureka.models.BadgeRep.BadgeRepository;
 
 public class PlayerRepository {
     
@@ -62,13 +63,13 @@ public class PlayerRepository {
         }
     }
 
-    public static boolean updatePassword(String username, String newPassword) {
-        String query = "UPDATE player SET password = ? WHERE username = ?";
+    public static boolean updatePassword(Player player, String newPassword) {
+        String query = "UPDATE player SET password = ? WHERE player_id = ?";
     
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, newPassword);
-            stmt.setString(2, username);
+            stmt.setInt(2, player.getPlayerId());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,13 +77,13 @@ public class PlayerRepository {
         }
     }
 
-    public static boolean updateUsername(String oldUsername, String newUsername) {
-        String query = "UPDATE player SET username = ? WHERE username = ?";
+    public static boolean updateUsername(Player player, String newUsername) {
+        String query = "UPDATE player SET username = ? WHERE player_id = ?";
     
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, newUsername);
-            stmt.setString(2, oldUsername);
+            stmt.setInt(2, player.getPlayerId());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,7 +108,7 @@ public class PlayerRepository {
                         "correct_answers_java = ?, " +
                         "correct_answers_sport = ?, " +
                         "total_game_played = ? " +
-                        "WHERE username = ?";
+                        "WHERE player_id = ?";
     
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -127,7 +128,7 @@ public class PlayerRepository {
             pstmt.setInt(13, player.getCorrectAnswersJava());
             pstmt.setInt(14, player.getCorrectAnswersSport());
             pstmt.setInt(15, player.getTotalGamesPlayed());
-            pstmt.setString(16, player.getUsername());
+            pstmt.setInt(16, player.getPlayerId());
     
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -136,6 +137,7 @@ public class PlayerRepository {
     }
 
     private static Player loadPlayerData(ResultSet rs) throws SQLException {
+        int playerId = rs.getInt("player_id");
         LocalDate registrationTime = rs.getDate("Registration_time").toLocalDate();
         int bestScore = rs.getInt("Best_score");
         int BestSurvivalScore = rs.getInt("Best_survival_score");
@@ -154,29 +156,8 @@ public class PlayerRepository {
         int correctAnswersIslam = rs.getInt("Correct_answers_islam");
         int correctAnswersJava = rs.getInt("Correct_answers_java");
         int correctAnswersSport = rs.getInt("Correct_answers_sport");
-        int badgeCount = rs.getInt("BadgeCount");
+        int badgeCount = BadgeRepository.getPlayerBadges(playerId).size();
 
-        return new Player(rs.getString("Username"), 
-                      rs.getString("Password"), 
-                      registrationTime,
-                      0, 
-                      dailyChallengesCompleted, 
-                      bestScore, 
-                      BestSurvivalScore,
-                      bestTimeTrialScore, 
-                      bestProgressiveTimeTrialScore,
-                      bestMissingLetterScore,
-                      bestMcqScore,
-                      totalGamesPlayed, 
-                      streakCount, 
-                      longestCompetitionTime, 
-                      correctAnswersScience, 
-                      correctAnswersHistory, 
-                      correctAnswersGeography, 
-                      correctAnswersSport,
-                      correctAnswersArt, 
-                      correctAnswersJava, 
-                      correctAnswersIslam, 
-                      badgeCount);
+        return new Player(playerId, rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore, bestProgressiveTimeTrialScore,bestMissingLetterScore,bestMcqScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam, badgeCount);
     }
 }

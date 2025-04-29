@@ -41,11 +41,11 @@ public class BadgeRepository {
     }
 
     public static boolean playerHasBadge(Player player, Badge badge) {
-        String query = "SELECT * FROM player_badges WHERE Username = ? AND ID_badge = ?";
+        String query = "SELECT * FROM player_badges WHERE player_id = ? AND ID_badge = ?";
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, player.getUsername());
+            stmt.setInt(1, player.getPlayerId());
             stmt.setInt(2, badge.getBadge_id());
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -58,12 +58,12 @@ public class BadgeRepository {
     }
 
     public static void assignBadgeToPlayer(Player player, int badgeId) {
-        String query = "INSERT IGNORE INTO player_badges (Username, ID_badge) VALUES (?, ?)";
+        String query = "INSERT IGNORE INTO player_badges (player_id, ID_badge) VALUES (?, ?)";
 
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, player.getUsername());
+            stmt.setInt(1, player.getPlayerId());
             stmt.setInt(2, badgeId);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -71,16 +71,16 @@ public class BadgeRepository {
         }
     }
 
-    public static List<Badge> getPlayerBadges(String username) {
+    public static List<Badge> getPlayerBadges(int playerId) {
         List<Badge> badges = new ArrayList<>();
         String query = "SELECT b.* FROM badges b " +
                     "JOIN player_badges pb ON b.ID_badge = pb.ID_badge " +
-                    "WHERE pb.Username = ?";
+                    "WHERE pb.player_id = ?";
 
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, username);
+            stmt.setInt(1, playerId);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -98,18 +98,5 @@ public class BadgeRepository {
             e.printStackTrace();
         }
         return badges;
-    }
-
-    public static void updateBadgeCount(String username, int count) {
-        String query = "UPDATE player SET BadgeCount = ? WHERE Username = ?";
-        try (Connection conn = DatabaseService.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setInt(1, count);
-            stmt.setString(2, username);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

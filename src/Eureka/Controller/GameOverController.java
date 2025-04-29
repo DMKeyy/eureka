@@ -81,9 +81,8 @@ public class GameOverController {
         }
 
         if (!earned.isEmpty()) {
-            int updatedCount = BadgeRepository.getPlayerBadges(player.getUsername()).size();
+            int updatedCount = BadgeRepository.getPlayerBadges(player.getPlayerId()).size();
             player.setBadgeCount(updatedCount);
-            BadgeRepository.updateBadgeCount(player.getUsername(), updatedCount);
         }
 
         return earned;

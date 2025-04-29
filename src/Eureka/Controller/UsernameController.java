@@ -38,7 +38,7 @@ public class UsernameController {
             public void handle(ActionEvent e) {
             String newUsername = usernameField.getText().trim();
             if (!newUsername.isEmpty()) {
-                boolean success = PlayerRepository.updateUsername(player.getUsername(), newUsername);
+                boolean success = PlayerRepository.updateUsername(player, newUsername);
                 if (success) {
                 player.setUsername(newUsername);
 

@@ -22,7 +22,7 @@ public class BadgeController {
     public void initialize() {
         SoundEffects.addSound(btn_back);
         Player player = Player.getCurrentPlayer();
-        List<Badge> badges = BadgeRepository.getPlayerBadges(player.getUsername());
+        List<Badge> badges = BadgeRepository.getPlayerBadges(player.getPlayerId());
 
         btn_back.setOnAction(e -> {
             SceneManager.changeScene(e, "Profile.fxml");
@@ -54,9 +54,8 @@ public class BadgeController {
         }
     
         if (newBadgeAssigned) {
-            int updatedCount = BadgeRepository.getPlayerBadges(player.getUsername()).size();
+            int updatedCount = BadgeRepository.getPlayerBadges(player.getPlayerId()).size();
             player.setBadgeCount(updatedCount);
-            BadgeRepository.updateBadgeCount(player.getUsername(), updatedCount);
         }
     }
 

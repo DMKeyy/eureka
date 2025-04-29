@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.Player;
 import Eureka.models.PlayerRep.PlayerRepository;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -96,7 +97,7 @@ public class ResetPasswordController implements Initializable {
                     return;
                 }
 
-                if (PlayerRepository.updatePassword(username, password)) {
+                if (PlayerRepository.updatePassword(Player.getCurrentPlayer(), password)) {
                     txt_result.setText("Password reset successfully!");
                     btn_tologin.setVisible(true);
                     btn_resetpassword.setVisible(false);

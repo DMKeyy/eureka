@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 import Eureka.models.SoundEffects;
+import Eureka.models.BadgeRep.BadgeRepository;
 import Eureka.models.PlayerRep.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +60,7 @@ public class ProfileController {
             lbl_date_value.setText(String.valueOf(player.getRegistrationDate()));
             lbl_bestscore_value.setText(String.valueOf(player.getBestScore()));
             lbl_totalGames_value.setText(String.valueOf(player.getTotalGamesPlayed()));
-            lbl_badgeCount.setText(String.valueOf(player.getBadgeCount()));
+            lbl_badgeCount.setText(BadgeRepository.getPlayerBadges(player.getPlayerId()).size() + "");
 
         }
 
