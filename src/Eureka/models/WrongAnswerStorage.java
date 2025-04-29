@@ -7,7 +7,7 @@ import Eureka.models.QuestionRep.Question;
 
 public class WrongAnswerStorage {
 
-     private static final List<Question> wrongAnswers = new ArrayList<>();
+    public static final List<Question> wrongAnswers = new ArrayList<>();
 
     public static void addWrongAnswer(Question question) {
         if (!wrongAnswers.contains(question)) {

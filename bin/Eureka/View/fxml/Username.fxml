@@ -6,11 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="usernamePane" prefHeight="221.0" prefWidth="455.0"
-            style="-fx-background-color: rgba(0,0,0,0.6); -fx-background-radius: 10; -fx-border-color: #e6b800; -fx-border-radius: 10; -fx-border-width: 2;"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Eureka.Controller.UsernameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: transparent;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.auth.UsernameController">
 
    <children>
       <!-- Image de fond stylisée -->

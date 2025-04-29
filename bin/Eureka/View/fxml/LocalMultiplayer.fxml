@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" stylesheets="@../styles/SignUp.css" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LocalMultiplayerController">
+<AnchorPane fx:id="root" stylesheets="@../styles/SignUp.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.LocalMultiplayerController">
    <children>
       <!-- Label pour le tour du joueur -->
       <Label fx:id="currentPlayerLabel" layoutX="396.0" layoutY="66.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Tour du joueur" />

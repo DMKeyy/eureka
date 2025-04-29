@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="906.0" stylesheets="@../styles/leaderboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LeaderboardController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="906.0" stylesheets="@../styles/leaderboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.LeaderBoards.LeaderboardController">
    <children>
       <TabPane layoutX="-2.0" prefHeight="500.0" prefWidth="906.0" styleClass="centered-tab-pane" tabClosingPolicy="UNAVAILABLE">
         <tabs>

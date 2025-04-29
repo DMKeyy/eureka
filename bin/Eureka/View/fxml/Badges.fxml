@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="badgePane" prefHeight="332.0" prefWidth="662.0" style="-fx-background-color: transparent; -fx-padding: 20px;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.BadgeController">
+<AnchorPane id="badgePane" prefHeight="332.0" prefWidth="662.0" style="-fx-background-color: transparent; -fx-padding: 20px;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.BadgeController">
    <children>
       <ImageView fitHeight="300.0" fitWidth="648.0" layoutX="1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
