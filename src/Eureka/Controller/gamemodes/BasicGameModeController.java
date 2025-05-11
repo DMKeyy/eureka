@@ -1,7 +1,6 @@
 package Eureka.Controller.gamemodes;
 
 import Eureka.Controller.core.GameMode;
-import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,13 +13,6 @@ public class BasicGameModeController extends GameMode {
     @Override
     protected void setupEventHandlers() {
         btn_submit.setOnAction(event -> handleSubmit(event));
-    }
-
-    @Override
-    protected void updatePlayerBestScore(Player player) {
-        if (score > player.getBestScore()) {
-            player.setBestScore(score);
-        }
     }
 
     @Override

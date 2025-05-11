@@ -1,11 +1,12 @@
 package Eureka.models.PlayerRep;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import Eureka.models.BadgeRep.Badge;
+import Eureka.models.GameModeRep.GameMode;
+import Eureka.models.ThemeRep.Theme;
 
 public class Player {
     private static Player currentPlayer;
@@ -15,18 +16,16 @@ public class Player {
     private String password;
     private LocalDate registrationDate;
     private int score; // score 
-    private int dailyChallengesCompleted; // nbr de defis quotidiens terminés
     private int BestScore;
     private int BestSurvivalScore;
     private int BestTimeTrialScore;
     private int BestProgressiveTimeTrialScore;
     private int BestMissingLetterScore;
     private int BestMcqScore;
-    private int totalGamesPlayed; // nbr total de parties jouées
-    private List<Badge> badges; // liste des badges obtenus
-    private int streakCount; // nbr de reponses consecutives correctes
-    private LocalTime longestCompletionTime; // temps le plus long pour terminer un défi
-    private int correctAnswersScience; // compteur de réponses correctes pour le thème Science
+    private int totalGamesPlayed;
+    private List<Badge> badges;
+    private int streakCount;
+    private int correctAnswersScience;
     private int correctAnswersHistory; 
     private int correctAnswersGeography; 
     private int correctAnswersSport;
@@ -36,6 +35,7 @@ public class Player {
     private int badgeCount;
 
     public Player(String username, String password, LocalDate registrationDate) {
+        this.player_id = -1; // Will be updated after database insert
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -48,10 +48,8 @@ public class Player {
         this.BestMissingLetterScore = 0;
         this.BestMcqScore = 0;
         this.badgeCount = 0;
-        this.dailyChallengesCompleted = 0;
         this.totalGamesPlayed = 0;
         this.streakCount = 0;
-        this.longestCompletionTime = LocalTime.of(0, 0, 0);
         this.correctAnswersScience = 0;
         this.correctAnswersHistory = 0;
         this.correctAnswersGeography = 0;
@@ -59,19 +57,17 @@ public class Player {
         this.correctAnswersArt = 0;
         this.correctAnswersJava = 0;
         this.correctAnswersIslam = 0;
-
     }
 
     
     
     
-    public Player(int player_id, String username, String password, LocalDate registrationDate, int score, int dailyChallengesCompleted, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,  int bestProgressiveTimeTrialScore, int MissingLetterScore, int BestMcqScore, int totalGamesPlayed, int streakCount, LocalTime longestCompletionTime, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
+    public Player(int player_id, String username, String password, LocalDate registrationDate, int score, int bestScore, int BestSurvivalScore, int bestTimeTrialScore,  int bestProgressiveTimeTrialScore, int MissingLetterScore, int BestMcqScore, int totalGamesPlayed, int streakCount, int correctAnswersScience, int correctAnswersHistory, int correctAnswersGeography, int correctAnswersSport, int correctAnswersArt, int correctAnswersJava, int correctAnswersIslam, int badgeCount) {
         this.player_id = player_id;
         this.username = username;
         this.password = password;
         this.registrationDate = registrationDate;
         this.score = score;
-        this.dailyChallengesCompleted = dailyChallengesCompleted;
         BestScore = bestScore;
         this.BestSurvivalScore = BestSurvivalScore;
         this.BestTimeTrialScore = bestTimeTrialScore;
@@ -79,7 +75,6 @@ public class Player {
         this.BestMissingLetterScore = MissingLetterScore;
         this.totalGamesPlayed = totalGamesPlayed;
         this.streakCount = streakCount;
-        this.longestCompletionTime = longestCompletionTime;
         this.correctAnswersScience = correctAnswersScience;
         this.correctAnswersHistory = correctAnswersHistory;
         this.correctAnswersGeography = correctAnswersGeography;
@@ -90,6 +85,35 @@ public class Player {
         this.badgeCount = badgeCount;
 
     }
+
+    public Player(int playerId, String username, String password, LocalDate registrationTime, int totalGamesPlayed, int streakCount, int badgeCount2) {
+       player_id = playerId;
+        this.username = username;
+        this.password = password;
+        this.registrationDate = registrationTime;
+        this.totalGamesPlayed = totalGamesPlayed;
+        this.streakCount = streakCount;
+        this.badgeCount = badgeCount2;
+        this.score = 0;
+        this.badges = new ArrayList<>();
+        this.BestScore = 0;
+        this.BestSurvivalScore = 0;
+        this.BestTimeTrialScore = 0;
+        this.BestProgressiveTimeTrialScore = 0;
+        this.BestMissingLetterScore = 0;
+        this.BestMcqScore = 0;
+        this.badgeCount = 0;
+        this.totalGamesPlayed = 0;
+        this.streakCount = 0;
+        this.correctAnswersScience = 0;
+        this.correctAnswersHistory = 0;
+        this.correctAnswersGeography = 0;
+        this.correctAnswersSport = 0;
+        this.correctAnswersArt = 0;
+        this.correctAnswersJava = 0;
+        this.correctAnswersIslam = 0;
+    }
+
 
     public int getPlayerId() {
         return player_id;
@@ -142,13 +166,6 @@ public class Player {
         this.score += points; 
     }
 
-    public int getDailyChallengesCompleted() { 
-        return dailyChallengesCompleted; 
-    }
-
-    public void completeDailyChallenge() { 
-        this.dailyChallengesCompleted++; 
-    }
 
     public int getTotalGamesPlayed() { 
         return totalGamesPlayed; 
@@ -176,10 +193,6 @@ public class Player {
 
     public void resetStreak() { 
         this.streakCount = 0; 
-    }
-
-    public LocalTime getLongestCompletionTime() { 
-        return longestCompletionTime; 
     }
 
     public int getCorrectAnswersScience() { 
@@ -221,10 +234,6 @@ public class Player {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
-    }
-
-    public void setDailyChallengesCompleted(int dailyChallengesCompleted) {
-        this.dailyChallengesCompleted = dailyChallengesCompleted;
     }
 
     public void setBadges(List<Badge> badges) {
@@ -308,4 +317,84 @@ public class Player {
     public void setBadgeCount(int badgeCount) {
         this.badgeCount = badgeCount;
     }
+
+
+    public void addScore(GameMode mode, int score) {
+
+        switch (mode.getName()) {
+            case "Survival":
+                this.BestSurvivalScore = score;
+                break;
+            case "TimeTrial":
+                this.BestTimeTrialScore = score;
+                break;
+            case "ProgressiveTimeTrial":
+                this.BestProgressiveTimeTrialScore = score;
+                break;
+            case "MissingLetters":
+                this.BestMissingLetterScore = score;
+                break;
+            case "Mcq":
+                this.BestMcqScore = score;
+                break;
+            case "Basic":
+                this.BestScore = score;
+                break;
+            default:
+                System.out.println("Unknown game mode: " + mode.getName());
+                break;
+        }
+    }
+
+
+
+
+    public void addThemeStats(Theme theme, int correctAnswers) {
+        switch (theme.getName()) {
+            case "Science":
+                this.correctAnswersScience += correctAnswers;
+                break;
+            case "History":
+                this.correctAnswersHistory += correctAnswers;
+                break;
+            case "Geography":
+                this.correctAnswersGeography += correctAnswers;
+                break;
+            case "Sport":
+                this.correctAnswersSport += correctAnswers;
+                break;
+            case "Art":
+                this.correctAnswersArt += correctAnswers;
+                break;
+            case "Java":
+                this.correctAnswersJava += correctAnswers;
+                break;
+            case "Islam":
+                this.correctAnswersIslam += correctAnswers;
+                break;
+            default:
+                System.out.println("Unknown theme: " + theme.getName());
+                break;
+        }
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "Player [player_id=" + player_id + ", username=" + username + ", password=" + password
+                + ", registrationDate=" + registrationDate + ", score=" + score + ", BestScore=" + BestScore
+                + ", BestSurvivalScore=" + BestSurvivalScore + ", BestTimeTrialScore=" + BestTimeTrialScore
+                + ", BestProgressiveTimeTrialScore=" + BestProgressiveTimeTrialScore + ", BestMissingLetterScore="
+                + BestMissingLetterScore + ", BestMcqScore=" + BestMcqScore + ", totalGamesPlayed=" + totalGamesPlayed
+                + ", badges=" + badges + ", streakCount=" + streakCount + ", correctAnswersScience="
+                + correctAnswersScience + ", correctAnswersHistory=" + correctAnswersHistory
+                + ", correctAnswersGeography=" + correctAnswersGeography + ", correctAnswersSport="
+                + correctAnswersSport + ", correctAnswersArt=" + correctAnswersArt + ", correctAnswersJava="
+                + correctAnswersJava + ", correctAnswersIslam=" + correctAnswersIslam + ", badgeCount=" + badgeCount
+                + "]";
+    }
+
+    
 }

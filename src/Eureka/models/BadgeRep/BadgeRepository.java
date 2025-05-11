@@ -22,12 +22,12 @@ public class BadgeRepository {
             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                int id = rs.getInt("ID_badge");
-                String name = rs.getString("Name");
-                String description = rs.getString("Description");
-                int required = rs.getInt("Required_correct_answers");
-                String theme = rs.getString("Theme");
-                String rarityString = rs.getString("Rarity"); 
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                int required = rs.getInt("required_correct_answers");
+                String theme = rs.getString("theme");
+                String rarityString = rs.getString("rarity"); 
                 Badge.BadgeRarity rarity = Badge.BadgeRarity.valueOf(rarityString.toUpperCase(Locale.ROOT));
                 
                 Badge badge = new Badge(name, description, required, theme, rarity);
@@ -41,7 +41,7 @@ public class BadgeRepository {
     }
 
     public static boolean playerHasBadge(Player player, Badge badge) {
-        String query = "SELECT * FROM player_badges WHERE player_id = ? AND ID_badge = ?";
+        String query = "SELECT * FROM player_badges WHERE player_id = ? AND badge_id = ?";
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -58,7 +58,7 @@ public class BadgeRepository {
     }
 
     public static void assignBadgeToPlayer(Player player, int badgeId) {
-        String query = "INSERT IGNORE INTO player_badges (player_id, ID_badge) VALUES (?, ?)";
+        String query = "INSERT IGNORE INTO player_badges (player_id, badge_id) VALUES (?, ?)";
 
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -73,10 +73,8 @@ public class BadgeRepository {
     }
 
     public static List<Badge> getPlayerBadges(int playerId) {
-        List<Badge> badges = new ArrayList<>();
-        String query = "SELECT b.* FROM badges b " +
-                    "JOIN player_badges pb ON b.ID_badge = pb.ID_badge " +
-                    "WHERE pb.player_id = ?";
+        List<Badge> badges = new ArrayList<>(); 
+        String query = "SELECT b.* FROM badges b JOIN player_badges pb ON b.id = pb.badge_id WHERE pb.player_id = ?";
 
         try (Connection conn = DatabaseService.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -86,13 +84,13 @@ public class BadgeRepository {
 
             while (rs.next()) {
                 Badge badge = new Badge(
-                    rs.getString("Name"),
-                    rs.getString("Description"),
-                    rs.getInt("Required_correct_answers"),
-                    rs.getString("Theme"),
-                    Badge.BadgeRarity.valueOf(rs.getString("Rarity").toUpperCase())
+                    rs.getString("name"),
+                    rs.getString("description"),
+                    rs.getInt("required_correct_answers"),
+                    rs.getString("theme"),
+                    Badge.BadgeRarity.valueOf(rs.getString("rarity").toUpperCase())
                 );
-                badge.setBadge_id(rs.getInt("ID_badge"));
+                badge.setBadge_id(rs.getInt("id"));
                 badges.add(badge);
             }
         } catch (SQLException e) {

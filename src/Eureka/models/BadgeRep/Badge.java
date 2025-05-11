@@ -1,9 +1,14 @@
 package Eureka.models.BadgeRep;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Eureka.models.PlayerRep.Player;
+
 public class Badge {
     int badge_id;
-    String name; // nom du badge
-    String description; // description du badge
+    String name;
+    String description;
     int requiredAchievements;
     String theme;
     public enum BadgeRarity {
@@ -12,7 +17,7 @@ public class Badge {
         EPIC,
         LEGENDARY
     }
-    BadgeRarity rarity;   //la rareté du badge wsh le copilot yi9dar yidri tanik les commentaite haha haha daro wa7do hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh 
+    BadgeRarity rarity;
 
 
     public Badge(String name, String description, int requiredAchievements, String theme, BadgeRarity rarity) {
@@ -87,6 +92,53 @@ public class Badge {
     @Override
     public String toString() {
         return String.format("Badge[%d] %s (%s)", badge_id, name, rarity);
+    }
+
+    public static boolean meetsCriteria(Player player, Badge badge) {
+        String theme = badge.getTheme().toLowerCase();
+        int required = badge.getRequiredAchievements();
+
+        return switch (theme) {
+            case "science" -> player.getCorrectAnswersScience() >= required;
+            case "history" -> player.getCorrectAnswersHistory() >= required;
+            case "geography" -> player.getCorrectAnswersGeography() >= required;
+            case "art" -> player.getCorrectAnswersArt() >= required;
+            case "islam" -> player.getCorrectAnswersIslam() >= required;
+            case "java" -> player.getCorrectAnswersJava() >= required;
+            case "sport" -> player.getCorrectAnswersSport() >= required;
+            case "all" -> player.getTotalGamesPlayed() >= required; // badge global
+            case "survival" -> player.getBestSurvivalScore() >= required;
+            case "veteran" -> {
+            // Joue depuis X jours ?
+            long days = java.time.temporal.ChronoUnit.DAYS.between(
+                    player.getRegistrationDate(), java.time.LocalDate.now());
+            yield days >= required;
+        }
+
+        default -> false;
+    };
+    }
+
+    public static List<Badge> checkAndAssignBadges(Player player) {
+        List<Badge> allBadges = BadgeRepository.getAllBadges();
+        List<Badge> earned = new ArrayList<>(); 
+
+        for (Badge badge : allBadges) {
+            boolean alreadyHas = BadgeRepository.playerHasBadge(player, badge);
+
+            if (!alreadyHas && meetsCriteria(player, badge)) {
+                BadgeRepository.assignBadgeToPlayer(player, badge.getBadge_id());
+                System.out.println("🎖 Badge attribué : " + badge.getName());
+                earned.add(badge); 
+            }
+        }
+
+        if (!earned.isEmpty()) {
+            int updatedCount = BadgeRepository.getPlayerBadges(player.getPlayerId()).size();
+            player.setBadgeCount(updatedCount);
+        }
+
+        return earned;
     }
 
     

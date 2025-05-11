@@ -2,6 +2,7 @@ package Eureka.Controller.LeaderBoards;
 
 import Eureka.Controller.ui.SceneManager;
 import Eureka.models.SoundEffects;
+import Eureka.models.LeaderBoardRep.ScoreEntry;
 import Eureka.models.PlayerRep.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,34 +24,23 @@ public class AllScoresController {
     @FXML
     private Button btn_back;
 
-    // Classe interne représentant un score par mode
-    public static class ScoreEntry {
-        private String mode;
-        private int score;
-
-        public ScoreEntry(String mode, int score) {
-            this.mode = mode;
-            this.score = score;
-        }
-        public String getMode() { return mode; }
-        public int getScore() { return score; }
-    }
 
     @FXML
     public void initialize() {
         SoundEffects.addSound(btn_back);
         Player player = Player.getCurrentPlayer();
 
-        // Configurer la table
         colMode.setCellValueFactory(new PropertyValueFactory<>("mode"));
         colScore.setCellValueFactory(new PropertyValueFactory<>("score"));
 
-        // Créer la liste des scores par mode
         ObservableList<ScoreEntry> data = FXCollections.observableArrayList(
-            new ScoreEntry("Basic/Normal",   player.getBestScore()),          // bestScore
-            new ScoreEntry("Survival",       player.getBestSurvivalScore()), // bestSurvivalScore
-            new ScoreEntry("TimeTrial",      player.getBestTimeTrialScore()) // bestTimeTrialScore
-            // tu peux ajouter d'autres modes si tu en as
+            new ScoreEntry("Basic",   player.getBestScore()),
+            new ScoreEntry("Survival",       player.getBestSurvivalScore()),
+            new ScoreEntry("TimeTrial",      player.getBestTimeTrialScore()),
+            new ScoreEntry("Progressive Time Trial",    player.getBestProgressiveTimeTrialScore()),
+            new ScoreEntry("Mcq", player.getBestMcqScore()),
+            new ScoreEntry("Missing Letters", player.getBestMissingLetterScore())
+            
         );
 
         tableScores.setItems(data);

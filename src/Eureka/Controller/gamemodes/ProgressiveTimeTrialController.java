@@ -3,14 +3,15 @@ package Eureka.Controller.gamemodes;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Eureka.Controller.core.GameMode;
+
 import Eureka.Controller.ui.SceneManager;
 import Eureka.models.GameData;
-import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.PlayerRep.PlayerRepository;
 import Eureka.models.QuestionRep.Question;
 import Eureka.models.QuestionRep.QuestionRepository;
+import Eureka.models.QuestionRep.WrongAnswerRepository;
+import Eureka.models.ThemeRep.Theme;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 public class ProgressiveTimeTrialController {
     private static int STARTING_TIME = 30;
 
-    String theme;
+    Theme theme;
     int difficulty;
     int score;
     int correctAnswers;
@@ -91,7 +92,7 @@ public class ProgressiveTimeTrialController {
         }
     }
 
-    public void UpdateCurrentPlayer(String Theme) {
+    public void UpdateCurrentPlayer(Theme Theme) {
         Player player = Player.getCurrentPlayer();
         if (score > player.getBestProgressiveTimeTrialScore()) {
             player.setBestProgressiveTimeTrialScore(score);
@@ -101,7 +102,7 @@ public class ProgressiveTimeTrialController {
             player.setStreakCount(longestStreak);
         }
 
-        switch (Theme) {
+        switch (Theme.getName()) {
             case "Science":
                 player.setCorrectAnswersScience(player.getCorrectAnswersScience() + correctAnswers);
                 break;
@@ -151,7 +152,7 @@ public class ProgressiveTimeTrialController {
             timeRemaining = baseTimePerQuestion;
 
         } else {
-            WrongAnswerStorage.addWrongAnswer(question);
+            WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), question.getQuestion_id());
             streakCount = 0;
             baseTimePerQuestion -= 5;
             if (baseTimePerQuestion <= 0) {

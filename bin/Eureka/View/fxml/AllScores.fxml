@@ -17,8 +17,8 @@
       </ImageView>
       <TableView id="goldTable" fx:id="tableScores" layoutX="89.0" layoutY="101.0" prefHeight="202.0" prefWidth="289.0" stylesheets="@../styles/menu.css">
          <columns>
-            <TableColumn id="goldTable" fx:id="colMode" prefWidth="142.0" text="Mode" />
-            <TableColumn id="goldTable" fx:id="colScore" prefWidth="145.0" text="Score" />
+            <TableColumn id="goldTable" fx:id="colMode" prefWidth="142.0" sortable="false" text="Mode" />
+            <TableColumn id="goldTable" fx:id="colScore" prefWidth="145.0" sortable="false" text="Score" />
          </columns>
       </TableView>
       <Button fx:id="btn_back" layoutX="373.0" layoutY="46.0" prefHeight="75.0" prefWidth="87.0" style="-fx-background-color: transparent;" styleClass="menu-btn" text="Back" />

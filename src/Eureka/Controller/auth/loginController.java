@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.SQLException;
 
-import Eureka.models.*;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.PlayerRep.PlayerRepository;
 import Eureka.Controller.ui.SceneManager;

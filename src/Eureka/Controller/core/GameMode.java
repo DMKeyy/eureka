@@ -3,11 +3,14 @@ package Eureka.Controller.core;
 import java.util.List;
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.WrongAnswerStorage;
+import Eureka.models.LeaderBoardRep.ScoreRepository;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.PlayerRep.PlayerRepository;
 import Eureka.models.QuestionRep.Question;
 import Eureka.models.QuestionRep.QuestionRepository;
+import Eureka.models.QuestionRep.WrongAnswerRepository;
+import Eureka.models.ThemeRep.Theme;
+import Eureka.models.ThemeRep.ThemeRepository;
 import Eureka.Controller.ui.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public abstract class GameMode {
-    protected String theme;
+    protected Theme theme;
     protected int difficulty;
     protected int score;
     protected int correctAnswers;
@@ -60,47 +63,19 @@ public abstract class GameMode {
 
     protected abstract void setupEventHandlers();
 
-    public void UpdateCurrentPlayer(String Theme) {
+    public void UpdateCurrentPlayer(Theme Theme) {
         Player player = Player.getCurrentPlayer();
-        updatePlayerBestScore(player);
 
         if (longestStreak > player.getStreakCount()) {
             player.setStreakCount(longestStreak);
         }
-
-        updateThemeStats(player, Theme);
         player.setTotalGamesPlayed(player.getTotalGamesPlayed() + 1);
-    }
 
-    protected abstract void updatePlayerBestScore(Player player);
-
-    protected void updateThemeStats(Player player, String Theme) {
-        switch (Theme) {
-            case "Science":
-                player.setCorrectAnswersScience(player.getCorrectAnswersScience() + correctAnswers);
-                break;
-            case "History":
-                player.setCorrectAnswersHistory(player.getCorrectAnswersHistory() + correctAnswers);
-                break;
-            case "Geography":
-                player.setCorrectAnswersGeography(player.getCorrectAnswersGeography() + correctAnswers);
-                break;
-            case "Sport":
-                player.setCorrectAnswersSport(player.getCorrectAnswersSport() + correctAnswers);
-                break;
-            case "Art":
-                player.setCorrectAnswersArt(player.getCorrectAnswersArt() + correctAnswers);
-                break;
-            case "Java":
-                player.setCorrectAnswersJava(player.getCorrectAnswersJava() + correctAnswers);
-                break;
-            case "Islam":
-                player.setCorrectAnswersIslam(player.getCorrectAnswersIslam() + correctAnswers);
-                break;
-            default:
-                break;
-        }
+        PlayerRepository.updatePlayer(player);
+        ThemeRepository.updateThemeStats(player, Theme, correctAnswers);
+        ScoreRepository.updateScore(player, GameData.getMode(), score);
     }
+    
 
     protected abstract void LoadNextQuestion();
 
@@ -115,7 +90,7 @@ public abstract class GameMode {
     }
 
     protected void handleWrongAnswer() {
-        WrongAnswerStorage.addWrongAnswer(question);
+        WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), question.getQuestion_id());
         pendu.setAttemptsLeft(pendu.getAttemptsLeft() - 1);
         pendu.drawNextPart();
         streakCount = 0;

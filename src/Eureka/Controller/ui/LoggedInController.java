@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Eureka.models.SoundEffects;
+import Eureka.models.PlayerRep.Player;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +22,7 @@ public class LoggedInController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(Player.getCurrentPlayer().toString());
 
         SoundEffects.addSound(btn_logout);
         SoundEffects.addSound(quit);

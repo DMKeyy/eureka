@@ -2,6 +2,8 @@ package Eureka.Controller.ui;
 
 import Eureka.models.GameData;
 import Eureka.models.SoundEffects;
+import Eureka.models.GameModeRep.GameMode;
+import Eureka.models.ThemeRep.ThemeRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -45,7 +47,7 @@ public class ThemeChooserController {
             }
     
             theme = ((RadioButton) Themegroupe.getSelectedToggle()).getText();
-            GameData.setTheme(theme);
+            GameData.setTheme(ThemeRepository.getThemeByName(theme));
 
             difficulty = ((RadioButton) Difficultygroupe.getSelectedToggle()).getText();
             int dif;
@@ -66,26 +68,25 @@ public class ThemeChooserController {
             GameData.setDifficulty(dif);
 
             
-            String mode = GameData.getMode();
-            if (mode == null) mode = "Basic";
+            GameMode mode = GameData.getMode();
 
-                switch (mode) {
+                switch (mode.getName()) {
                     case "Basic":
                     SceneManager.changeScene(e, "BasicGameMode.fxml");
                     break;
                     case "Survival":
                     SceneManager.changeScene(e, "SurvivalGameMode.fxml");
                     break;
-                    case "Local":
+                    case "Multi":
                     SceneManager.changeScene(e, "LocalMultiplayer.fxml");
                     break;
-                    case "Timer":
+                    case "TimeTrial":
                     SceneManager.changeScene(e, "TimeTrialGameMode.fxml");
                     break;
                     case "ProgressiveTimeTrial":
                     SceneManager.changeScene(e, "ProgressiveTimeTrialGameMode.fxml");
                     break;
-                    case "MissingLetter":
+                    case "MissingLetters":
                     SceneManager.changeScene(e, "MissingLetterGameMode.fxml");
                     break;
                     case "Mcq":

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import Eureka.models.GameData;
 import Eureka.models.SoundEffects;
+import Eureka.models.GameModeRep.GameModeRepository;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("Basic");
+                GameData.setMode(GameModeRepository.getGameModeByName("Basic"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -65,7 +66,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("Survival");
+                GameData.setMode(GameModeRepository.getGameModeByName("Survival"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -82,7 +83,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("Local");
+                GameData.setMode(GameModeRepository.getGameModeByName("Multi"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -91,7 +92,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("Timer");
+                GameData.setMode(GameModeRepository.getGameModeByName("TimeTrial"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -100,7 +101,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("ProgressiveTimeTrial");
+                GameData.setMode(GameModeRepository.getGameModeByName("ProgressiveTimeTrial"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -109,7 +110,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("MissingLetter");
+                GameData.setMode(GameModeRepository.getGameModeByName("MissingLetters"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });
@@ -118,7 +119,7 @@ public class ChoseGameModeController implements Initializable {
 
             @Override
             public void handle(ActionEvent arg0) {
-                GameData.setMode("Mcq");
+                GameData.setMode(GameModeRepository.getGameModeByName("Mcq"));
                 SceneManager.showPopup(root, "ThemeChooser.fxml");
             }
         });

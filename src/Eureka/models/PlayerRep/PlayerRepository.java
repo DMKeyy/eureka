@@ -5,10 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
 
 import Eureka.models.DatabaseService;
 import Eureka.models.BadgeRep.BadgeRepository;
+import Eureka.models.GameModeRep.GameMode;
+import Eureka.models.GameModeRep.GameModeRepository;
+import Eureka.models.ThemeRep.Theme;
+import Eureka.models.ThemeRep.ThemeRepository;
+import Eureka.models.LeaderBoardRep.ScoreRepository;
 
 public class PlayerRepository {
     
@@ -27,35 +32,57 @@ public class PlayerRepository {
     }
 
     public static void signUpUser(String username, String password) throws SQLException {
-        try (Connection connection = DatabaseService.getConnection();
-             PreparedStatement psCheckUserExist = connection.prepareStatement("SELECT * FROM player WHERE Username = ?");
-             PreparedStatement psInsert = connection.prepareStatement("INSERT INTO player(Username,Password,Registration_Time) VALUES(?,?,?)")) {
+        String query = "INSERT INTO player (username, password, registration_time) VALUES (?, ?, ?)";
+        LocalDate registrationTime = LocalDate.now();
 
-            psCheckUserExist.setString(1, username);
-            try (ResultSet rs = psCheckUserExist.executeQuery()) {
-                if (!rs.isBeforeFirst()) {
-                    psInsert.setString(1, username);
-                    psInsert.setString(2, password);
-                    psInsert.setDate(3, java.sql.Date.valueOf(LocalDate.now()));
-                    psInsert.executeUpdate();
-                    Player.setCurrentPlayer(new Player(username, password, LocalDate.now()));
-                } else {
-                    throw new SQLException("Username already exists");
-                }
+        try (Connection connection = DatabaseService.getConnection();
+             PreparedStatement psInsertUser = connection.prepareStatement(query)) {
+            psInsertUser.setString(1, username);
+            psInsertUser.setString(2, password);
+            psInsertUser.setDate(3, java.sql.Date.valueOf(registrationTime));
+            psInsertUser.executeUpdate();
+            
+            int playerId = getPlayerIdByUsername(username);
+            Player.setCurrentPlayer(new Player(playerId, username, password, registrationTime, 0, 0, 0));
+            if (playerId == -1) {
+                throw new SQLException("Failed to retrieve player ID after sign-up.");
             }
+            ScoreRepository.initializePlayerScores(playerId);
+            ThemeRepository.initializePlayerThemeStats(playerId);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        
+    }
+
+    private static int getPlayerIdByUsername(String username) {
+        String query = "SELECT player_id FROM player WHERE username = ?";
+        try (Connection conn = DatabaseService.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("player_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static Player loginUser(String username, String password) throws SQLException {
         try (Connection connection = DatabaseService.getConnection();
-             PreparedStatement psCheckUserExist = connection.prepareStatement("SELECT * FROM player WHERE Username = ?")) {
+            PreparedStatement psCheckUserExist = connection.prepareStatement("SELECT * FROM player WHERE Username = ?")) {
 
             psCheckUserExist.setString(1, username);
             try (ResultSet rs = psCheckUserExist.executeQuery()) {
                 if (rs.next()) {
                     String dbPassword = rs.getString("Password");
                     if (dbPassword.equals(password)) {
-                        return loadPlayerData(rs);
+                        Player player = loadPlayerData(rs);
+                        loadPlayerScores(player);
+                        loadPlayerThemeStats(player);
+                        return player;
                     }
                 }
                 throw new SQLException("Invalid username or password");
@@ -67,9 +94,11 @@ public class PlayerRepository {
         String query = "UPDATE player SET password = ? WHERE username = ?";
     
         try (Connection conn = DatabaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, newPassword);
             stmt.setString(2, username);
+
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,9 +110,11 @@ public class PlayerRepository {
         String query = "UPDATE player SET username = ? WHERE player_id = ?";
     
         try (Connection conn = DatabaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, newUsername);
             stmt.setInt(2, player.getPlayerId());
+
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,43 +123,14 @@ public class PlayerRepository {
     }
 
     public static void updatePlayer(Player player) {
-        String query =  "UPDATE player SET " +
-                        "best_score = ?, " +
-                        "best_survival_score = ?, " +
-                        "best_time_trial_score = ?, " +
-                        "Best_Progressive_time_trial_score = ?, " +
-                        "Best_Missing_Letter_score = ?, " +
-                        "Best_Mcq_score = ?, " +
-                        "streak_count = ?, " +
-                        "correct_answers_science = ?, " +
-                        "correct_answers_history = ?, " +
-                        "correct_answers_geography = ?, " +
-                        "correct_answers_art = ?, " +
-                        "correct_answers_islam = ?, " +
-                        "correct_answers_java = ?, " +
-                        "correct_answers_sport = ?, " +
-                        "total_game_played = ? " +
-                        "WHERE player_id = ?";
+        String query = "UPDATE player SET total_game_played = ?, streak_count = ? WHERE player_id = ?";
     
         try (Connection conn = DatabaseService.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            PreparedStatement pstmt = conn.prepareStatement(query)) {
     
-            pstmt.setInt(1, player.getBestScore());
-            pstmt.setInt(2, player.getBestSurvivalScore());
-            pstmt.setInt(3, player.getBestTimeTrialScore());
-            pstmt.setInt(4, player.getBestProgressiveTimeTrialScore());
-            pstmt.setInt(5, player.getBestMissingLetterScore());
-            pstmt.setInt(6, player.getBestMcqScore());
-            pstmt.setInt(7, player.getStreakCount());
-            pstmt.setInt(8, player.getCorrectAnswersScience());
-            pstmt.setInt(9, player.getCorrectAnswersHistory());
-            pstmt.setInt(10, player.getCorrectAnswersGeography());
-            pstmt.setInt(11, player.getCorrectAnswersArt());
-            pstmt.setInt(12, player.getCorrectAnswersIslam());
-            pstmt.setInt(13, player.getCorrectAnswersJava());
-            pstmt.setInt(14, player.getCorrectAnswersSport());
-            pstmt.setInt(15, player.getTotalGamesPlayed());
-            pstmt.setInt(16, player.getPlayerId());
+            pstmt.setInt(1, player.getTotalGamesPlayed());
+            pstmt.setInt(2, player.getStreakCount());
+            pstmt.setInt(3, player.getPlayerId());
     
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -138,26 +140,43 @@ public class PlayerRepository {
 
     private static Player loadPlayerData(ResultSet rs) throws SQLException {
         int playerId = rs.getInt("player_id");
-        LocalDate registrationTime = rs.getDate("Registration_time").toLocalDate();
-        int bestScore = rs.getInt("Best_score");
-        int BestSurvivalScore = rs.getInt("Best_survival_score");
-        int bestTimeTrialScore = rs.getInt("Best_time_trial_score");
-        int bestProgressiveTimeTrialScore = rs.getInt("Best_Progressive_time_trial_score");
-        int bestMissingLetterScore = rs.getInt("Best_Missing_Letter_score");
-        int bestMcqScore = rs.getInt("Best_Mcq_score");
-        int dailyChallengesCompleted = rs.getInt("Daily_challenge_completed");
-        int totalGamesPlayed = rs.getInt("Total_game_played");
-        int streakCount = rs.getInt("Streak_count");
-        LocalTime longestCompetitionTime = rs.getTime("Longest_competition_time").toLocalTime();
-        int correctAnswersScience = rs.getInt("Correct_answers_science");
-        int correctAnswersHistory = rs.getInt("Correct_answers_history");
-        int correctAnswersGeography = rs.getInt("Correct_answers_geography");
-        int correctAnswersArt = rs.getInt("Correct_answers_art");
-        int correctAnswersIslam = rs.getInt("Correct_answers_islam");
-        int correctAnswersJava = rs.getInt("Correct_answers_java");
-        int correctAnswersSport = rs.getInt("Correct_answers_sport");
+        String username = rs.getString("username");
+        String password = rs.getString("password");
+        LocalDate registrationTime = rs.getDate("registration_time").toLocalDate();
+        int totalGamesPlayed = rs.getInt("total_game_played");
+        int streakCount = rs.getInt("streak_count");
         int badgeCount = BadgeRepository.getPlayerBadges(playerId).size();
 
-        return new Player(playerId, rs.getString("Username"), rs.getString("Password"), registrationTime,0, dailyChallengesCompleted, bestScore, BestSurvivalScore,bestTimeTrialScore, bestProgressiveTimeTrialScore,bestMissingLetterScore,bestMcqScore,totalGamesPlayed, streakCount, longestCompetitionTime, correctAnswersScience, correctAnswersHistory, correctAnswersGeography, correctAnswersSport,correctAnswersArt, correctAnswersJava, correctAnswersIslam, badgeCount);
+
+        return new Player(playerId, username, password, registrationTime, totalGamesPlayed, streakCount, badgeCount);
+    }
+
+    private static void loadPlayerScores(Player player) throws SQLException {
+        List<GameMode> gameModes = GameModeRepository.getAllGameModes();
+        for (GameMode mode : gameModes) {
+            int score = ScoreRepository.getScore(player, mode);
+            player.addScore(mode, score);
+        }
+    }
+
+    private static void loadPlayerThemeStats(Player player) throws SQLException {
+        String query = "SELECT id_theme, score FROM correct_answers_scores WHERE id_player = ?";
+        try (Connection conn = DatabaseService.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, player.getPlayerId());
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                int themeId = rs.getInt("id_theme");
+                int correctAnswers = rs.getInt("score");
+                Theme theme = ThemeRepository.getThemeById(themeId);
+                if (theme != null) {
+                    player.addThemeStats(theme, correctAnswers);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,7 +1,5 @@
 package Eureka.models.LeaderBoardRep;
 
-import Eureka.models.DatabaseService;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,84 +7,101 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Eureka.models.DatabaseService;
+import Eureka.models.GameModeRep.GameModeRepository;
+import Eureka.models.ThemeRep.ThemeRepository;
+
 public class LeaderboardRepository {
 
-    private Connection connect() {
-        return DatabaseService.getConnection();
+    public List<LeaderboardEntry> getBasicLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("Basic").getModeId(), 10);
     }
 
-    private List<LeaderboardEntry> getLeaderboard(String scoreColumnName) {
-        List<LeaderboardEntry> leaderboard = new ArrayList<>();
+    public List<LeaderboardEntry> getSurvivalLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("Survival").getModeId(), 10);
+    }
 
-        String sql = "SELECT username, " + scoreColumnName + " AS score FROM player ORDER BY " + scoreColumnName + " DESC LIMIT 10";
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+    public List<LeaderboardEntry> getTimeTrialLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("TimeTrial").getModeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getProgressiveTimeTrialLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("ProgressiveTimeTrial").getModeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getMissingLetterLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("MissingLetters").getModeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getMcqLeaderboard() {
+        return getTopScoresByMode(GameModeRepository.getGameModeByName("Mcq").getModeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getScienceLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Science").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getHistoryLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("History").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getGeographyLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Geography").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getSportLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Sport").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getArtLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Art").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getJavaLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Java").getThemeId(), 10);
+    }
+
+    public List<LeaderboardEntry> getIslamLeaderboard() {
+        return getTopScoresByTheme(ThemeRepository.getThemeByName("Islam").getThemeId(), 10);
+    }
+
+    private static List<LeaderboardEntry> getTopScoresByMode(int modeId, int limit) {
+        List<LeaderboardEntry> entries = new ArrayList<>();
+        String query = "SELECT p.username, s.score FROM player p JOIN scores s ON p.player_id = s.id_player WHERE s.id_mode = ? ORDER BY s.score DESC LIMIT ?";
+
+        try (Connection conn = DatabaseService.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setInt(1, modeId);
+            stmt.setInt(2, limit);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                String username = rs.getString("username");
-                int score = rs.getInt("score");
-
-                LeaderboardEntry entry = new LeaderboardEntry(username, score);
-                leaderboard.add(entry);
+                entries.add(new LeaderboardEntry(rs.getString("username"), rs.getInt("score")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return leaderboard;
+        return entries;
     }
 
+    private static List<LeaderboardEntry> getTopScoresByTheme(int themeId, int limit) {
+        List<LeaderboardEntry> entries = new ArrayList<>();
+        String query = "SELECT p.username, ts.score FROM player p JOIN correct_answers_scores ts ON p.player_id = ts.id_player WHERE ts.id_theme = ? ORDER BY ts.score DESC LIMIT ?";
 
-    public List<LeaderboardEntry> getBasicLeaderboard() {
-        return getLeaderboard("Best_score");
-    }
+        try (Connection conn = DatabaseService.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setInt(1, themeId);
+            stmt.setInt(2, limit);
+            ResultSet rs = stmt.executeQuery();
 
-    public List<LeaderboardEntry> getSurvivalLeaderboard() {
-        return getLeaderboard("Best_survival_score");
-    }
-
-    public List<LeaderboardEntry> getTimeTrialLeaderboard() {
-        return getLeaderboard("Best_time_trial_score");
-    }
-
-    public List<LeaderboardEntry> getProgressiveTimeTrialLeaderboard() {
-        return getLeaderboard("Best_Progressive_time_trial_score");
-    }
-
-    public List<LeaderboardEntry> getMissingLetterLeaderboard() {
-        return getLeaderboard("Best_Missing_Letter_score");
-    }
-
-    public List<LeaderboardEntry> getMcqLeaderboard() {
-        return getLeaderboard("Best_Mcq_score");
-    }
-
-
-    public List<LeaderboardEntry> getScienceLeaderboard() {
-        return getLeaderboard("Correct_answers_science");
-    }
-
-    public List<LeaderboardEntry> getHistoryLeaderboard() {
-        return getLeaderboard("Correct_answers_history");
-    }
-
-    public List<LeaderboardEntry> getGeographyLeaderboard() {
-        return getLeaderboard("Correct_answers_geography");
-    }
-
-    public List<LeaderboardEntry> getArtLeaderboard() {
-        return getLeaderboard("Correct_answers_art");
-    }
-
-    public List<LeaderboardEntry> getSportLeaderboard() {
-        return getLeaderboard("Correct_answers_sport");
-    }
-
-    public List<LeaderboardEntry> getJavaLeaderboard() {
-        return getLeaderboard("Correct_answers_java");
-    }
-
-    public List<LeaderboardEntry> getIslamLeaderboard() {
-        return getLeaderboard("Correct_answers_islam");
+            while (rs.next()) {
+                entries.add(new LeaderboardEntry(rs.getString("username"), rs.getInt("score")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return entries;
     }
 }

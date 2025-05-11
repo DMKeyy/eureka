@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+// import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import Eureka.Controller.ui.SceneManager;
@@ -29,6 +30,8 @@ public class SignUpController implements Initializable {
 
     @FXML 
     private TextField tf_password;
+    // @FXML
+    // private CheckBox showPasswordCheckBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +55,24 @@ public class SignUpController implements Initializable {
                 loginController.animateButtonClick(btn_signup);
             }
         });
+
+        // showPasswordCheckBox.selectedProperty().addListener((_, _, newVal) -> {
+        //     if (newVal) {
+        //         // Afficher TextField
+        //         pf_password.setVisible(false);
+        //         pf_password.setManaged(false);
+
+        //         tf_password.setVisible(true);
+        //         tf_password.setManaged(true);
+        //     } else {
+        //         // Revenir au PasswordField
+        //         pf_password.setVisible(true);
+        //         pf_password.setManaged(true);
+
+        //         tf_password.setVisible(false);
+        //         tf_password.setManaged(false);
+        //     }
+        // });
 
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override

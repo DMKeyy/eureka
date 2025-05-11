@@ -5,9 +5,9 @@ import java.util.TimerTask;
 
 import Eureka.Controller.core.GameMode;
 import Eureka.models.GameData;
-import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.QuestionRepository;
+import Eureka.models.QuestionRep.WrongAnswerRepository;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,7 +99,7 @@ public class TimeTrialGameModeController extends GameMode {
             longestStreak = Math.max(streakCount, longestStreak);
             timeRemaining += BONUS_TIME;
         } else {
-            WrongAnswerStorage.addWrongAnswer(question);
+            WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), question.getQuestion_id());
             streakCount=0;
             timeRemaining -= PENALTY_TIME;
             if (timeRemaining < 0) {

@@ -4,8 +4,9 @@ import java.util.List;
 
 import Eureka.Controller.ui.SceneManager;
 import Eureka.models.SoundEffects;
-import Eureka.models.WrongAnswerStorage;
+import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.Question;
+import Eureka.models.QuestionRep.WrongAnswerRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -27,7 +28,7 @@ public class ModeRevisionController {
         });
         wrongAnswersList.getItems().clear();
 
-        List<Question> accumulatedWrongAnswers = WrongAnswerStorage.getWrongAnswers();
+        List<Question> accumulatedWrongAnswers = WrongAnswerRepository.getPlayerWrongAnswers(Player.getCurrentPlayer().getPlayerId());
 
         if (!accumulatedWrongAnswers.isEmpty()) {
             for (Question q : accumulatedWrongAnswers) {
@@ -36,7 +37,7 @@ public class ModeRevisionController {
                 wrongAnswersList.getItems().add("Question: " + questionText + "    Answer: " + correctAnswer);
             }
 
-            WrongAnswerStorage.clearWrongAnswers();
+            WrongAnswerRepository.removeAllWrongAnswers(Player.getCurrentPlayer().getPlayerId());
         }
         else{
             wrongAnswersList.getItems().add("No Wrong Answers Found!");

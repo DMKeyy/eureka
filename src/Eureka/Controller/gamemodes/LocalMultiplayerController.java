@@ -1,12 +1,14 @@
 package Eureka.Controller.gamemodes;
 
+import Eureka.Controller.core.GameMode;
 import Eureka.Controller.ui.GameOverController;
-import Eureka.Controller.ui.SceneManager;
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.WrongAnswerStorage;
+import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.Question;
 import Eureka.models.QuestionRep.QuestionRepository;
+import Eureka.models.QuestionRep.WrongAnswerRepository;
+import Eureka.models.ThemeRep.Theme;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class LocalMultiplayerController {
+public class LocalMultiplayerController extends GameMode {
 
     // Statics pour suivre la progression et le score d'une partie à l'autre
     private static int scoreJ1 = 0;
@@ -36,20 +38,18 @@ public class LocalMultiplayerController {
     @FXML private TextField tf_answer;
     @FXML private Button btn_submit;
     @FXML private Button btn_nextPlayer; // bouton "Fin du tour"
-    @FXML private ImageView headImage, bodyImage, leftArmImage, rightArmImage,
-                           leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
-    @FXML private ImageView headImage1, bodyImage1, leftArmImage1, rightArmImage1,
-                           leftLegImage1, rightLegImage1, leftfeetImage1, rightfeetImage1;   
+    @FXML private ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
+    @FXML private ImageView headImage1, bodyImage1, leftArmImage1, rightArmImage1, leftLegImage1, rightLegImage1, leftfeetImage1, rightfeetImage1;   
     
 
     private Question currentQuestion;
-    private String theme;
+    private Theme theme;
     private int difficulty;
     private int TourCurrent = 1;
 
     @FXML
     public void initialize() {
-        // 1) Récupère les infos
+        
         theme = GameData.getTheme();
         difficulty = GameData.getDifficulty();
 
@@ -67,14 +67,18 @@ public class LocalMultiplayerController {
         scoreText1.setText("Joueur 1 : " + scoreJ1);
         scoreText2.setText("Joueur 2 : " + scoreJ2);
 
-        // 6) Charge la question
-        loadNextQuestion();
 
-        // 7) Boutons
-        btn_submit.setOnAction(this::handleSubmit);
+        LoadNextQuestion();
+
     }
 
-    private void loadNextQuestion() {
+    @Override
+    protected void setupEventHandlers() {
+        btn_submit.setOnAction(event -> handleSubmit(event));
+    }
+
+    @Override
+    protected void LoadNextQuestion() {
         currentQuestion = QuestionRepository.getQuestion(theme, difficulty);
         if (currentQuestion != null) {
             questionLabel.setText(currentQuestion.getQuestionText());
@@ -94,24 +98,23 @@ public class LocalMultiplayerController {
             CurrentTour.setText("Tour " + TourCurrent);
         boolean correct = currentQuestion.checkAnswer(tf_answer.getText().trim());
         if (correct) {
-            // Bonne réponse
+           
             scoreJ1++;
             scoreText1.setText("Joueur 1 : " + scoreJ1);
         } else {
-            // Mauvaise réponse => nouvelle erreur
-            WrongAnswerStorage.addWrongAnswer(currentQuestion);
+
+            WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), currentQuestion.getQuestion_id());
             pendu1.setAttemptsLeft(pendu1.getAttemptsLeft() - 1);
             pendu1.drawNextPart();
 
 
-            // Vérifie si le pendu est complet
             if (pendu1.isGameOver()) {
                 endGame("Joueur 1 a perdu ! Joueur 2 gagne !");
                 return;
             }
         }
         tf_answer.clear();
-        loadNextQuestion();
+        LoadNextQuestion();
         CurrentPlayer = false;
 
     }else{
@@ -123,23 +126,23 @@ public class LocalMultiplayerController {
        
         boolean correct = currentQuestion.checkAnswer(tf_answer.getText().trim());
         if (correct) {
-            // Bonne réponse
+            
             scoreJ2++;
             scoreText2.setText("Joueur 2 : " + scoreJ2);
         } else {
-            WrongAnswerStorage.addWrongAnswer(currentQuestion);
-            // Mauvaise réponse => nouvelle erreur
+            WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), currentQuestion.getQuestion_id());
+            
             pendu2.setAttemptsLeft(pendu2.getAttemptsLeft() - 1);
             pendu2.drawNextPart();
 
-            // Vérifie si le pendu est complet
+            
             if (pendu2.isGameOver()) {
                 endGame("Joueur 2 a perdu ! Joueur 1 gagne !");
                 return;
             }
         }
         tf_answer.clear();
-        loadNextQuestion();
+        LoadNextQuestion();
         CurrentPlayer = true;
         
 

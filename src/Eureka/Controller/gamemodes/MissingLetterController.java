@@ -4,7 +4,6 @@ import java.util.List;
 
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,13 +37,6 @@ public class MissingLetterController extends GameMode {
     @Override
     protected void setupEventHandlers() {
         btn_submit.setOnAction(event -> handleSubmit(event));
-    }
-
-    @Override
-    protected void updatePlayerBestScore(Player player) {
-        if (score > player.getBestMissingLetterScore()) {
-            player.setBestMissingLetterScore(score);
-        }
     }
 
     

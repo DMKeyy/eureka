@@ -11,32 +11,36 @@ import java.util.List;
 import java.util.Set;
 
 import Eureka.models.DatabaseService;
+import Eureka.models.ThemeRep.Theme;
 
 public class QuestionRepository {
     private static Set<Integer> usedQuestionIds = new HashSet<>();
 
-    public static Question getQuestion(String theme, int difficulty) {
+    public static Question getQuestion(Theme theme, int difficulty) {
         Question question = null;
-        String query = "SELECT q.ID_question, q.Question_text, m.Choice_text FROM questions q JOIN multiple_choices m ON q.ID_question = m.ID_question WHERE q.Theme = ? AND q.Difficulty_level = ? AND m.Is_correct = 1 "; 
+        String query = "SELECT q.question_id, q.question_text, m.choice_text FROM questions q " +
+                      "JOIN themes t ON q.id_theme = t.id_theme " +
+                      "JOIN multiple_choices m ON q.question_id = m.question_id " +
+                      "WHERE t.nom = ? AND q.difficulty_level = ? AND m.is_correct = 1 ";
 
         if (!usedQuestionIds.isEmpty()) {
-            query += "AND q.ID_question NOT IN (" + getUsedIdsPlaceholder() + ") ";
+            query += "AND q.question_id NOT IN (" + getUsedIdsPlaceholder() + ") ";
         }
         query += "ORDER BY RAND() LIMIT 1";
 
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, theme);
+            stmt.setString(1, theme.getName());
             stmt.setInt(2, difficulty);
             setUsedIds(stmt, 3);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     question = new Question();
-                    question.setQuestion_id(rs.getInt("ID_question"));
-                    question.setQuestionText(rs.getString("Question_text"));
-                    question.setAnswer(rs.getString("Choice_text"));
+                    question.setQuestion_id(rs.getInt("question_id"));
+                    question.setQuestionText(rs.getString("question_text"));
+                    question.setAnswer(rs.getString("choice_text"));
                     usedQuestionIds.add(question.getQuestion_id());
                 }
                 else {
@@ -50,42 +54,45 @@ public class QuestionRepository {
         return question;
     }
 
-    public static Question getQuestionMCQ(String theme, int difficulty) {
+    public static Question getQuestionMCQ(Theme theme, int difficulty) {
         Question question = null;
-        String getRandomQuestionQuery = "SELECT ID_question, Question_text FROM questions WHERE Theme = ? AND Difficulty_level = ? ";
+        String getRandomQuestionQuery = "SELECT q.question_id, q.question_text " +
+                                      "FROM questions q " +
+                                      "JOIN themes t ON q.id_theme = t.id_theme " +
+                                      "WHERE t.nom = ? AND q.difficulty_level = ? ";
     
         if (!usedQuestionIds.isEmpty()) {
-            getRandomQuestionQuery += "AND ID_question NOT IN (" + getUsedIdsPlaceholder() + ") ";
+            getRandomQuestionQuery += "AND q.question_id NOT IN (" + getUsedIdsPlaceholder() + ") ";
         }
         getRandomQuestionQuery += "ORDER BY RAND() LIMIT 1";
     
         try (Connection conn = DatabaseService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(getRandomQuestionQuery)) {
     
-            stmt.setString(1, theme);
+            stmt.setString(1, theme.getName());
             stmt.setInt(2, difficulty);
             setUsedIds(stmt, 3);
     
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     question = new Question();
-                    int questionId = rs.getInt("ID_question");
+                    int questionId = rs.getInt("question_id");
                     question.setQuestion_id(questionId);
-                    question.setQuestionText(rs.getString("Question_text"));
+                    question.setQuestionText(rs.getString("question_text"));
                     usedQuestionIds.add(questionId);
     
                     List<String> choices = new ArrayList<>();
                     String correctAnswer = null;
     
-                    String choicesQuery = "SELECT Choice_text, Is_correct FROM multiple_choices WHERE ID_question = ?";
+                    String choicesQuery = "SELECT choice_text, is_correct FROM multiple_choices WHERE question_id = ?";
                     try (PreparedStatement choicesStmt = conn.prepareStatement(choicesQuery)) {
                         choicesStmt.setInt(1, questionId);
     
                         try (ResultSet choicesRs = choicesStmt.executeQuery()) {
                             while (choicesRs.next()) {
-                                String choice = choicesRs.getString("Choice_text");
+                                String choice = choicesRs.getString("choice_text");
                                 choices.add(choice);
-                                if (choicesRs.getBoolean("Is_correct")) {
+                                if (choicesRs.getBoolean("is_correct")) {
                                     correctAnswer = choice;
                                 }
                             }

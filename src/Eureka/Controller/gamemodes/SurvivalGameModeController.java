@@ -3,10 +3,9 @@ package Eureka.Controller.gamemodes;
 import Eureka.Controller.core.GameMode;
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
-import Eureka.models.WrongAnswerStorage;
 import Eureka.models.PlayerRep.Player;
 import Eureka.models.QuestionRep.QuestionRepository;
-
+import Eureka.models.QuestionRep.WrongAnswerRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -57,13 +56,6 @@ public class SurvivalGameModeController extends GameMode {
     }
 
     @Override
-    protected void updatePlayerBestScore(Player player) {
-        if (score > player.getBestSurvivalScore()) {
-            player.setBestSurvivalScore(score);
-        }
-    }
-
-    @Override
     protected void LoadNextQuestion() {
         question = QuestionRepository.getQuestion(theme, difficulty);
         questionLabel.setText(question.getQuestionText());
@@ -79,7 +71,7 @@ public class SurvivalGameModeController extends GameMode {
             tf_answer.clear();
             LoadNextQuestion();
         } else {
-            WrongAnswerStorage.addWrongAnswer(question);
+            WrongAnswerRepository.recordWrongAnswer(Player.getCurrentPlayer().getPlayerId(), question.getQuestion_id());    
             pendu.drawFull();
             endgame();
         }
