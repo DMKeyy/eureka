@@ -24,12 +24,7 @@ public class ProfileController {
     private Label lbl_username_value;
 
     @FXML
-    private Label lbl_password_value;
-
-    @FXML
     private Label lbl_date_value;
-    @FXML
-    private Label lbl_bestscore_value;
     @FXML
     private Label lbl_totalGames_value;
 
@@ -57,9 +52,7 @@ public class ProfileController {
         Player player = Player.getCurrentPlayer();
         if (player != null) {
             lbl_username_value.setText(player.getUsername());
-            lbl_password_value.setText(player.getPassword());
             lbl_date_value.setText(String.valueOf(player.getRegistrationDate()));
-            lbl_bestscore_value.setText(String.valueOf(player.getBestScore()));
             lbl_totalGames_value.setText(String.valueOf(player.getTotalGamesPlayed()));
             lbl_badgeCount.setText(BadgeRepository.getPlayerBadges(player.getPlayerId()).size() + "");
 
@@ -67,7 +60,7 @@ public class ProfileController {
 
         // Bouton "Back"
         btn_back.setOnAction(e -> {
-            SceneManager.changeScene(e, "ChoseGameMode.fxml");
+            SceneManager.changeScene(e, "LoggedIn.fxml");
         });
 
         BestScore.setOnAction(_ -> {
@@ -87,10 +80,6 @@ public class ProfileController {
         btn_change_username.setOnAction(_ -> {
             showOverlay("/Eureka/View/fxml/Username.fxml");
         });
-        
-
-        
-
 
     }
 
@@ -129,12 +118,6 @@ public class ProfileController {
         }
     }
     
-    
-
-   
- public void updatePasswordLabel() {
-    lbl_password_value.setText(Player.getCurrentPlayer().getPassword());
-}
 public void updateUsernameLabel() {
     lbl_username_value.setText(Player.getCurrentPlayer().getUsername());
 }

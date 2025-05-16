@@ -95,23 +95,6 @@ public class Player {
         this.streakCount = streakCount;
         this.badgeCount = badgeCount2;
         this.score = 0;
-        this.badges = new ArrayList<>();
-        this.BestScore = 0;
-        this.BestSurvivalScore = 0;
-        this.BestTimeTrialScore = 0;
-        this.BestProgressiveTimeTrialScore = 0;
-        this.BestMissingLetterScore = 0;
-        this.BestMcqScore = 0;
-        this.badgeCount = 0;
-        this.totalGamesPlayed = 0;
-        this.streakCount = 0;
-        this.correctAnswersScience = 0;
-        this.correctAnswersHistory = 0;
-        this.correctAnswersGeography = 0;
-        this.correctAnswersSport = 0;
-        this.correctAnswersArt = 0;
-        this.correctAnswersJava = 0;
-        this.correctAnswersIslam = 0;
     }
 
 

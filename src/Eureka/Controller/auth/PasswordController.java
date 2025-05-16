@@ -37,13 +37,7 @@ public class PasswordController {
                 boolean success = PlayerRepository.updatePassword(player.getUsername(), newPassword);
 
                 if (success) {
-                    player.setPassword(newPassword); 
-
-                    if (profileController != null) {
-                        profileController.updatePasswordLabel();
-                    }
-
-                
+                    player.setPassword(newPassword);            
                     SceneManager.changeScene(e, "Profile.fxml");
                 } else {
                     SceneManager.showAlert(Alert.AlertType.ERROR, "Error: Could not update password in database.");

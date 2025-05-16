@@ -19,16 +19,14 @@
       </Label>
       <Label fx:id="lbl_username_title" layoutX="20.0" layoutY="80.0" text="Username:" />
       <Label fx:id="lbl_username_value" layoutX="120.0" layoutY="80.0" />
-      <Label fx:id="lbl_password_title" layoutX="20.0" layoutY="120.0" text="Password:" />
-      <Label fx:id="lbl_password_value" layoutX="89.0" layoutY="120.0" />
+      <Label fx:id="lbl_password_title" layoutX="20.0" layoutY="120.0" text="Password" />
       <Label fx:id="lbl_date_title" layoutX="20.0" layoutY="160.0" text="Registration Date:" />
       <Label fx:id="lbl_date_value" layoutX="160.0" layoutY="160.0" />
       <Hyperlink fx:id="BestScore" layoutX="20.0" layoutY="200.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Best Score:" textFill="#1b1919" />
-      <Label fx:id="lbl_bestscore_value" layoutX="98.0" layoutY="200.0" prefHeight="17.0" prefWidth="0.0" />
-      <Label fx:id="lbl_totalGames_title" layoutX="20.0" layoutY="240.0" text="Total Games:" />
+      <Label fx:id="lbl_totalGames_title" layoutX="20.0" layoutY="240.0" text="Total Games played:" />
       <Label fx:id="lbl_totalGames_value" layoutX="120.0" layoutY="240.0" />
-      <Hyperlink fx:id="Badges" layoutX="20.0" layoutY="280.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Badges:" textFill="#171616" />
-      <Label fx:id="lbl_badgeCount" layoutX="80.0" layoutY="280.0" prefHeight="23.0" prefWidth="56.0" />
+      <Hyperlink fx:id="Badges" layoutX="20.0" layoutY="280.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Number of badges:" textFill="#171616" />
+      <Label fx:id="lbl_badgeCount" layoutX="132.0" layoutY="277.0" prefHeight="23.0" prefWidth="56.0" />
       <Button fx:id="btn_back" layoutX="554.0" layoutY="323.0" prefHeight="39.0" prefWidth="56.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Back" />
       <Button fx:id="btn_change_username" cacheShape="false" layoutX="203.0" layoutY="67.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="42.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>

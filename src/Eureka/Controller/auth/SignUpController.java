@@ -30,8 +30,6 @@ public class SignUpController implements Initializable {
 
     @FXML 
     private TextField tf_password;
-    // @FXML
-    // private CheckBox showPasswordCheckBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,8 +41,13 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent event) {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()) {
                     try {
-                        PlayerRepository.signUpUser(tf_username.getText(), tf_password.getText());
-                        SceneManager.changeScene(event, "LoggedIn.fxml");
+                        if (PlayerRepository.isUsernameValid(tf_username.getText())) {
+                            PlayerRepository.signUpUser(tf_username.getText(), tf_password.getText());
+                            SceneManager.changeScene(event, "LoggedIn.fxml");
+                        }
+                        else {
+                            SceneManager.showAlert(Alert.AlertType.ERROR, "Username already exists");
+                        }
                     } catch (SQLException e) {
                         SceneManager.showAlert(AlertType.ERROR, e.getMessage());
                     }
@@ -56,23 +59,6 @@ public class SignUpController implements Initializable {
             }
         });
 
-        // showPasswordCheckBox.selectedProperty().addListener((_, _, newVal) -> {
-        //     if (newVal) {
-        //         // Afficher TextField
-        //         pf_password.setVisible(false);
-        //         pf_password.setManaged(false);
-
-        //         tf_password.setVisible(true);
-        //         tf_password.setManaged(true);
-        //     } else {
-        //         // Revenir au PasswordField
-        //         pf_password.setVisible(true);
-        //         pf_password.setManaged(true);
-
-        //         tf_password.setVisible(false);
-        //         tf_password.setManaged(false);
-        //     }
-        // });
 
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override

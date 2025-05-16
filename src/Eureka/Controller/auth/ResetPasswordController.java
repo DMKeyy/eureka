@@ -84,7 +84,7 @@ public class ResetPasswordController implements Initializable {
                     return;
                 }
 
-                if (!PlayerRepository.isUsernameValid(username)) {
+                if (PlayerRepository.isUsernameValid(username)) {
                     shake(btn_resetpassword);
                     shake(tf_username);
                     shake(pf_password);
@@ -101,6 +101,7 @@ public class ResetPasswordController implements Initializable {
                     txt_result.setText("Password reset successfully!");
                     btn_tologin.setVisible(true);
                     btn_resetpassword.setVisible(false);
+                    
                 } else {
                     shake(btn_resetpassword);
                     shake(tf_username);
