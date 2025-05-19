@@ -21,7 +21,7 @@
             <Font name="Impact" size="28.0" />
          </font>
       </Label>
-      <RadioButton fx:id="ThemeScience" layoutX="398.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Science" textFill="#2f1007">
+      <RadioButton fx:id="ThemeScience" layoutX="439.0" layoutY="170.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="114.0" text="Science" textFill="#2f1007">
          <toggleGroup>
             <ToggleGroup fx:id="Themegroupe" />
          </toggleGroup>
@@ -29,37 +29,37 @@
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeGeography" layoutX="399.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Geography" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeGeography" layoutX="439.0" layoutY="212.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Geography" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeJava" layoutX="281.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Java" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeJava" layoutX="300.0" layoutY="170.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Java" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeSport" layoutX="281.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Sport" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeSport" layoutX="301.0" layoutY="212.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="102.0" text="Sport" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeArt" layoutX="398.0" layoutY="138.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Art" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeArt" layoutX="439.0" layoutY="125.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" text="Art" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeHistory" layoutX="281.0" layoutY="138.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="History" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeHistory" layoutX="299.0" layoutY="122.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="History" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <Label layoutX="281.0" layoutY="269.0" text="Chose Difficulty :" textFill="#2f1007">
+      <Label layoutX="264.0" layoutY="338.0" text="Chose Difficulty :" textFill="#2f1007">
          <font>
             <Font name="Impact" size="28.0" />
          </font>
       </Label>
-      <RadioButton fx:id="diff_hard" layoutX="480.0" layoutY="329.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0" text="Hard" textFill="#2f1007">
+      <RadioButton fx:id="diff_hard" layoutX="479.0" layoutY="372.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0" text="Hard" textFill="#2f1007">
          <toggleGroup>
             <ToggleGroup fx:id="Difficultygroupe" />
          </toggleGroup>
@@ -67,19 +67,19 @@
             <Font name="Impact" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="dff_medium" layoutX="480.0" layoutY="303.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="98.0" text="Medium" textFill="#2f1007" toggleGroup="$Difficultygroupe">
+      <RadioButton fx:id="dff_medium" layoutX="479.0" layoutY="342.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="98.0" text="Medium" textFill="#2f1007" toggleGroup="$Difficultygroupe">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="diff_easy" layoutX="479.0" layoutY="276.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="98.0" text="Easy" textFill="#2f1007" toggleGroup="$Difficultygroupe">
+      <RadioButton fx:id="diff_easy" layoutX="479.0" layoutY="311.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="98.0" text="Easy" textFill="#2f1007" toggleGroup="$Difficultygroupe">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </RadioButton>
       <Button fx:id="btn_back" layoutX="191.0" layoutY="56.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
-            <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true">
+            <ImageView fitHeight="95.0" fitWidth="101.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/backbtn.png" />
                </image>
@@ -95,5 +95,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <RadioButton fx:id="ThemeIslam" layoutX="381.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Islam" textFill="#2f1007" toggleGroup="$Themegroupe">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </RadioButton>
    </children>
 </AnchorPane>

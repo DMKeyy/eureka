@@ -12,7 +12,7 @@ import javafx.scene.control.ToggleGroup;
 
 public class ThemeChooserController {
 @FXML 
-    private RadioButton ThemeScience,ThemeHistory,ThemeJava,ThemeGeography,ThemeArt,ThemeSport;
+    private RadioButton ThemeScience,ThemeHistory,ThemeJava,ThemeGeography,ThemeArt,ThemeSport,ThemeIslam;
 
     @FXML 
     private RadioButton diff_easy,diff_medium,diff_hard;

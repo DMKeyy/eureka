@@ -9,6 +9,7 @@ import Eureka.models.PlayerRep.PlayerRepository;
 import Eureka.Controller.ui.SceneManager;
 import Eureka.models.SoundEffects;
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -30,7 +31,7 @@ public class loginController implements Initializable {
     private Button btn_login;
 
     @FXML 
-    public Button btn_signup, btn_toforgotpassword;
+    public Button btn_signup, btn_toforgotpassword,btn_leave;
 
     @FXML
     private TextField tf_username, tf_password;
@@ -108,7 +109,12 @@ public class loginController implements Initializable {
             }
         });
 
-         
+        btn_leave.setOnAction(_ -> {
+            PauseTransition pause = new PauseTransition(Duration.millis(300));
+            pause.setOnFinished(_ -> System.exit(0));
+            pause.play();
+        });
+   
     }
 
     public static void animateButtonClick(Button button) {

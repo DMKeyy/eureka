@@ -52,7 +52,7 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <TextField fx:id="tf_username" layoutX="340.0" layoutY="191.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Username" />
-      <PasswordField fx:id="tf_password" layoutX="340.0" layoutY="254.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
+      <PasswordField fx:id="pf_password" layoutX="340.0" layoutY="254.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
       <CheckBox fx:id="showPasswordCheckBox" accessibleRole="IMAGE_VIEW" layoutX="541.0" layoutY="253.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -62,6 +62,8 @@
             </ImageView>
          </graphic>
       </CheckBox>
+      <Button fx:id="btn_leave" styleClass="menu-btn" layoutX="804.0" layoutY="25.0" mnemonicParsing="false" text="Leave" />
+      <TextField fx:id="tf_password" layoutX="340.0" layoutY="254.0" managed="false" promptText="Enter Password" prefHeight="40.0" prefWidth="206.0" visible="false" />
    </children>
    <stylesheets>
       <URL value="@../styles/SignUp.css" /> 
