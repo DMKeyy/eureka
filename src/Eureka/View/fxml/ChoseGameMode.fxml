@@ -12,7 +12,14 @@
             <Image url="@../images/ChoseMode.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_modebasic" layoutX="366.0" layoutY="198.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="137.0" styleClass="menu-btn" text="Basic Mode" />
+      <Button fx:id="btn_modebasic" layoutX="366.0" layoutY="198.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="137.0" style="-fx-background-color: transparent;" styleClass="menu-btn" text="Basic Mode">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/basicmode.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Button fx:id="btn_back" layoutX="789.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="78.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
@@ -22,11 +29,53 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_modesurvival" layoutX="575.0" layoutY="216.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Survi" />
-      <Button fx:id="btn_multilocal" layoutX="219.0" layoutY="238.0" mnemonicParsing="false" styleClass="menu-btn" text="multi local" />
-      <Button fx:id="btn_modetimer" layoutX="219.0" layoutY="335.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Chronometre" />
-      <Button fx:id="btn_modeprogressivetimetrial" layoutX="531.0" layoutY="335.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Progressive Time Trial" />
-      <Button fx:id="btn_modemissingletter" layoutX="219.0" layoutY="134.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Missing Letter" />
-      <Button fx:id="btn_modemcq" layoutX="576.0" layoutY="134.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode mcq" />
+      <Button fx:id="btn_modesurvival" layoutX="372.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Mode%20Survi.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_multilocal" layoutX="135.0" layoutY="217.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/multi%20local.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_modetimer" layoutX="141.0" layoutY="328.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Mode%20Chronometre.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_modeprogressivetimetrial" layoutX="578.0" layoutY="211.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Mode%20Progressive%20Time%20Trial.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_modemissingletter" layoutX="135.0" layoutY="118.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Mode%20Missing%20Letter.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_modemcq" layoutX="372.0" layoutY="98.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Mode%20mcq.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>
