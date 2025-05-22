@@ -49,6 +49,17 @@
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 0.6, 1, 1);
 }
+#timeText {
+    -fx-font-size: 26px;
+    -fx-text-fill: #ffcc00; /* Or doré lumineux */
+    -fx-font-family: "Georgia", serif;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, black, 6, 0.4, 0, 2);
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 10;
+}
+
 
 
 

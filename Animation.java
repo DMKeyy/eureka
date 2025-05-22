@@ -2,14 +2,18 @@ package Eureka.Controller.core;
 
 
 import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class Animation {
      
+
+    private static final int INDEFINITE = 1;
 
     public static void shake(Node node) {
         TranslateTransition tt = new TranslateTransition(Duration.millis(50), node);
@@ -52,6 +56,30 @@ public class Animation {
         ParallelTransition fullBounce = new ParallelTransition(node, bounceSequence, squish);
         fullBounce.play();
     }
+
+       public static void spin(ImageView imageView) {
+        RotateTransition rotate = new RotateTransition(Duration.seconds(60), imageView);
+        rotate.setByAngle(360); 
+        rotate.setCycleCount(Animation.INDEFINITE); 
+        rotate.setInterpolator(javafx.animation.Interpolator.LINEAR);
+        rotate.play();
+    }
+
+ 
+public static void pulseRed(Node node) {
+    
+    node.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+
+    ScaleTransition pulse = new ScaleTransition(Duration.millis(400), node);
+    pulse.setFromX(1.0);
+    pulse.setToX(1.2);
+    pulse.setFromY(1.0);
+    pulse.setToY(1.2);
+    pulse.setCycleCount(ScaleTransition.INDEFINITE);
+    pulse.setAutoReverse(true);
+    pulse.play();
+}
+
 }
 
     
