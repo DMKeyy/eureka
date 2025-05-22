@@ -6,17 +6,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.ModeRevisionController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="877.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.ModeRevisionController">
    <children>
-      <Button fx:id="btn_back" layoutX="777.0" layoutY="14.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="49.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <ImageView fitHeight="753.0" fitWidth="1040.0" layoutX="-13.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/revisionscreen.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="650.0" fitWidth="472.0" layoutX="216.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/parcheminrevison.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="wrongAnswersList" layoutX="248.0" layoutY="50.0" prefHeight="546.0" prefWidth="378.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_back" layoutX="717.0" layoutY="504.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="95.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
          <graphic>
-            <ImageView fitHeight="68.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/backbtn.png" />
+                  <Image url="@../images/bottequitter.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <ListView fx:id="wrongAnswersList" layoutX="101.0" layoutY="-1.0" prefHeight="500.0" prefWidth="652.0" />
    </children>
 </AnchorPane>

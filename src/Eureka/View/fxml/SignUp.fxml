@@ -51,9 +51,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField fx:id="tf_username" layoutX="340.0" layoutY="191.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Username" />
-      <PasswordField fx:id="pf_password" layoutX="340.0" layoutY="254.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
-      <CheckBox fx:id="showPasswordCheckBox" accessibleRole="IMAGE_VIEW" layoutX="541.0" layoutY="253.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+      <TextField fx:id="tf_username" layoutX="340.0" layoutY="166.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Username" />
+      <PasswordField fx:id="pf_password" layoutX="340.0" layoutY="234.0" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" styleClass="TextField" />
+      <CheckBox fx:id="showPasswordCheckBox" accessibleRole="IMAGE_VIEW" layoutX="541.0" layoutY="232.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,8 +62,17 @@
             </ImageView>
          </graphic>
       </CheckBox>
-      <Button fx:id="btn_leave" styleClass="menu-btn" layoutX="804.0" layoutY="25.0" mnemonicParsing="false" text="Leave" />
-      <TextField fx:id="tf_password" layoutX="340.0" layoutY="254.0" managed="false" promptText="Enter Password" prefHeight="40.0" prefWidth="206.0" visible="false" />
+      <Button fx:id="btn_leave" layoutX="804.0" layoutY="8.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="39.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TextField fx:id="tf_password" layoutX="340.0" layoutY="234.0" managed="false" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" visible="false" />
+      <PasswordField fx:id="pf_password1" layoutX="341.0" layoutY="290.0" prefHeight="40.0" prefWidth="206.0" promptText="Confirm Password" styleClass="TextField" />
+      <TextField fx:id="tf_password1" layoutX="341.0" layoutY="290.0" managed="false" prefHeight="40.0" prefWidth="206.0" promptText="Enter Password" visible="false" />
    </children>
    <stylesheets>
       <URL value="@../styles/SignUp.css" /> 

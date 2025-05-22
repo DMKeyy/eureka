@@ -1,6 +1,8 @@
 package Eureka.Controller.gamemodes;
 
+import Eureka.Controller.ui.Animation;
 import Eureka.Controller.core.GameMode;
+import Eureka.Controller.ui.SceneManager;
 import Eureka.models.QuestionRep.QuestionRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +14,12 @@ public class BasicGameModeController extends GameMode {
 
     @Override
     protected void setupEventHandlers() {
-        btn_submit.setOnAction(event -> handleSubmit(event));
-    }
+    btn_submit.setOnAction(event -> handleSubmit(event));
+
+    btn_return.setOnAction(event -> {
+        SceneManager.changeScene(event, "ChoseGameMode.fxml");
+    });
+}
 
     @Override
     protected void LoadNextQuestion() {
@@ -22,13 +28,18 @@ public class BasicGameModeController extends GameMode {
         updateScore();
     }
 
+    
+
     public void handleSubmit(ActionEvent e) {
         if (question == null || tf_answer.getText().isEmpty()) return;
 
         if (question.checkAnswer(tf_answer.getText())) {
             handleCorrectAnswer();
+            Animation.bounce(tf_answer);
+            Animation.bounce(scoreText);
         } else {
             handleWrongAnswer();
+            Animation.shake(tf_answer);
         }
 
         tf_answer.clear();

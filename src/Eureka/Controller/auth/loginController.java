@@ -48,18 +48,6 @@ public class loginController implements Initializable {
         SoundEffects.addSound(btn_login);
         SoundEffects.addSound(btn_signup);
         SoundEffects.addSound(btn_toforgotpassword);
-        
-
-        FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), root);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.play();
-
-        TranslateTransition floatText = new TranslateTransition(Duration.seconds(2), btn_login);
-        floatText.setByY(-10);
-        floatText.setCycleCount(TranslateTransition.INDEFINITE);
-        floatText.setAutoReverse(true);
-        floatText.play();
 
         tf_password.textProperty().bindBidirectional(pf_password.textProperty());
 
@@ -91,7 +79,6 @@ public class loginController implements Initializable {
                 } catch (SQLException e) {
                     SceneManager.showAlert(AlertType.ERROR, e.getMessage());
                 }
-                loginController.animateButtonClick(btn_login);
             }
         });
 
@@ -115,15 +102,6 @@ public class loginController implements Initializable {
             pause.play();
         });
    
-    }
-
-    public static void animateButtonClick(Button button) {
-        ScaleTransition scale = new ScaleTransition(Duration.millis(100), button);
-        scale.setToX(0.95);
-        scale.setToY(0.95);
-        scale.setAutoReverse(true);
-        scale.setCycleCount(2);
-        scale.play();
     }
 
 }

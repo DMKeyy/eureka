@@ -32,10 +32,10 @@ public class SignUpController implements Initializable {
     private TextField tf_username;
 
     @FXML 
-    private TextField tf_password;
+    private TextField tf_password,tf_password1;
 
     @FXML
-    private PasswordField pf_password;
+    private PasswordField pf_password,pf_password1;
 
     @FXML
     private Button btn_leave;
@@ -48,26 +48,32 @@ public class SignUpController implements Initializable {
         SoundEffects.addSound(btn_login);
         SoundEffects.addSound(btn_signup);
 
-        btn_signup.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+        btn_signup.setOnAction(new EventHandler<ActionEvent>() {            @Override
             public void handle(ActionEvent event) {
-                if (!tf_username.getText().trim().isEmpty() && !pf_password.getText().trim().isEmpty()) {
-                    try {
-                        if (PlayerRepository.isUsernameValid(tf_username.getText())) {
-                            PlayerRepository.signUpUser(tf_username.getText(), pf_password.getText());
-                            SceneManager.changeScene(event, "LoggedIn.fxml");
-                        }
-                        else {
-                            SceneManager.showAlert(Alert.AlertType.ERROR, "Username already exists");
-                        }
-                    } catch (SQLException e) {
-                        SceneManager.showAlert(AlertType.ERROR, e.getMessage());
-                    }
-                } else {
-                    System.out.println("Please fill all the fields");
+                String username = tf_username.getText().trim();
+                String password = pf_password.getText().trim();
+                String confirmPassword = pf_password1.getText().trim();
+
+                if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     SceneManager.showAlert(Alert.AlertType.ERROR, "Please fill all the fields");
+                    return;
                 }
-                loginController.animateButtonClick(btn_signup);
+
+                if (!password.equals(confirmPassword)) {
+                    SceneManager.showAlert(Alert.AlertType.ERROR, "Passwords do not match");
+                    return;
+                }
+
+                try {
+                    if (PlayerRepository.isUsernameValid(username)) {
+                        PlayerRepository.signUpUser(username, password);
+                        SceneManager.changeScene(event, "LoggedIn.fxml");
+                    } else {
+                        SceneManager.showAlert(Alert.AlertType.ERROR, "Username already exists");
+                    }
+                } catch (SQLException e) {
+                    SceneManager.showAlert(AlertType.ERROR, e.getMessage());
+                }
             }
         });
 
@@ -83,25 +89,33 @@ public class SignUpController implements Initializable {
             PauseTransition pause = new PauseTransition(Duration.millis(300));
             pause.setOnFinished(_ -> System.exit(0));
             pause.play();
-        });
-
+        });        // Bind password fields with their text field counterparts
         tf_password.textProperty().bindBidirectional(pf_password.textProperty());
+        tf_password1.textProperty().bindBidirectional(pf_password1.textProperty());
 
         showPasswordCheckBox.selectedProperty().addListener((_, _, newVal) -> {
             if (newVal) {
-                // Afficher TextField
+                // Show text fields
                 pf_password.setVisible(false);
                 pf_password.setManaged(false);
+                pf_password1.setVisible(false);
+                pf_password1.setManaged(false);
 
                 tf_password.setVisible(true);
                 tf_password.setManaged(true);
+                tf_password1.setVisible(true);
+                tf_password1.setManaged(true);
             } else {
-                // Revenir au PasswordField
+                // Show password fields
                 pf_password.setVisible(true);
                 pf_password.setManaged(true);
+                pf_password1.setVisible(true);
+                pf_password1.setManaged(true);
 
                 tf_password.setVisible(false);
                 tf_password.setManaged(false);
+                tf_password1.setVisible(false);
+                tf_password1.setManaged(false);
             }
         });
     }

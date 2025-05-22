@@ -24,7 +24,7 @@ public class ResetPasswordController implements Initializable {
 
     
     @FXML
-    private Text txt_result;
+    private Text txt_result,btn_txt;
     @FXML
     private TextField tf_username;
     @FXML
@@ -101,6 +101,7 @@ public class ResetPasswordController implements Initializable {
                     txt_result.setText("Password reset successfully!");
                     btn_tologin.setVisible(true);
                     btn_resetpassword.setVisible(false);
+                    btn_txt.setVisible(false);
                     
                 } else {
                     shake(btn_resetpassword);

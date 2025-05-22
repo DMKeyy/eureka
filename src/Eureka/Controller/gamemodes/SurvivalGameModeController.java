@@ -1,6 +1,8 @@
 package Eureka.Controller.gamemodes;
 
+import Eureka.Controller.ui.Animation;
 import Eureka.Controller.core.GameMode;
+import Eureka.Controller.ui.SceneManager;
 import Eureka.models.GameData;
 import Eureka.models.PenduDrawer;
 import Eureka.models.PlayerRep.Player;
@@ -31,7 +33,7 @@ public class SurvivalGameModeController extends GameMode {
     private Label scoreText;
 
     @FXML
-    private Button btn_submit;
+    private Button btn_submit,btn_return;
 
     @FXML
     private ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
@@ -53,6 +55,10 @@ public class SurvivalGameModeController extends GameMode {
     @Override
     protected void setupEventHandlers() {
         btn_submit.setOnAction(this::handleSubmit);
+
+        btn_return.setOnAction(event -> {
+            SceneManager.changeScene(event, "ChoseGameMode.fxml");
+        });
     }
 
     @Override
@@ -68,6 +74,8 @@ public class SurvivalGameModeController extends GameMode {
         String userAnswer = tf_answer.getText().trim();
         if (question.checkAnswer(userAnswer)) {
             handleCorrectAnswer();
+            Animation.bounce(tf_answer);
+            Animation.bounce(scoreText);
             tf_answer.clear();
             LoadNextQuestion();
         } else {

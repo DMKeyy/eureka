@@ -10,7 +10,7 @@ public class SettingsController {
     @FXML 
     private AnchorPane settingsPane;
     @FXML
-    private Button btn_back, btn_sound, btn_leaderboard, btn_profile, btn_help;
+    private Button btn_back, btn_sound, btn_leaderboard, btn_profile;
 
 
     @FXML
@@ -20,7 +20,6 @@ public class SettingsController {
         SoundEffects.addSound(btn_sound);
         SoundEffects.addSound(btn_leaderboard);
         SoundEffects.addSound(btn_profile);
-        SoundEffects.addSound(btn_help);
         if (SoundEffects.isMuted()) {
             btn_sound.setText("Unmute");
         } else {
@@ -31,7 +30,6 @@ public class SettingsController {
         setupBackButton();
         setupSoundButton();
         setupLeaderboardButton();
-        setupHelpButton();
         setupProfileButton();
     }
 
@@ -58,12 +56,6 @@ public class SettingsController {
     private void setupLeaderboardButton() {
         btn_leaderboard.setOnAction(event -> {
             SceneManager.changeScene(event, "Leaderboard.fxml");
-        });
-    }
-
-    private void setupHelpButton() {
-        btn_help.setOnAction(event -> {
-            SceneManager.changeScene(event, "Helpmenu.fxml");
         });
     }
 

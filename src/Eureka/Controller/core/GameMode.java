@@ -37,6 +37,8 @@ public abstract class GameMode {
     @FXML
     protected Button btn_submit;
     @FXML
+    protected Button btn_return;
+    @FXML
     protected ImageView headImage, bodyImage, leftArmImage, rightArmImage, leftLegImage, rightLegImage, leftfeetImage, rightfeetImage;
 
     public GameMode() {

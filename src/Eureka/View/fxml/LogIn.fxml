@@ -68,7 +68,14 @@
       </Button>
 <Button fx:id="btn_signup" layoutX="490.0" layoutY="336.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="btn_tosignup" text="Sign up" textFill="#07044a" />
       <TextField fx:id="tf_password" layoutX="340.0" layoutY="254.0" managed="false" prefHeight="40.0" prefWidth="206.0" visible="false" />
-      <Button fx:id="btn_leave" styleClass="menu-btn" layoutX="804.0" layoutY="23.0" mnemonicParsing="false" text="Leave" />
+      <Button fx:id="btn_leave" layoutX="800.0" layoutY="4.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="55.0" style="-fx-background-color: transprent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="86.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
    <stylesheets>
       <URL value="@../styles/SignUp.css" />

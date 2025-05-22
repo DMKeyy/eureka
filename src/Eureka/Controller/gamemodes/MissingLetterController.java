@@ -9,8 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+import Eureka.Controller.ui.Animation;
 import Eureka.Controller.core.GameMode;
+import Eureka.Controller.ui.SceneManager;
 
 public class MissingLetterController extends GameMode {
 
@@ -37,6 +38,10 @@ public class MissingLetterController extends GameMode {
     @Override
     protected void setupEventHandlers() {
         btn_submit.setOnAction(event -> handleSubmit(event));
+
+        btn_return.setOnAction(event -> {
+            SceneManager.changeScene(event, "ChoseGameMode.fxml");
+        });
     }
 
     
@@ -63,8 +68,11 @@ public class MissingLetterController extends GameMode {
 
         if (question.checkAnswer(tf_answer.getText())) {
             handleCorrectAnswer();
+            Animation.bounce(tf_answer);
+            Animation.bounce(scoreText);
         } else {
             handleWrongAnswer();
+            Animation.shake(tf_answer);
         }
 
         tf_answer.clear();

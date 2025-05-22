@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.McqController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.McqController">
    <children>
-      <Label fx:id="questionLabel" layoutX="275.0" layoutY="83.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
-      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+      <ImageView fitHeight="583.0" fitWidth="879.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fond%20game%20mode.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="321.0" fitWidth="515.0" layoutX="275.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/parcheminqst.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="108.0" fitWidth="130.0" layoutX="370.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/scoreimage.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="questionLabel" layoutX="347.0" layoutY="162.0" prefHeight="110.0" prefWidth="359.0" text="Label" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="scoreText" layoutX="396.0" layoutY="14.0" prefHeight="42.0" prefWidth="73.0" textAlignment="JUSTIFY" />
       <ImageView fitHeight="129.0" fitWidth="54.0" layoutX="87.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/rope.png" />
@@ -60,9 +76,33 @@
             <Image url="@../images/jambegauche.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_answer1" layoutX="542.0" layoutY="225.0" mnemonicParsing="false" />
-      <Button fx:id="btn_answer2" layoutX="392.0" layoutY="225.0" mnemonicParsing="false" />
-      <Button fx:id="btn_answer3" layoutX="542.0" layoutY="306.0" mnemonicParsing="false" />
-      <Button fx:id="btn_answer4" layoutX="392.0" layoutY="306.0" mnemonicParsing="false" />
+      <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="329.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/feuilledetriche.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="329.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/feuilledetriche.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="562.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/feuilledetriche.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="562.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/feuilledetriche.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_answer1" layoutX="601.0" layoutY="358.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <Button fx:id="btn_answer2" layoutX="370.0" layoutY="358.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <Button fx:id="btn_answer3" layoutX="603.0" layoutY="439.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <Button fx:id="btn_answer4" layoutX="370.0" layoutY="439.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu.css" />
+      <URL value="@../styles/gamemode.css" />
+   </stylesheets>
 </AnchorPane>

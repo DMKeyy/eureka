@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,23 +11,39 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.ProfileController">
    <children>
-      <Label fx:id="lbl_title" layoutX="20.0" layoutY="15.0" style="-fx-font-weight: bold;" text="PROFILE">
+      <ImageView fitHeight="628.0" fitWidth="947.0" layoutX="-50.0" layoutY="-99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/profilscreen.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="454.0" fitWidth="487.0" layoutX="212.0" layoutY="23.0" pickOnBounds="true" rotate="90.0">
+         <image>
+            <Image url="@../images/parcheminqst.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="181.0" layoutX="326.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bestprofile.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="181.0" layoutX="465.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bestprofile.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_title" layoutX="409.0" layoutY="50.0" style="-fx-font-weight: bold;" stylesheets="@../styles/gamemode.css" text="PROFILE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbl_username_title" layoutX="20.0" layoutY="80.0" text="Username:" />
-      <Label fx:id="lbl_username_value" layoutX="120.0" layoutY="80.0" />
-      <Label fx:id="lbl_password_title" layoutX="20.0" layoutY="120.0" text="Password" />
-      <Label fx:id="lbl_date_title" layoutX="20.0" layoutY="160.0" text="Registration Date:" />
-      <Label fx:id="lbl_date_value" layoutX="160.0" layoutY="160.0" />
-      <Hyperlink fx:id="BestScore" layoutX="20.0" layoutY="200.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Best Score:" textFill="#1b1919" />
-      <Label fx:id="lbl_totalGames_title" layoutX="20.0" layoutY="240.0" text="Total Games played:" />
-      <Label fx:id="lbl_totalGames_value" layoutX="120.0" layoutY="240.0" />
-      <Hyperlink fx:id="Badges" layoutX="20.0" layoutY="280.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Number of badges:" textFill="#171616" />
-      <Label fx:id="lbl_badgeCount" layoutX="132.0" layoutY="277.0" prefHeight="23.0" prefWidth="56.0" />
-      <Button fx:id="btn_back" layoutX="554.0" layoutY="323.0" prefHeight="39.0" prefWidth="56.0" styleClass="menu-btn" stylesheets="@../styles/menu.css" text="Back" />
-      <Button fx:id="btn_change_username" cacheShape="false" layoutX="203.0" layoutY="67.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="42.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Label fx:id="lbl_username_title" layoutX="334.0" layoutY="116.0" prefHeight="38.0" prefWidth="95.0" stylesheets="@../styles/gamemode.css" text="Username:" />
+      <Label fx:id="lbl_username_value" layoutX="428.0" layoutY="117.0" prefHeight="38.0" prefWidth="82.0" stylesheets="@../styles/gamemode.css" />
+      <Label fx:id="lbl_password_title" layoutX="334.0" layoutY="166.0" stylesheets="@../styles/gamemode.css" text="Password" />
+      <Label fx:id="lbl_date_title" layoutX="334.0" layoutY="215.0" stylesheets="@../styles/gamemode.css" text="Registration Date:" />
+      <Label fx:id="lbl_date_value" layoutX="490.0" layoutY="215.0" stylesheets="@../styles/gamemode.css" />
+      <Label fx:id="lbl_totalGames_title" layoutX="324.0" layoutY="258.0" stylesheets="@../styles/gamemode.css" text="Total Games played:" />
+      <Label fx:id="lbl_totalGames_value" layoutX="505.0" layoutY="258.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_change_username" cacheShape="false" layoutX="592.0" layoutY="111.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <StackPane prefHeight="17.0" prefWidth="27.0">
                <children>
@@ -41,7 +56,7 @@
             </StackPane>
          </graphic>
       </Button>
-      <Button fx:id="btn_change_password" cacheShape="false" layoutX="203.0" layoutY="108.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="42.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_change_password" cacheShape="false" layoutX="589.0" layoutY="161.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="56.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <StackPane prefHeight="17.0" prefWidth="27.0">
                <children>
@@ -52,6 +67,25 @@
                   </ImageView>
                </children>
             </StackPane>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_back" layoutX="761.0" layoutY="409.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="95.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="BestScore" layoutX="326.0" layoutY="373.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <Label prefHeight="38.0" prefWidth="117.0" stylesheets="@../styles/gamemode.css" text="Best Scores" />
+         </graphic>
+      </Button>
+      <Button fx:id="Badges" layoutX="486.0" layoutY="373.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="82.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <Label prefHeight="38.0" prefWidth="117.0" stylesheets="@../styles/gamemode.css" text="Badges" />
          </graphic>
       </Button>
    </children>

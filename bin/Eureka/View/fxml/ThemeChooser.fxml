@@ -11,17 +11,17 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.ThemeChooserController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="499.0" layoutX="195.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="500.0" fitWidth="499.0" layoutX="190.0" layoutY="2.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/Theme.png" />
+            <Image url="@../images/parcheminrevison.png" />
          </image>
       </ImageView>
-      <Label layoutX="335.0" layoutY="81.0" text="Chose Theme :" textFill="#2f1007">
+      <Label layoutX="338.0" layoutY="32.0" text="Chose Theme :" textFill="#2f1007">
          <font>
             <Font name="Impact" size="28.0" />
          </font>
       </Label>
-      <RadioButton fx:id="ThemeScience" layoutX="439.0" layoutY="170.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="114.0" text="Science" textFill="#2f1007">
+      <RadioButton fx:id="ThemeScience" layoutX="487.0" layoutY="169.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="114.0" text="Science" textFill="#2f1007">
          <toggleGroup>
             <ToggleGroup fx:id="Themegroupe" />
          </toggleGroup>
@@ -29,27 +29,22 @@
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeGeography" layoutX="439.0" layoutY="212.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Geography" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeGeography" layoutX="488.0" layoutY="212.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Geography" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeJava" layoutX="300.0" layoutY="170.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Java" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeSport" layoutX="252.0" layoutY="169.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="102.0" text="Sport" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeSport" layoutX="301.0" layoutY="212.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="102.0" text="Sport" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeArt" layoutX="487.0" layoutY="125.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" text="Art" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="ThemeArt" layoutX="439.0" layoutY="125.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" text="Art" textFill="#2f1007" toggleGroup="$Themegroupe">
-         <font>
-            <Font name="Impact" size="20.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="ThemeHistory" layoutX="299.0" layoutY="122.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="History" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeHistory" layoutX="252.0" layoutY="124.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="History" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
@@ -77,11 +72,11 @@
             <Font name="Impact" size="18.0" />
          </font>
       </RadioButton>
-      <Button fx:id="btn_back" layoutX="191.0" layoutY="56.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_back" layoutX="782.0" layoutY="7.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="87.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
-            <ImageView fitHeight="95.0" fitWidth="101.0" pickOnBounds="true">
+            <ImageView fitHeight="83.0" fitWidth="87.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/backbtn.png" />
+                  <Image url="@../images/bottequitter.png" />
                </image>
             </ImageView>
          </graphic>
@@ -90,12 +85,12 @@
          <graphic>
             <ImageView fitHeight="93.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/startbtn.png" />
+                  <Image url="@../images/play.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <RadioButton fx:id="ThemeIslam" layoutX="381.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Islam" textFill="#2f1007" toggleGroup="$Themegroupe">
+      <RadioButton fx:id="ThemeIslam" layoutX="252.0" layoutY="213.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Islam" textFill="#2f1007" toggleGroup="$Themegroupe">
          <font>
             <Font name="Impact" size="20.0" />
          </font>

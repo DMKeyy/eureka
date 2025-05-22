@@ -18,7 +18,7 @@ public class LoggedInController implements Initializable {
     private AnchorPane root;
 
     @FXML
-    private Button btn_logout, btn_settings, quit, btn_about, btn_play, btn_profile;
+    private Button btn_logout, btn_settings, quit, btn_about, btn_play;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,12 +59,6 @@ public class LoggedInController implements Initializable {
         btn_play.setOnAction(event -> {
             PauseTransition pause = new PauseTransition(Duration.millis(200));
             pause.setOnFinished(_ -> SceneManager.changeScene(event, "ChoseGameMode.fxml"));
-            pause.play();
-        });
-
-        btn_profile.setOnAction(event -> {
-            PauseTransition pause = new PauseTransition(Duration.millis(200));
-            pause.setOnFinished(_ -> SceneManager.changeScene(event, "Profile.fxml"));
             pause.play();
         });
     }

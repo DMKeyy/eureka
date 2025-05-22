@@ -6,43 +6,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="settingsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color: transparent;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.SettingsController">
+<AnchorPane fx:id="settingsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" style="-fx-background-color:  rgba(0, 0, 0, 0.5);" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.SettingsController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="437.0" layoutX="219.0" pickOnBounds="true">
+      <ImageView fitHeight="385.0" fitWidth="437.0" layoutX="239.0" layoutY="64.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/settings.png" />
+            <Image url="@../images/parcheminrevison.png" />
          </image>
       </ImageView>
       
       <!-- Add your buttons -->
-      <Button fx:id="btn_back" layoutX="546.0" layoutY="46.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="100.0" style="-fx-background-color: transparent;">
+      <Button fx:id="btn_back" layoutX="769.0" layoutY="8.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="90.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="89.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       
-      <Button fx:id="btn_sound" layoutX="380.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Mute">
+      <Button fx:id="btn_sound" layoutX="348.0" layoutY="303.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: white;" styleClass="menu-btn">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Copie%20de%20a%20(2).png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       
-      <Button fx:id="btn_leaderboard" layoutX="380.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FFC107; -fx-text-fill: white;" text="Leaderboard">
+      <Button fx:id="btn_leaderboard" layoutX="348.0" layoutY="210.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="210.0" style="-fx-background-color: Transparent;" styleClass="menu-btn">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="59.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Copie%20de%20a%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       
-      <Button fx:id="btn_profile" layoutX="380.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #9C27B0; -fx-text-fill: white;" text="Profile">
+      <Button fx:id="btn_profile" layoutX="358.0" layoutY="118.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="158.0" style="-fx-background-color: Transparent; -fx-text-fill: white;" styleClass="menu-btn">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
-      </Button>
-      
-      <Button fx:id="btn_help" layoutX="380.0" layoutY="380.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Help">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Copie%20de%20a.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,10 +10,37 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.BasicGameModeController">
    <children>
-      <Label fx:id="questionLabel" layoutX="275.0" layoutY="83.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
-      <TextField fx:id="tf_answer" layoutX="425.0" layoutY="266.0" />
-      <Button fx:id="btn_submit" layoutX="583.0" layoutY="266.0" mnemonicParsing="false" text="Button" />
-      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+      <ImageView fitHeight="636.0" fitWidth="972.0" layoutX="-23.0" layoutY="-39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fond%20game%20mode.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="306.0" fitWidth="645.0" layoutX="207.0" layoutY="51.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/parcheminqst.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="161.0" layoutX="400.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/scoreimage.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="262.0" layoutY="116.0" prefHeight="175.0" prefWidth="533.0" stylesheets="@../styles/gamemode.css" text="Voici une question très longue qui va automatiquement se couper sur plusieurs lignes si nécessaire." textAlignment="CENTER" wrapText="true" />
+
+      <TextField fx:id="tf_answer" layoutX="378.0" layoutY="391.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_submit" layoutX="630.0" layoutY="332.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="77.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="110.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plumefinal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../styles/SignUp.css" />
+            <URL value="@../styles/gamemode.css" />
+         </stylesheets></Button>
+      <Label fx:id="scoreText" layoutX="434.0" layoutY="30.0" prefHeight="42.0" prefWidth="82.0" stylesheets="@../styles/gamemode.css" text="Score : 0" />
       <ImageView fitHeight="129.0" fitWidth="54.0" layoutX="87.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/rope.png" />
@@ -63,5 +91,14 @@
             <Image url="@../images/jambegauche.png" />
          </image>
       </ImageView>
+      <Button fx:id="btn_return" layoutX="770.0" layoutY="416.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="66.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

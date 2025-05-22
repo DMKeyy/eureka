@@ -17,16 +17,16 @@
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/backbtn.png" />
+                  <Image url="@../images/bottequitter.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_modesurvival" layoutX="575.0" layoutY="216.0" styleClass="menu-btn" mnemonicParsing="false" text="Mode Survi" />
-      <Button fx:id="btn_multilocal" layoutX="219.0" layoutY="238.0" styleClass="menu-btn" mnemonicParsing="false" text="multi local" />
-      <Button fx:id="btn_modetimer" layoutX="219.0" layoutY="335.0" styleClass="menu-btn" mnemonicParsing="false" text="Mode Chronometre" />
-      <Button fx:id="btn_modeprogressivetimetrial" layoutX="531.0" layoutY="335.0" styleClass="menu-btn" mnemonicParsing="false" text="Mode Progressive Time Trial" />
-      <Button fx:id="btn_modemissingletter" layoutX="219.0" layoutY="134.0" styleClass="menu-btn" mnemonicParsing="false" text="Mode Missing Letter" />
-      <Button fx:id="btn_modemcq" layoutX="576.0" layoutY="134.0" styleClass="menu-btn" mnemonicParsing="false" text="Mode mcq" />
+      <Button fx:id="btn_modesurvival" layoutX="575.0" layoutY="216.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Survi" />
+      <Button fx:id="btn_multilocal" layoutX="219.0" layoutY="238.0" mnemonicParsing="false" styleClass="menu-btn" text="multi local" />
+      <Button fx:id="btn_modetimer" layoutX="219.0" layoutY="335.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Chronometre" />
+      <Button fx:id="btn_modeprogressivetimetrial" layoutX="531.0" layoutY="335.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Progressive Time Trial" />
+      <Button fx:id="btn_modemissingletter" layoutX="219.0" layoutY="134.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode Missing Letter" />
+      <Button fx:id="btn_modemcq" layoutX="576.0" layoutY="134.0" mnemonicParsing="false" styleClass="menu-btn" text="Mode mcq" />
    </children>
 </AnchorPane>

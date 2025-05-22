@@ -9,13 +9,25 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.LoggedInController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="906.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="500.0" fitWidth="906.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Eureka_mode_R.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_logout" layoutX="39.0" layoutY="435.0" mnemonicParsing="false" styleClass="menu-btn" text="logout" />
-      <Button fx:id="btn_play" layoutX="262.0" layoutY="122.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="346.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <ImageView fitHeight="462.0" fitWidth="480.0" layoutX="195.0" layoutY="23.0" pickOnBounds="true" rotate="90.0">
+         <image>
+            <Image url="@../images/parcheminqst.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_logout" layoutX="14.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <ImageView fitHeight="71.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/—Pngtree—cool%20game%20buttons%20and%20game_5276256.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_play" layoutX="290.0" layoutY="103.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="292.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -23,9 +35,9 @@
             <DropShadow radius="34.75" width="120.0" />
          </effect>
          <graphic>
-            <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true">
+            <ImageView fitHeight="78.0" fitWidth="246.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/playbtn.png" />
+                  <Image url="@../images/play.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -33,33 +45,32 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_settings" layoutX="330.0" layoutY="250.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_settings" layoutX="327.0" layoutY="225.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/settingsbtn.png" />
+                  <Image url="@../images/Settings.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_about" layoutX="330.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+      <Button fx:id="btn_about" layoutX="327.0" layoutY="338.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/aboutbtn.png" />
+                  <Image url="@../images/About.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="quit" layoutX="780.0" layoutY="410.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="70.0" style="-fx-background-color: transparent;" styleClass="menu-btn" stylesheets="@../styles/menu.css">
+      <Button fx:id="quit" layoutX="785.0" layoutY="422.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="70.0" style="-fx-background-color: transparent;" styleClass="menu-btn" stylesheets="@../styles/menu.css">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/quit.png" />
+                  <Image url="@../images/bottequitter.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_profile" layoutX="737.0" layoutY="27.0" mnemonicParsing="false" text="Profile" />
    </children>
 </AnchorPane>

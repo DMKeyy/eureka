@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.ProgressiveTimeTrialController">
-   <children>
-      <Label fx:id="questionLabel" layoutX="275.0" layoutY="83.0" prefHeight="110.0" prefWidth="515.0" text="Label" />
-      <TextField fx:id="tf_answer" layoutX="425.0" layoutY="266.0" />
-      <Button fx:id="btn_submit" layoutX="583.0" layoutY="266.0" mnemonicParsing="false" text="Button" />
-      <Label fx:id="scoreText" layoutX="433.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
-      <Label fx:id="timerText" layoutX="65.0" layoutY="28.0" prefHeight="42.0" prefWidth="150.0" text="Label" />
+  <children>
+      <ImageView fitHeight="673.0" fitWidth="1081.0" layoutX="-80.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Design%20sans%20titre%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ouroboros" fitHeight="133.0" fitWidth="151.0" layoutX="369.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/ourboros.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="timerText" layoutX="405.0" layoutY="61.0" prefHeight="42.0" prefWidth="95.0" stylesheets="@../styles/gamemode.css" textAlignment="JUSTIFY" />
+      <Button fx:id="btn_submit" layoutX="582.0" layoutY="341.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="77.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="110.0" fitWidth="87.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plumefinal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../styles/SignUp.css" />
+            <URL value="@../styles/gamemode.css" />
+         </stylesheets>
+      </Button>
+      <ImageView fitHeight="288.0" fitWidth="645.0" layoutX="140.0" layoutY="96.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/parcheminqst.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="196.0" layoutY="153.0" prefHeight="167.0" prefWidth="533.0" stylesheets="@../styles/gamemode.css" text="Voici une question très longue qui va automatiquement se couper sur plusieurs lignes si nécessaire." textAlignment="CENTER" wrapText="true" />
+      <ImageView fitHeight="109.0" fitWidth="143.0" layoutX="691.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/scoreimage.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="scoreText" layoutX="722.0" layoutY="39.0" prefHeight="42.0" prefWidth="82.0" stylesheets="@../styles/gamemode.css" text="Score : 0" />
+      <TextField fx:id="tf_answer" layoutX="343.0" layoutY="400.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_return" layoutX="761.0" layoutY="409.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="95.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
