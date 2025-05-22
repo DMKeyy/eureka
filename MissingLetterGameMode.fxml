@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.gamemodes.MissingLetterController">
+   <children>
+      <ImageView fitHeight="636.0" fitWidth="972.0" layoutX="-21.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../fond%20game%20mode.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="306.0" fitWidth="645.0" layoutX="207.0" layoutY="51.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../parcheminqst.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="161.0" layoutX="434.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../scoreimage.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="166.0" layoutX="458.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../feuilledetriche.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="answerLabel" layoutX="474.0" layoutY="331.0" prefHeight="38.0" prefWidth="112.0" stylesheets="@../styles/gamemode.css" text="L_b_l" textAlignment="CENTER" />
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="262.0" layoutY="116.0" prefHeight="175.0" prefWidth="533.0" stylesheets="@../styles/gamemode.css" text="Voici une question très longue qui va automatiquement se couper sur plusieurs lignes si nécessaire." textAlignment="CENTER" wrapText="true" />
+
+      <TextField fx:id="tf_answer" layoutX="409.0" layoutY="396.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_submit" layoutX="657.0" layoutY="331.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="77.0" style="-fx-background-color: transparent;">
+         <stylesheets>
+            <URL value="@../styles/SignUp.css" />
+            <URL value="@../styles/gamemode.css" />
+         </stylesheets>
+         <graphic>
+            <ImageView fitHeight="110.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../plumefinal.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label fx:id="scoreText" layoutX="468.0" layoutY="30.0" prefHeight="42.0" prefWidth="82.0" stylesheets="@../styles/gamemode.css" text="Score : 0" />
+      <ImageView fitHeight="129.0" fitWidth="54.0" layoutX="87.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rope.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="500.0" fitWidth="310.0" layoutX="-15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pendunoir.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bodyImage" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/torse.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="headImage" fitHeight="108.0" fitWidth="82.0" layoutX="69.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Head.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftArmImage" fitHeight="183.0" fitWidth="219.0" layoutX="-21.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/maingauche.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightArmImage" fitHeight="183.0" fitWidth="220.0" layoutX="148.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/maindroite.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightfeetImage" fitHeight="150.0" fitWidth="200.0" layoutX="98.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pieddroit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftfeetImage" fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/piedgauche.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightLegImage" fitHeight="160.0" fitWidth="88.0" layoutX="103.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/jambedroite.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftLegImage" fitHeight="168.0" fitWidth="88.0" layoutX="43.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/jambegauche.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_return" layoutX="770.0" layoutY="416.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="66.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
