@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="870.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Eureka.Controller.ui.ProfileController">
+   <children>
+      <ImageView fitHeight="628.0" fitWidth="947.0" layoutX="-50.0" layoutY="-99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../profilscreen.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="454.0" fitWidth="487.0" layoutX="212.0" layoutY="23.0" pickOnBounds="true" rotate="90.0">
+         <image>
+            <Image url="@../../../../../parcheminqst.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="181.0" layoutX="320.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../bestprofile.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="181.0" layoutX="320.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../bestprofile.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_title" layoutX="409.0" layoutY="50.0" style="-fx-font-weight: bold;" stylesheets="@../styles/gamemode.css" text="PROFILE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_username_title" layoutX="334.0" layoutY="116.0" prefHeight="38.0" prefWidth="95.0" stylesheets="@../styles/gamemode.css" text="Username:" />
+      <Label fx:id="lbl_username_value" layoutX="428.0" layoutY="117.0" prefHeight="38.0" prefWidth="82.0" stylesheets="@../styles/gamemode.css" />
+      <Label fx:id="lbl_password_title" layoutX="334.0" layoutY="166.0" stylesheets="@../styles/gamemode.css" text="Password" />
+      <Label fx:id="lbl_date_title" layoutX="334.0" layoutY="215.0" stylesheets="@../styles/gamemode.css" text="Registration Date:" />
+      <Label fx:id="lbl_date_value" layoutX="490.0" layoutY="215.0" stylesheets="@../styles/gamemode.css" />
+      <Label fx:id="lbl_totalGames_title" layoutX="324.0" layoutY="258.0" stylesheets="@../styles/gamemode.css" text="Total Games played:" />
+      <Label fx:id="lbl_totalGames_value" layoutX="505.0" layoutY="258.0" stylesheets="@../styles/gamemode.css" />
+      <Label fx:id="lbl_badgeCount" layoutX="452.0" layoutY="306.0" prefHeight="23.0" prefWidth="56.0" stylesheets="@../styles/gamemode.css" />
+      <Button fx:id="btn_change_username" cacheShape="false" layoutX="592.0" layoutY="111.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <StackPane prefHeight="17.0" prefWidth="27.0">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Btn_Stylo_Greek.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_change_password" cacheShape="false" layoutX="589.0" layoutY="161.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="56.0" style="-fx-background-color: transparent;" styleClass="menu-btn">
+         <graphic>
+            <StackPane prefHeight="17.0" prefWidth="27.0">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Btn_Stylo_Greek.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_back" layoutX="761.0" layoutY="409.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="95.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../bottequitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="BestScore" layoutX="324.0" layoutY="306.0" mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <Label prefHeight="38.0" prefWidth="117.0" stylesheets="@../styles/gamemode.css" text="Best Score:" />
+         </graphic>
+      </Button>
+      <Button fx:id="Badges" layoutX="331.0" layoutY="380.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="82.0" style="-fx-background-color: transparent;" stylesheets="@../styles/gamemode.css">
+         <graphic>
+            <Label prefHeight="38.0" prefWidth="117.0" stylesheets="@../styles/gamemode.css" text="Badges" />
+         </graphic>
+      </Button>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/SignUp.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
+</AnchorPane>
