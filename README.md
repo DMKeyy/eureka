@@ -11,7 +11,7 @@
 
 ## 📋 Overview
 
-Eureka is a sophisticated Java application built using the Model-View-Controller (MVC) architecture pattern. This project demonstrates clean code organization, separation of concerns, and modern Java development practices.
+Eureka is an educational game designed to make learning fun, interactive, and rewarding. Inspired by the hangman and trivia games, Eureka challenges players with a variety of brain-teasing questions across different subjects and difficulty levels. With multiple game modes—including daily challenges, timed quizzes, and a creative question-building feature—Eureka promotes knowledge retention through play. Players earn rewards, track their progress, and unlock achievements, all while engaging in an intuitive and visually appealing interface. Whether you're a student looking to boost your skills or a curious mind seeking a challenge, Eureka is your platform for learning through discovery.
 
 ## 🛠️ Tech Stack & Technologies
 
